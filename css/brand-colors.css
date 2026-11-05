@@ -1,0 +1,67 @@
+.tech-logo {
+    --brand:#b79aff; --brand-secondary:var(--brand);
+    background:#fff; color:#171719; border-color:#1717191a;
+    box-shadow:inset 0 1px 0 #fff,0 2px 8px #00000004;
+}
+.tech-logo.tech-python { --brand:#3776ab; --brand-secondary:#ffd343; }
+.tech-logo.tech-django { --brand:#44b78b; --brand-secondary:#0c8a60; }
+.tech-logo.tech-javascript { --brand:#f7df1e; --brand-secondary:#f2b928; }
+.tech-logo.tech-postgresql { --brand:#4169b1; --brand-secondary:#69a7e8; }
+.tech-logo.tech-docker { --brand:#2496ed; --brand-secondary:#60c4ff; }
+.tech-logo::before {
+    content:''; position:absolute; inset:0; z-index:-1; pointer-events:none;
+    background-image:radial-gradient(circle,var(--brand-secondary) .8px,transparent 1.3px);
+    background-size:7px 7px;
+    mask-image:radial-gradient(ellipse at 45% 50%,#000 15%,transparent 80%);
+    opacity:.16; transition:opacity .45s;
+}
+.tech-logo::after {
+    background:linear-gradient(110deg,transparent 43%,color-mix(in srgb,var(--brand) 18%,transparent) 50%,transparent 57%);
+}
+.tech-logo .tech-symbol { position:relative; transform:translateY(3px); color:#767680; }
+.tech-outline,.tech-color { position:absolute; inset:0; display:grid; place-items:center; transition:opacity .45s,transform .45s; }
+.tech-outline { opacity:1; color:#767680; }
+@supports (-webkit-text-stroke:1px white) {
+    .tech-outline { -webkit-text-fill-color:transparent; -webkit-text-stroke:1px #767680; }
+}
+.tech-color { opacity:0; color:var(--brand); transform:scale(.94); }
+.tech-python .tech-color i {
+    background:linear-gradient(135deg,#3776ab 12%,#4b8bbe 49%,#ffd343 51%,#ffe873 90%);
+    background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.tech-logo .tech-name { color:#252529; transform:translateY(4px); opacity:.65; transition:transform .35s,opacity .35s,color .35s; }
+.tech-logo .tech-detail { color:#707078; }
+.tech-logo:is(:hover,:focus-visible) {
+    border-color:color-mix(in srgb,var(--brand) 60%,#1717191a);
+    background:#fff; transform:translateY(-4px);
+    box-shadow:inset 0 1px 0 color-mix(in srgb,var(--brand-secondary) 30%,transparent),0 0 25px color-mix(in srgb,var(--brand) 20%,transparent);
+}
+.tech-logo:is(:hover,:focus-visible)::before { opacity:.65; animation:brandDotsDrift 2.8s linear infinite; }
+.tech-logo:is(:hover,:focus-visible) .tech-symbol { color:var(--brand); transform:translateY(-3px) rotate(-6deg) scale(1.1); }
+.tech-logo:is(:hover,:focus-visible) .tech-outline { opacity:0; }
+.tech-logo:is(:hover,:focus-visible) .tech-color { opacity:1; transform:scale(1); }
+.tech-logo:is(:hover,:focus-visible) .tech-name { color:var(--brand-secondary); opacity:1; transform:translateY(0); }
+@keyframes brandDotsDrift { to { background-position:7px -7px; } }
+/* Soft overhead lamp: a small bright source opens into a wide, fading cone.
+   Pseudo-elements are behind the content and never intercept links or inputs. */
+.section-ink :is(.project-card,.about-portrait,.certificate,.contact-form),
+body.dark-mode :is(.skill-family,.graph-card) {
+    position:relative; isolation:isolate;
+}
+body.dark-mode .floating-card { isolation:isolate; }
+.section-ink :is(.project-card,.about-portrait,.certificate,.contact-form)::after,
+body.dark-mode :is(.floating-card,.skill-family,.graph-card)::after {
+    content:''; position:absolute; inset:0; z-index:-1; border-radius:inherit; pointer-events:none;
+    background:
+        linear-gradient(90deg,transparent,#ffffff4a,transparent) top center / 65% 1px no-repeat,
+        radial-gradient(55.43% 125.9% at 50% 0%,#ffffff1a,transparent 85%),
+        conic-gradient(from 150deg at 50% -9%,transparent 0deg,#ffffff03 8deg,#ffffff0c 30deg,#ffffff03 52deg,transparent 60deg 360deg);
+    mask-image:linear-gradient(#000,transparent 88%);
+    opacity:.7; transition:opacity .4s;
+}
+.section-ink :is(.project-card,.about-portrait,.certificate,.contact-form):hover::after,
+body.dark-mode :is(.floating-card,.skill-family,.graph-card):hover::after { opacity:1; }
+@media(prefers-reduced-motion:reduce) {
+    .tech-logo:is(:hover,:focus-visible),.tech-logo .tech-symbol,.tech-logo:is(:hover,:focus-visible) .tech-symbol,.tech-logo .tech-name,.tech-logo:is(:hover,:focus-visible) .tech-name,.tech-color { transform:none; }
+    .tech-logo:is(:hover,:focus-visible)::before { animation:none; }
+}

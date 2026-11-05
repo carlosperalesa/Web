@@ -1,11 +1,11 @@
-# robots.txt para https://carlosperales.dev/
-
+# Public portfolio and selected useful tools.
 User-agent: *
 Disallow: /private/
 Disallow: /tmp/
 Disallow: /test/
 Disallow: /other/
-
+Allow: /other/calculadora-honorarios.html
 Allow: /
 
+# Historical versions stay crawlable so their noindex can be read.
 Sitemap: https://carlosperales.dev/sitemap.xml

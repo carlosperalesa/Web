@@ -1,0 +1,178 @@
+/* Section atmospheres: gradient light fields, technical grids and quiet texture. */
+body { background-color: var(--page-canvas,var(--bg)); transition: background-color .9s ease,color .3s; }
+body[data-atmosphere="inicio"] { --page-canvas:#ffffff; }
+body[data-atmosphere="proyectos"] { --page-canvas:#ffffff; }
+body[data-atmosphere="skills"] { --page-canvas:#f4f4f5; }
+body[data-atmosphere="perfil"] { --page-canvas:#ffffff; }
+body[data-atmosphere="trayectoria"] { --page-canvas:#f1f1f2; }
+body[data-atmosphere="certificaciones"] { --page-canvas:#fafafa; }
+body[data-atmosphere="automail"] { --page-canvas:#111112; }
+body[data-atmosphere="contacto"] { --page-canvas:#f6f6f7; }
+body.dark-mode[data-atmosphere="inicio"] { --page-canvas:#0a0a0b; }
+body.dark-mode[data-atmosphere="proyectos"] { --page-canvas:#111112; }
+body.dark-mode[data-atmosphere="skills"] { --page-canvas:#18181a; }
+body.dark-mode[data-atmosphere="perfil"] { --page-canvas:#0e0e10; }
+body.dark-mode[data-atmosphere="trayectoria"] { --page-canvas:#19191b; }
+body.dark-mode[data-atmosphere="certificaciones"] { --page-canvas:#101012; }
+body.dark-mode[data-atmosphere="automail"] { --page-canvas:#050506; }
+body.dark-mode[data-atmosphere="contacto"] { --page-canvas:#171719; }
+.page-frame { background:var(--bg); }
+.page-frame > section {
+    --scene-base:#f9f9f9; --scene-light:#959595; --scene-secondary:#c2c2c2;
+    --scene-strength:.14; --scene-grid:#7c7c7c1a; --scene-line:#95959575;
+    position:relative; isolation:isolate; background:var(--scene-base);
+}
+body.dark-mode .page-frame > section {
+    --scene-base:#111111; --scene-strength:.14; --scene-grid:#a3a3a312; --scene-line:#95959550;
+}
+.section::before,.section::after { z-index:2; }
+.hero-halo { display:none; }
+.scene-atmosphere { position:absolute; inset:0; z-index:-1; overflow:hidden; pointer-events:none; border-radius:inherit; contain:paint; }
+.scene-atmosphere::after {
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(180deg,transparent 85%,color-mix(in srgb,var(--scene-base) 75%,transparent));
+}
+.scene-orb {
+    position:absolute; width:900px; height:700px; top:-280px; right:-430px;
+    border-radius:50%; opacity:var(--scene-strength);
+    background:radial-gradient(ellipse,var(--scene-light),transparent 68%);
+    animation:ambientDrift 20s ease-in-out infinite alternate;
+}
+.scene-orb.secondary {
+    width:800px; height:650px; top:auto; right:auto; bottom:-300px; left:-350px;
+    background:radial-gradient(ellipse,var(--scene-secondary),transparent 68%);
+    animation-duration:26s; animation-delay:-11s;
+}
+.scene-pattern { position:absolute; inset:0; opacity:.7; }
+.scene-beam {
+    position:absolute; height:1px; width:min(70%,700px); left:-20%; top:38%;
+    background:linear-gradient(90deg,transparent,var(--scene-line),transparent);
+    transform:rotate(-25deg); opacity:0;
+    animation:ambientBeam 16s ease-in-out infinite;
+}
+.scene-beam.second { top:70%; left:35%; animation-delay:-8s; animation-duration:21s; }
+.scene-orbit {
+    position:absolute; width:620px; height:620px; border:1px solid var(--scene-grid);
+    border-radius:50%; right:-230px; top:50%; transform:translateY(-50%);
+}
+.scene-orbit::before,.scene-orbit::after { content:''; position:absolute; inset:50px; border:1px solid var(--scene-grid); border-radius:inherit; }
+.scene-orbit::after { inset:105px; border-style:dashed; animation:ambientOrbit 100s linear infinite; }
+.scene-pointer {
+    position:absolute; inset:0; opacity:0; transition:opacity .65s ease;
+    background:radial-gradient(450px circle at var(--ambient-x,50%) var(--ambient-y,50%),color-mix(in srgb,var(--scene-light) 10%,transparent),transparent 75%);
+}
+.ambient-pointer .scene-pointer { opacity:1; }
+.scene-atmosphere *,.scene-atmosphere *::before,.scene-atmosphere *::after { animation-play-state:paused; }
+.ambient-visible .scene-atmosphere *,.ambient-visible .scene-atmosphere *::after { animation-play-state:running; }
+body.ambient-page-hidden .scene-atmosphere *,body.ambient-page-hidden .scene-atmosphere *::after { animation-play-state:paused!important; }
+@keyframes ambientDrift { from { transform:translate3d(0,0,0) scale(1); } to { transform:translate3d(-55px,45px,0) scale(1.12); } }
+@keyframes ambientBeam { 0%,12% { opacity:0; translate:-100px 50px; } 35% { opacity:.55; } 65%,100% { opacity:0; translate:280px -110px; } }
+@keyframes ambientOrbit { to { rotate:360deg; } }
+/* Hero: white light field and a monochrome horizon. */
+#inicio { --scene-base:#ffffff; --scene-strength:.14; --scene-light:#a4a4a4; --scene-secondary:#c3c3c3; }
+#inicio .scene-orb { top:150px; right:-250px; width:1000px; height:850px; }
+#inicio .scene-orb.secondary { top:auto; left:-250px; bottom:-190px; width:900px; height:650px; }
+#inicio .scene-pattern {
+    background-image:linear-gradient(var(--scene-grid) 1px,transparent 1px),linear-gradient(90deg,var(--scene-grid) 1px,transparent 1px);
+    background-size:80px 80px; mask-image:linear-gradient(transparent 18%,#00000099 65%,transparent);
+}
+#inicio .scene-orbit { width:1000px; height:380px; right:calc(50% - 500px); top:auto; bottom:45px; transform:rotate(-9deg); }
+#inicio .scene-beam { top:60%; }
+#inicio .stack-rail { background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--scene-base) 85%,transparent)); }
+body.dark-mode #inicio { --scene-base:#0a0a0b; --scene-strength:.14; --scene-light:#595959; --scene-secondary:#6a6a6a; }
+/* Projects: a white gallery, dotted drafting paper and neutral edge light. */
+#proyectos { --scene-base:#ffffff; --scene-strength:.14; --scene-light:#959595; --scene-secondary:#c9c9c9; }
+#proyectos .scene-pattern { background-image:radial-gradient(circle,var(--scene-grid) 1px,transparent 1px); background-size:18px 18px; mask-image:linear-gradient(90deg,transparent 25%,#000000 100%); }
+#proyectos .scene-orb { top:-300px; right:-270px; }
+#proyectos .scene-orbit { width:850px; height:850px; top:100px; right:-540px; }
+#proyectos .scene-beam { display:none; }
+#proyectos .project-card { background:color-mix(in srgb,var(--surface) 95%,transparent); box-shadow:0 2px 3px #15151504,0 8px 28px #15151504; }
+body.dark-mode #proyectos { --scene-base:#111112; --scene-strength:.14; --scene-secondary:#575757; }
+/* Stack: graphite technical grid with a slow scanning light. */
+#skills { --scene-base:#f4f4f5; --scene-strength:.14; --scene-light:#afafaf; --scene-secondary:#a5a5a5; --scene-grid:#84848418; --scene-line:#b5b5b58c; }
+#skills .scene-pattern {
+    background-image:linear-gradient(var(--scene-grid) 1px,transparent 1px),linear-gradient(90deg,var(--scene-grid) 1px,transparent 1px);
+    background-size:40px 40px; mask-image:linear-gradient(135deg,transparent,#000000 45%,#00000055);
+}
+#skills .scene-orb { top:-300px; right:-260px; }
+#skills .scene-beam { transform:rotate(0); left:-10%; top:30%; width:110%; animation-name:ambientScan; animation-duration:18s; }
+#skills .scene-beam.second { display:none; }
+#skills .scene-orbit { width:700px; height:700px; right:-320px; top:65%; border-style:dashed; }
+@keyframes ambientScan { 0%,10% { opacity:0; translate:0 -100px; } 30%,60% { opacity:.5; } 90%,100% { opacity:0; translate:0 430px; } }
+#skills .graph-card { background:radial-gradient(ellipse at 65% 60%,#b0b0b014,transparent 70%),var(--surface); }
+body.dark-mode #skills { --scene-base:#18181a; --scene-strength:.14; --scene-light:#898989; --scene-secondary:#5f5f5f; --scene-grid:#bebebe12; }
+/* Profile: white surface, neutral contour lines and soft portrait light. */
+#perfil { --scene-base:#ffffff; --scene-light:#bebebe; --scene-secondary:#bfbfbf; --scene-strength:.14; --scene-grid:#94949422; }
+#perfil .scene-orb { width:750px; height:750px; right:auto; left:-300px; top:-210px; }
+#perfil .scene-orb.secondary { bottom:-300px; left:auto; right:-300px; }
+#perfil .scene-orbit { right:auto; left:-310px; width:700px; height:700px; }
+#perfil .scene-pattern { background:repeating-linear-gradient(125deg,transparent 0 80px,#92929207 80px 81px); }
+#perfil .scene-beam { display:none; }
+#perfil .about-portrait { box-shadow:0 12px 50px #86868612; }
+body.dark-mode #perfil { --scene-base:#0e0e10; --scene-light:#797979; --scene-secondary:#707070; --scene-strength:.14; --scene-grid:#94949415; }
+/* Journey: a calm slate interlude with offset ruled-paper texture. */
+#trayectoria { --scene-base:#f1f1f2; --scene-strength:.14; --scene-light:#a1a1a1; --scene-secondary:#bebebe; --scene-grid:#8080800e; }
+#trayectoria .scene-pattern { background:repeating-linear-gradient(135deg,transparent 0 6px,var(--scene-grid) 6px 7px); mask-image:linear-gradient(90deg,transparent 55%,#000000); }
+#trayectoria .scene-orbit,#trayectoria .scene-beam { display:none; }
+#trayectoria .scene-orb { height:650px; top:-400px; }
+#trayectoria .journey-columns { padding-top:8px; }
+#trayectoria .timeline-entry { border-color:color-mix(in srgb,var(--muted) 17%,transparent); }
+body.dark-mode #trayectoria { --scene-base:#19191b; --scene-light:#696969; --scene-secondary:#7c7c7c; --scene-strength:.14; --scene-grid:#b4b4b40b; }
+/* Certificates: a neutral gallery with diagonal light shafts. */
+#certificaciones { --scene-base:#fafafa; --scene-strength:.14; --scene-light:#aeaeae; --scene-secondary:#b6b6b6; --scene-grid:#84848419; }
+#certificaciones .scene-pattern { background:repeating-linear-gradient(115deg,transparent 0 120px,#95959506 120px 220px,transparent 220px 340px); }
+#certificaciones .scene-beam { width:120%; height:80px; top:20%; left:-10%; background:linear-gradient(180deg,transparent,#c8c8c826,transparent); transform:rotate(-28deg); animation-duration:24s; }
+#certificaciones .scene-beam.second { top:70%; left:5%; height:140px; animation-delay:-13s; }
+#certificaciones .scene-orbit { width:950px; height:950px; right:-600px; }
+#certificaciones .cert-preview { background:linear-gradient(145deg,var(--soft),color-mix(in srgb,var(--accent) 8%,var(--surface))); }
+body.dark-mode #certificaciones { --scene-base:#101012; --scene-strength:.14; --scene-light:#7e7e7e; --scene-secondary:#6b6b6b; }
+/* AutoMail is a contrasting dark chapter, including in the light theme. */
+#archivo,body.dark-mode #archivo {
+    color-scheme:dark; --scene-base:#111112; --scene-light:#626262; --scene-secondary:#6b6b6b;
+    --scene-strength:.14; --scene-grid:#afafaf12; --scene-line:#a7a7a77d;
+    --text:#f1f1f1; --muted:#b2b2b2; --surface:#1e1e1e; --surface-raised:#252525;
+    --soft:#242424; --bg:#171717; --border:#bbbbbb24;
+    --accent:#b79aff; --accent-light:#d4c1ff; --accent-soft:#b79aff14;
+}
+body.dark-mode #archivo { --scene-base:#050506; --scene-strength:.14; --surface:#181818; --soft:#1f1f1f; --bg:#111111; }
+#archivo .scene-pattern {
+    background-image:linear-gradient(var(--scene-grid) 1px,transparent 1px),linear-gradient(90deg,var(--scene-grid) 1px,transparent 1px);
+    background-size:64px 64px; mask-image:radial-gradient(ellipse at 30% 80%,#000000,transparent 80%);
+}
+#archivo .scene-orb { top:-100px; right:-400px; }
+#archivo .scene-orbit { width:720px; height:720px; right:auto; left:-440px; }
+#archivo .scene-beam { top:80%; transform:rotate(-35deg); }
+#archivo .section-icon { background:#ffffff0a; border-color:#bbbbbb40; box-shadow:0 0 20px #81818124; }
+#archivo .button.primary { color:#ffffff; }
+/* Contact: soft white/charcoal lighting framed by concentric arcs. */
+#contacto { --scene-base:#f6f6f7; --scene-strength:.14; --scene-light:#9b9b9b; --scene-secondary:#c5c5c5; --scene-grid:#86868624; }
+#contacto .scene-orb { width:1000px; height:950px; top:-250px; right:-470px; }
+#contacto .scene-orb.secondary { bottom:-500px; left:-200px; }
+#contacto .scene-orbit { width:950px; height:950px; right:auto; left:-590px; top:85%; }
+#contacto .scene-pattern { background-image:radial-gradient(circle,var(--scene-grid) 1px,transparent 1px); background-size:24px 24px; mask-image:linear-gradient(90deg,#000000,transparent 50%); }
+#contacto .scene-beam { top:85%; }
+#contacto .contact-form { box-shadow:0 1px 1px #ffffff66,0 20px 65px #61616114; }
+#contacto .contact-copy h2 > span { color:var(--text); }
+body.dark-mode #contacto { --scene-base:#171719; --scene-strength:.14; --scene-light:#777777; --scene-secondary:#5f5f5f; --scene-grid:#bebebe16; }
+.site-footer { background:var(--bg); }
+@media(max-width:768px) {
+    .scene-orb { width:650px; height:650px; right:-380px; }
+    .scene-orb.secondary { width:600px; height:600px; left:-380px; }
+    .scene-pointer { display:none; }
+    .scene-beam.second { display:none; }
+    #inicio .scene-orb { width:750px; height:750px; right:-420px; top:180px; }
+    #inicio .scene-orbit { width:750px; right:calc(50% - 375px); height:300px; }
+    #skills .scene-pattern { background-size:32px 32px; }
+    #contacto .scene-orb { width:750px; height:900px; right:-530px; }
+}
+@media(prefers-reduced-motion:reduce) {
+    body { transition:none; }
+    .scene-atmosphere *,.scene-atmosphere *::before,.scene-atmosphere *::after { animation:none!important; }
+    .scene-beam { opacity:.18; }
+    .scene-pointer { display:none; }
+}
+
+
+/* Violet marks interactive elements; large typographic and lighting surfaces stay neutral. */
+h1 > span, body.dark-mode h1 > span { color:var(--text); background:none; -webkit-text-fill-color:currentColor; animation:none; }
+.scene-pointer { background:radial-gradient(450px circle at var(--ambient-x,50%) var(--ambient-y,50%),color-mix(in srgb,var(--scene-light) 7%,transparent),transparent 75%); }

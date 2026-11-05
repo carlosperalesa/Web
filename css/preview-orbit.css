@@ -1,0 +1,14 @@
+/* A shared wheel keeps neighboring groups on one continuous circular track. */
+.showcase-stage {
+    overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 18px,#000 calc(100% - 18px),transparent),linear-gradient(#000 0,#000 calc(100% - 25px),transparent);
+    -webkit-mask-composite:source-in;
+    mask-image:linear-gradient(90deg,transparent,#000 18px,#000 calc(100% - 18px),transparent),linear-gradient(#000 0,#000 calc(100% - 25px),transparent);
+    mask-composite:intersect;
+}
+.preview-wheel { position:absolute; inset:0; transform-origin:50% var(--orbit-pivot,1800px); }
+.showcase-stage .scene-panel { transform-origin:50% var(--orbit-pivot,1800px); }
+.showcase-stage.is-orbiting .preview-wheel { will-change:transform; }
+.showcase-stage.is-orbiting .floating-card { --scene-x:0px; --scene-y:0px; transition:none; pointer-events:none; }
+.showcase-stage.is-orbiting .scene-panel { pointer-events:none; }
+.showcase-stage.is-orbiting .stage-tag { animation-play-state:paused; }

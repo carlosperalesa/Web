@@ -1,0 +1,5062 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    <title>Carlos Perales | Full Stack Developer & Design Specialist</title>
+    <meta name="description"
+        content="Portafolio de Carlos Perales A. Desarrollador Full Stack y especialista en Diseño Web.">
+
+    <!-- SEO & Open Graph -->
+    <meta property="og:title" content="Carlos Perales | Full Stack Developer">
+    <meta property="og:description" content="Portafolio profesional. Desarrollo Web, Python, JS, y Diseño UI/UX.">
+    <meta property="og:image" content="https://carlosperalesa.github.io/img/avatar.webp">
+    <meta property="og:url" content="https://carlosperalesa.github.io/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Preconnect CDNs -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+
+    <!-- Styles -->
+    <!-- css/style.css -->
+    <style>
+/* ============================================
+   FUENTE PERSONALIZADA
+   ============================================ */
+@font-face {
+    font-family: 'Geist';
+    src: url('../fonts/Geist.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ============================================
+   VARIABLES CSS - ROOT Y DARK MODE
+   ============================================ */
+:root {
+    /* Colores principales */
+    --accent-color: #4f46e5;
+    --accent-light: #818cf8;
+    --text-color: #000000;
+    --text-muted: #374151;
+    --bg-gradient: #f8fafc;
+
+    /* Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.92);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --glass-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
+
+    /* Tipografía */
+    --font-xs: 0.75rem;
+    --font-sm: 0.875rem;
+    --font-md: 1rem;
+    --font-lg: 1.25rem;
+    --font-xl: 1.5rem;
+    --font-xxl: 2rem;
+
+    /* Espaciado */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    /* Bordes */
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 18px;
+    --radius-xl: 20px;
+
+    /* Componentes */
+    --dock-bg: rgba(255, 255, 255, 0.95);
+    --dock-icon-size: 52px;
+    --modal-bg: rgba(255, 255, 255, 0.98);
+    --indicator-color: #6366f1;
+
+    /* Colores semánticos */
+    --color-success: #10b981;
+    --color-danger: #ef4444;
+    --mac-green: #28c840;
+    --mac-red: #ff5f57;
+
+    /* Neomorphism */
+    --neo-shadow-light: -5px -5px 12px #ffffff, 5px 5px 12px rgba(0, 0, 0, 0.1);
+    --neo-shadow-inset: inset 5px 5px 10px rgba(0, 0, 0, 0.1), inset -5px -5px 10px #ffffff;
+    --neo-bg: #f8fafc;
+
+    /* Tamaños de elementos */
+    --top-bar-height: 44px;
+    --modal-header-height: 34px;
+    --dock-bottom-spacing: 80px;
+
+    /* Transiciones comunes */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.2s ease;
+    --transition-smooth: 0.3s ease;
+}
+
+body.dark-mode {
+    --bg-gradient: #030712;
+    --text-color: #f1f5f9;
+    --text-muted: #94a3b8;
+    --glass-bg: rgba(15, 23, 42, 0.8);
+    --glass-border: rgba(148, 163, 184, 0.1);
+    --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(148, 163, 184, 0.05);
+    --dock-bg: rgba(15, 23, 42, 0.9);
+    --modal-bg: rgba(15, 23, 42, 0.95);
+    --indicator-color: #a5b4fc;
+    --accent-color: #818cf8;
+    --accent-light: #c4b5fd;
+    --neo-shadow-light: -4px -4px 10px rgba(255, 255, 255, 0.05), 4px 4px 10px rgba(0, 0, 0, 0.5);
+    --neo-shadow-inset: inset 4px 4px 10px rgba(0, 0, 0, 0.5), inset -4px -4px 10px rgba(255, 255, 255, 0.05);
+    --neo-bg: #030712;
+}
+
+/* ============================================
+   RESET Y BASE
+   ============================================ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 450;
+    background: transparent;
+    color: var(--text-color);
+    transition: background-color var(--transition-smooth), color var(--transition-smooth);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* ============================================
+   SCROLLBAR PERSONALIZADO
+   ============================================ */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 100px;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.4) transparent;
+}
+
+body.dark-mode * {
+    scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
+}
+
+/* ============================================
+   PANTALLA PRINCIPAL Y FONDO
+   ============================================ */
+.desktop-screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    background-image: url('../img/gradient.svg');
+    background-size: cover;
+    background-position: center;
+}
+
+.desktop-screen::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.15) 0%,
+            rgba(0, 0, 0, 0.02) 20%,
+            rgba(0, 0, 0, 0.02) 80%,
+            rgba(0, 0, 0, 0.25) 100%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+body.dark-mode .desktop-screen {
+    background-image: none;
+}
+
+body.dark-mode .desktop-screen::before {
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.35) 0%,
+            rgba(0, 0, 0, 0.1) 20%,
+            rgba(0, 0, 0, 0.1) 80%,
+            rgba(0, 0, 0, 0.45) 100%);
+}
+
+/* ============================================
+   TOP BAR
+   ============================================ */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--top-bar-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--spacing-md);
+    background: #ffffff;
+    border-bottom: 1px solid var(--glass-border);
+    z-index: 1000;
+}
+
+body.dark-mode .top-bar {
+    background: #0f172a;
+}
+
+.top-bar-left,
+.top-bar-right {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.top-bar-name {
+    font-weight: 500;
+    font-size: var(--font-md);
+    cursor: pointer;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-normal);
+    background: var(--neo-bg);
+    box-shadow: var(--neo-shadow-light);
+    color: var(--text-color);
+}
+
+.top-bar-name:hover {
+    box-shadow: var(--neo-shadow-inset);
+    color: var(--accent-color);
+    transform: translateY(1px);
+}
+
+.top-bar-name:active {
+    box-shadow: var(--neo-shadow-inset);
+    transform: scale(0.98);
+}
+
+.name-full {
+    display: inline;
+}
+
+.name-short {
+    display: none;
+}
+
+.top-bar-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: var(--font-sm);
+    color: var(--text-muted);
+    font-weight: 500;
+    padding: 6px 18px;
+    border-radius: 20px;
+    background: var(--neo-bg);
+    box-shadow: var(--neo-shadow-light);
+    transition: all var(--transition-smooth);
+}
+
+.top-bar-center:hover {
+    box-shadow: var(--neo-shadow-inset);
+}
+
+/* ============================================
+   THEME TOGGLE (SOL/LUNA)
+   ============================================ */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 55px;
+    height: 35px;
+    padding: 5px;
+    border-radius: 50px;
+    background: #f8fafc;
+    box-shadow: -5px -5px 12px #ffffff, 5px 5px 12px rgba(0, 0, 0, 0.1);
+    transition: all var(--transition-smooth);
+}
+
+body.dark-mode .theme-toggle {
+    background: #0f172a;
+    box-shadow: -4px -4px 10px rgba(255, 255, 255, 0.05), 4px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.theme-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.theme-toggle input:focus-visible+.slider {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.theme-toggle .slider {
+    position: absolute;
+    cursor: pointer;
+    overflow: hidden;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    transition: .5s cubic-bezier(0.77, 0, 0.175, 1);
+    border-radius: 34px;
+    background: #83D8FF;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.theme-toggle .slider::before {
+    position: absolute;
+    content: "";
+    height: 19px;
+    width: 19px;
+    left: 3px;
+    bottom: 3px;
+    background: #FFD93E;
+    transition: .5s cubic-bezier(0.77, 0, 0.175, 1);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+    z-index: 2;
+}
+
+.theme-toggle .slider::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 8px;
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 10px -2px 0 2px #fff, 20px 0px 0 1px #fff;
+    filter: blur(0.5px);
+    transition: 0.5s;
+    opacity: 1;
+}
+
+.theme-toggle input:checked+.slider {
+    background: #1C233E;
+    background-image:
+        radial-gradient(circle, white 1px, transparent 1.5px),
+        radial-gradient(circle, white 1px, transparent 1.5px),
+        radial-gradient(circle, white 1px, transparent 1.5px);
+    background-position: 6px 6px, 14px 12px, 8px 18px;
+    background-size: 4px 4px;
+    background-repeat: no-repeat;
+}
+
+.theme-toggle input:checked+.slider::before {
+    transform: translateX(20px);
+    background: #D9D9D9;
+    box-shadow: inset -2px -1px 0 #999, inset 1px 1px 0 #fff;
+    background-image: radial-gradient(circle at 35% 35%, #999 1px, transparent 1.5px), radial-gradient(circle at 60% 60%, #999 1.5px, transparent 2px);
+}
+
+.theme-toggle input:checked+.slider::after {
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+/* ============================================
+   HOME SCREEN - CARD PRINCIPAL
+   ============================================ */
+.home-screen {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px var(--spacing-lg) 100px;
+    overflow-y: scroll;
+}
+
+.glass-card-main {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--spacing-xl);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--glass-shadow);
+}
+
+.glass-card-left-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex-shrink: 0;
+    width: 160px;
+}
+
+.glass-card-right-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.avatar-img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 4px solid var(--neo-bg);
+    box-shadow: var(--neo-shadow-light);
+    object-fit: cover;
+    transition: all var(--transition-smooth);
+}
+
+.home-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.profile-name {
+    font-size: var(--font-xxl);
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+}
+
+.profile-role {
+    font-size: var(--font-lg);
+    color: var(--accent-color);
+    font-weight: 400;
+    margin-bottom: var(--spacing-sm);
+    min-height: 1.875rem;
+}
+
+.profile-status {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-sm);
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-md);
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    font-weight: 500;
+    font-size: var(--font-xs);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+}
+
+.status-separator {
+    color: var(--glass-border);
+}
+
+.location-text {
+    opacity: 0.8;
+}
+
+.social-links-container {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.social-link {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    transition: all var(--transition-normal);
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 50%;
+    background: var(--neo-bg);
+    box-shadow: var(--neo-shadow-light);
+}
+
+.social-link:hover {
+    transform: translateY(-2px);
+    color: var(--accent-color);
+    box-shadow: var(--neo-shadow-inset);
+    opacity: 1;
+}
+
+body.dark-mode .social-link:hover {
+    color: var(--accent-light);
+}
+
+.home-profile {
+    margin-top: 0;
+    background: transparent;
+    padding: 0;
+}
+
+.profile-title {
+    font-size: var(--font-md);
+    font-weight: 500;
+    margin-bottom: var(--spacing-sm);
+    color: var(--accent-color);
+}
+
+.profile-text {
+    font-size: var(--font-sm);
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+.profile-text strong {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-sm);
+    color: var(--text-muted);
+}
+
+.contact-item i {
+    width: 16px;
+    color: var(--accent-color);
+}
+
+/* ============================================
+   DOCK
+   ============================================ */
+.dock-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    padding-bottom: max(var(--spacing-sm), env(safe-area-inset-bottom));
+    z-index: 1000;
+}
+
+.dock {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--glass-shadow);
+}
+
+.dock-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    transition: transform var(--transition-normal);
+    position: relative;
+}
+
+.dock-item:active {
+    animation: dockBounce 0.3s ease;
+}
+
+@keyframes dockBounce {
+    0% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(0.9);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    70% {
+        transform: scale(0.98);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.dock-icon {
+    width: var(--dock-icon-size);
+    height: var(--dock-icon-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    background: var(--neo-bg);
+    color: var(--accent-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--neo-shadow-light);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.dock-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.dock-icon.formacion {
+    color: #7c3aed;
+}
+
+.dock-icon.formacion svg {
+    fill: #7c3aed;
+}
+
+.dock-icon.experiencia {
+    color: #e11d48;
+}
+
+.dock-icon.experiencia svg {
+    fill: #e11d48;
+}
+
+.dock-icon.skills {
+    color: #0891b2;
+}
+
+.dock-icon.skills svg {
+    fill: #0891b2;
+}
+
+.dock-icon.proyectos {
+    color: #f59e0b;
+}
+
+.dock-icon.proyectos svg {
+    fill: #f59e0b;
+}
+
+.dock-icon.certificaciones {
+    color: #10b981;
+}
+
+.dock-icon.certificaciones svg {
+    fill: #10b981;
+}
+
+.dock-icon.whatsapp {
+    color: #16a34a;
+}
+
+.dock-icon.whatsapp svg {
+    fill: #16a34a;
+}
+
+.dock-icon.telefono {
+    color: #3b82f6;
+}
+
+.dock-icon.telefono svg {
+    fill: #3b82f6;
+}
+
+.dock-icon.contacto {
+    color: #ef4444;
+}
+
+.dock-icon.contacto svg {
+    fill: #ef4444;
+}
+
+body.dark-mode .dock-icon svg {
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2));
+}
+
+.dock-label {
+    font-size: 10px;
+    color: var(--text-muted);
+    text-align: center;
+    display: none;
+}
+
+.dock-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--color-danger);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.dock-indicator {
+    position: absolute;
+    bottom: -8px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--indicator-color);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.dock-item.active .dock-indicator {
+    opacity: 1;
+}
+
+.dock-separator {
+    width: 1px;
+    height: 40px;
+    background: var(--glass-border);
+    margin: 0 var(--spacing-xs);
+}
+
+@media (hover: hover) {
+    .dock-item:hover .dock-icon {
+        transform: scale(1.12) translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.12);
+    }
+}
+
+/* ============================================
+   TOAST DE BIENVENIDA
+   ============================================ */
+.toast {
+    position: fixed;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--glass-shadow);
+    font-size: var(--font-sm);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-smooth);
+    z-index: 3000;
+}
+
+.toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ============================================
+   FORMULARIOS
+   ============================================ */
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-label {
+    display: block;
+    font-size: var(--font-sm);
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-xs);
+    font-weight: 500;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.5);
+    font-family: inherit;
+    font-size: var(--font-sm);
+    transition: all var(--transition-normal);
+    color: var(--text-color);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+body.dark-mode .form-input,
+body.dark-mode .form-textarea {
+    background: rgba(0, 0, 0, 0.2);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .form-input:focus,
+body.dark-mode .form-textarea:focus {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: var(--accent-color);
+}
+
+/* ============================================
+   RESPONSIVE - MÓVIL
+   ============================================ */
+@media (max-width: 768px) {
+
+    .name-full {
+        display: none;
+    }
+
+    .name-short {
+        display: inline;
+    }
+
+    .top-bar-center {
+        font-size: var(--font-xs);
+    }
+
+    .home-screen {
+        padding: 60px 16px 100px 16px;
+        justify-content: flex-start;
+        align-items: center;
+        overflow-x: hidden;
+    }
+
+    .glass-card-main {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: var(--spacing-lg);
+        margin-left: auto;
+        margin-right: auto;
+        width: calc(100vw - 32px);
+        max-width: calc(100vw - 32px);
+        box-sizing: border-box;
+        gap: var(--spacing-lg);
+    }
+
+    .glass-card-left-section {
+        width: 100%;
+        order: 1;
+    }
+
+    .glass-card-right-section {
+        width: 100%;
+        align-items: center;
+        order: 2;
+    }
+
+    .home-info {
+        align-items: center;
+    }
+
+    .glass-card-left-section .social-links-container {
+        justify-content: center;
+    }
+
+    .avatar-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-name {
+        font-size: var(--font-lg);
+    }
+
+    .profile-role {
+        font-size: var(--font-sm);
+    }
+
+    .contact-list {
+        align-items: center;
+        font-size: var(--font-sm);
+    }
+
+    .contact-item {
+        font-size: var(--font-xs);
+    }
+
+    .dock {
+        width: calc(100vw - 32px);
+        max-width: calc(100vw - 32px);
+        justify-content: space-around;
+        padding: var(--spacing-sm);
+    }
+
+    .top-bar {
+        z-index: 3000;
+    }
+
+    .dock-container {
+        z-index: 3000;
+    }
+
+    .dock-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 20px;
+    }
+
+    .dock-separator {
+        display: none;
+    }
+
+}
+
+/* ============================================
+   RESPONSIVE - DESKTOP
+   ============================================ */
+@media (min-width: 769px) {
+    .dock-label {
+        display: block;
+    }
+
+    .dock-icon {
+        width: 52px;
+        height: 52px;
+    }
+}
+
+/* ============================================
+   ACCESIBILIDAD - ANIMACIONES REDUCIDAS
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms;
+        animation-iteration-count: 1;
+        transition-duration: 0.01ms;
+    }
+}
+
+/* ============================================
+   SELECCIÓN DE TEXTO
+   ============================================ */
+::selection {
+    background: var(--accent-color);
+    color: white;
+}
+    </style>
+    <!-- css/modal.css -->
+    <style>
+/* ============================================
+   MODALES - SISTEMA BASE
+   ============================================ */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-lg);
+    pointer-events: none;
+}
+
+.modal {
+    position: absolute;
+    width: 100%;
+    max-width: 600px;
+    max-height: 85vh;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    transform: scale(0);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+        opacity var(--transition-normal),
+        visibility var(--transition-normal),
+        left 0.01s,
+        top 0.01s;
+    pointer-events: auto;
+}
+
+#modal-proyectos .modal {
+    max-height: 90vh;
+}
+
+#modal-proyectos .modal-body {
+    padding-bottom: 80px;
+}
+
+.modal-overlay.active .modal {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-overlay.closing .modal {
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.18s cubic-bezier(0.6, -0.28, 0.74, 0.05),
+        opacity var(--transition-fast);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px 0 12px;
+    background: #ffffff;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    min-height: var(--modal-header-height);
+    cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
+    position: relative;
+    z-index: 2;
+}
+
+body.dark-mode .modal-header {
+    background: #0f172a;
+}
+
+@media (min-width: 769px) {
+    .modal-header {
+        cursor: grab;
+    }
+
+    .modal-header:active {
+        cursor: grabbing;
+    }
+
+    .modal.dragging {
+        user-select: none;
+    }
+
+    .modal.dragging .modal-header {
+        cursor: grabbing;
+    }
+}
+
+.modal-title {
+    flex: 1;
+    font-size: var(--font-sm);
+    font-weight: 500;
+    pointer-events: none;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+}
+
+.modal-close {
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--mac-red);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: transparent;
+    font-size: 0;
+    transition: all var(--transition-normal);
+    position: relative;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), -1px -1px 3px rgba(255, 255, 255, 0.4);
+}
+
+.modal-close:hover {
+    opacity: 0.9;
+    transform: scale(1.1);
+}
+
+.modal-close:active {
+    transform: scale(0.95);
+}
+
+.modal-body {
+    flex: 1;
+    padding: var(--spacing-lg);
+    overflow-y: scroll;
+    background: var(--modal-bg);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid var(--glass-border);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    z-index: 1;
+}
+
+.window-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    z-index: 4;
+}
+
+.modal-maximize {
+    width: 14px;
+    height: 14px;
+    background: var(--mac-green);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    transition: transform var(--transition-normal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+    font-size: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), -1px -1px 3px rgba(255, 255, 255, 0.4);
+}
+
+.modal-maximize:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+}
+
+.modal.maximized {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
+.modal.maximized .modal-body {
+    border-radius: 0;
+}
+
+.modal.maximized .modal-title {
+    border-radius: 0;
+}
+
+.modal-sm {
+    width: 320px;
+    max-width: 90%;
+    margin: auto;
+}
+
+.modal-lg {
+    width: 600px;
+    height: 480px;
+    max-width: 95%;
+    max-height: 90vh;
+}
+
+.modal-xl {
+    width: min(1180px, 96vw);
+    height: min(760px, 92vh);
+    max-width: 96vw;
+    max-height: 92vh;
+}
+
+.modal-sm .modal-title {
+    padding: 4px 15px;
+    font-size: var(--font-xs);
+}
+
+/* ============================================
+   MODALES - CONFIRMACIÓN Y BOTONES
+   ============================================ */
+.modal-confirm-icon {
+    font-size: 48px;
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-confirm-icon svg {
+    width: 56px;
+    height: 56px;
+}
+
+.modal-confirm-text {
+    font-size: var(--font-md);
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-muted);
+}
+
+.modal-confirm-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+}
+
+.modal-btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    font-size: var(--font-sm);
+    font-weight: 500;
+    transition: all var(--transition-normal);
+}
+
+.modal-btn-primary {
+    background: var(--accent-color);
+    color: white;
+}
+
+.modal-btn-primary:hover {
+    filter: brightness(1.1);
+}
+
+.modal-btn-secondary {
+    background: rgba(128, 128, 128, 0.15);
+    color: var(--text-color);
+}
+
+.modal-btn-secondary:hover {
+    background: rgba(128, 128, 128, 0.25);
+}
+
+/* ============================================
+   MODALES - CONTENIDO (TIMELINE, SKILLS, ETC)
+   ============================================ */
+.timeline-item {
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.timeline-title {
+    font-size: var(--font-md);
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+}
+
+.timeline-subtitle {
+    font-size: var(--font-sm);
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.timeline-desc {
+    font-size: var(--font-sm);
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.skills-section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.skills-section-title {
+    font-size: var(--font-md);
+    font-weight: 500;
+    margin-bottom: var(--spacing-sm);
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.skill-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(128, 128, 128, 0.08);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-xs);
+    font-weight: 500;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    cursor: default;
+}
+
+.skill-tag:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.skill-tag i {
+    font-size: 14px;
+}
+
+.skill-tag.html {
+    background: rgba(228, 77, 38, 0.15);
+    color: #E44D26;
+}
+
+.skill-tag.html i {
+    color: #E44D26;
+}
+
+.skill-tag.css {
+    background: rgba(38, 77, 228, 0.15);
+    color: #264DE4;
+}
+
+.skill-tag.css i {
+    color: #264DE4;
+}
+
+.skill-tag.js {
+    background: rgba(247, 223, 30, 0.2);
+    color: #b8a900;
+}
+
+.skill-tag.js i {
+    color: #b8a900;
+}
+
+.skill-tag.python {
+    background: rgba(55, 118, 171, 0.15);
+    color: #3776AB;
+}
+
+.skill-tag.python i {
+    color: #3776AB;
+}
+
+.skill-tag.react {
+    background: rgba(97, 218, 251, 0.15);
+    color: #00b4d8;
+}
+
+.skill-tag.react i {
+    color: #00b4d8;
+}
+
+.skill-tag.sql {
+    background: rgba(0, 120, 212, 0.15);
+    color: #0078D4;
+}
+
+.skill-tag.sql i {
+    color: #0078D4;
+}
+
+.skill-tag.git {
+    background: rgba(240, 80, 50, 0.15);
+    color: #F05032;
+}
+
+.skill-tag.git i {
+    color: #F05032;
+}
+
+.skill-tag.django {
+    background: rgba(68, 183, 139, 0.15);
+    color: #44B78B;
+}
+
+.skill-tag.django i {
+    color: #44B78B;
+}
+
+.skill-tag.wordpress {
+    background: rgba(33, 117, 155, 0.15);
+    color: #21759b;
+}
+
+.skill-tag.wordpress i {
+    color: #21759b;
+}
+
+.skill-tag.postgres {
+    background: rgba(51, 103, 145, 0.15);
+    color: #336791;
+}
+
+.skill-tag.postgres i {
+    color: #336791;
+}
+
+.skill-tag.woocommerce {
+    background: rgba(150, 88, 138, 0.15);
+    color: #96588a;
+}
+
+.skill-tag.woocommerce i {
+    color: #96588a;
+}
+
+.skill-tag.elementor {
+    background: rgba(146, 34, 71, 0.15);
+    color: #922247;
+}
+
+.skill-tag.elementor i {
+    color: #922247;
+}
+
+.skill-tag.docker {
+    background: rgba(36, 150, 237, 0.15);
+    color: #2496ED;
+}
+
+.skill-tag.docker i {
+    color: #2496ED;
+}
+
+.skill-tag.linux {
+    background: rgba(252, 198, 36, 0.15);
+    color: #d1a100;
+}
+
+.skill-tag.linux i {
+    color: #d1a100;
+}
+
+.skill-tag.api {
+    background: rgba(8, 145, 178, 0.15);
+    color: #0891b2;
+}
+
+.skill-tag.api i {
+    color: #0891b2;
+}
+
+.skill-tag.util {
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+}
+
+.skill-tag.util i {
+    color: #3b82f6;
+}
+
+.skill-tag.soft {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+}
+
+.skill-tag.soft i {
+    color: #10b981;
+}
+
+.cert-list {
+    list-style: none;
+}
+
+.cert-list li {
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--glass-border);
+    font-size: var(--font-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.cert-list li::before {
+    content: '✓';
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.cert-list li:last-child {
+    padding-bottom: 0;
+}
+
+/* ============================================
+   MODALES - PROYECTOS
+   ============================================ */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+}
+
+.project-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+}
+
+.project-app:hover {
+    transform: translateY(-4px);
+    z-index: 100;
+}
+
+.project-app:hover .project-icon {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+}
+
+.project-app:active {
+    transform: scale(0.95) translateY(0);
+}
+
+.project-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background: var(--glass-bg);
+}
+
+.project-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 8px;
+}
+
+.project-icon.emoji {
+    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+}
+
+body.dark-mode .project-icon.emoji {
+    background: linear-gradient(135deg, #1e293b, #334155);
+}
+
+body.dark-mode .project-icon {
+    background: rgba(30, 41, 59, 0.8);
+}
+
+.project-name {
+    font-size: 11px;
+    text-align: center;
+    max-width: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.project-detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+
+.project-detail-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    background: var(--glass-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--glass-shadow);
+    overflow: hidden;
+}
+
+.project-detail-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 8px;
+}
+
+.project-detail-icon.emoji {
+    font-size: 28px;
+    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+}
+
+body.dark-mode .project-detail-icon.emoji {
+    background: linear-gradient(135deg, #1e293b, #334155);
+}
+
+.project-detail-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+
+@media (max-width: 768px) {
+
+    .modal-header,
+    .modal-close {
+        display: flex;
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .modal-overlay {
+        padding: 0;
+        top: var(--top-bar-height);
+        bottom: var(--dock-bottom-spacing);
+        left: 0;
+        right: 0;
+        height: auto;
+        align-items: stretch;
+        justify-content: stretch;
+        background: transparent;
+        pointer-events: none;
+    }
+
+    .modal-overlay.active {
+        background: rgba(0, 0, 0, 0.3);
+        pointer-events: auto;
+    }
+
+    .modal {
+        position: relative;
+        left: auto;
+        top: auto;
+        width: calc(100% - 16px);
+        max-width: calc(100% - 16px);
+        height: calc(100% - 16px);
+        max-height: calc(100% - 16px);
+        margin: 8px;
+        background: transparent;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-body {
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    .modal-header {
+        cursor: default;
+        flex-shrink: 0;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+    .modal-close {
+        z-index: 20;
+    }
+
+    .modal-sm {
+        position: relative;
+        width: 300px;
+        max-width: 300px;
+        height: auto;
+        max-height: fit-content;
+        margin: auto;
+        align-self: center;
+        justify-self: center;
+        touch-action: none;
+        cursor: grab;
+    }
+
+    .modal-sm.dragging {
+        position: absolute;
+        cursor: grabbing;
+    }
+
+    #modal-whatsapp,
+    #modal-telefono,
+    #modal-login {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #modal-whatsapp.active,
+    #modal-telefono.active,
+    #modal-login.active {
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .modal-maximize {
+        display: none;
+    }
+
+    .modal-lg {
+        width: 100%;
+        height: 100%;
+        max-height: 100vh;
+        border-radius: 0;
+        bottom: 0;
+        top: 0;
+    }
+
+    .modal-sm {
+        width: 90%;
+        height: auto;
+    }
+
+    .modal-sm .modal-body {
+        overflow-y: auto;
+    }
+
+    .modal.maximized {
+        top: 10px;
+        left: 10px;
+        width: calc(100vw - 20px);
+        height: calc(100vh - 100px);
+        border-radius: var(--radius-lg);
+    }
+}
+    </style>
+    <!-- css/coverflow.css -->
+    <style>
+/* ============================================
+   MACOS COVER FLOW FOR PROJECTS MODAL
+   ============================================ */
+#modal-certificaciones .modal-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    padding-bottom: var(--spacing-md);
+}
+
+.coverflow-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+    padding: var(--spacing-sm) 0;
+}
+
+.coverflow-viewport {
+    width: 100%;
+    height: 80%;
+    perspective: 800px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.coverflow-viewport:active {
+    cursor: grabbing;
+}
+
+.coverflow-stage {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Cover Flow Card */
+.coverflow-card {
+    width: 150px;
+    height: 180px;
+    position: absolute;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    background: #ffffff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+    cursor: pointer;
+    -webkit-box-reflect: below 4px linear-gradient(transparent, transparent 60%, rgba(0, 0, 0, 0.15));
+}
+
+body.dark-mode .coverflow-card {
+    background: #1e293b;
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Card Content: Thumbnail screenshot & icon footer */
+.card-screenshot {
+    width: 100%;
+    height: 76%;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    position: relative;
+    background-color: #f8fafc;
+}
+
+body.dark-mode .card-screenshot {
+    background-color: #0f172a;
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.card-overlay {
+    width: 100%;
+    height: 24%;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 8px;
+    background: #0f172a;
+    color: #ffffff;
+}
+
+.coverflow-card .project-icon {
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    margin: 0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.coverflow-card .project-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 3px;
+}
+
+.coverflow-card .project-name {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    max-width: 95px;
+}
+
+/* Bottom Information Panel */
+.coverflow-info-panel {
+    text-align: center;
+    max-width: 450px;
+    width: 100%;
+    height: 20%;
+    max-height: 20%;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    z-index: 10;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.coverflow-info-panel.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.coverflow-info-panel .cf-title {
+    font-size: var(--font-md);
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--text-color);
+}
+
+.coverflow-info-panel .cf-desc {
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-bottom: 12px;
+    min-height: 32px;
+    padding: 0 10px;
+}
+
+.coverflow-info-panel .modal-btn {
+    display: inline-block;
+    padding: 6px 18px;
+    border-radius: var(--radius-md);
+    font-size: var(--font-xs);
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Drag & Scroll indicator help text */
+.coverflow-help {
+    font-size: 10px;
+    color: var(--text-muted);
+    opacity: 0.7;
+    margin-top: 10px;
+    display: flex;
+    gap: 15px;
+    user-select: none;
+    pointer-events: none;
+}
+
+.coverflow-help i {
+    margin-right: 3px;
+}
+
+@media (max-width: 768px) {
+    .coverflow-viewport {
+        height: 200px;
+    }
+
+    .coverflow-card {
+        width: 120px;
+        height: 150px;
+    }
+
+    .coverflow-info-panel .cf-desc {
+        font-size: 11px;
+    }
+}
+
+    </style>
+    <!-- css/automail.css -->
+    <style>
+/* ============================================
+   AUTOMAIL - MODAL INTERNO COMPACTO CON SCROLL
+   ============================================ */
+
+#modal-automail .modal {
+    height: auto;
+    max-height: 85vh;
+}
+
+#modal-automail .modal-body {
+    height: auto;
+    max-height: calc(85vh - 40px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(99, 102, 241, 0.5) transparent;
+}
+
+#modal-automail .modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+#modal-automail .modal-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#modal-automail .modal-body::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.4);
+    border-radius: 4px;
+}
+
+#modal-automail .modal-body::-webkit-scrollbar-thumb:hover {
+    background: rgba(99, 102, 241, 0.7);
+}
+
+.automail-modal-body {
+    height: auto;
+    min-height: 0;
+}
+
+.automail-shell {
+    display: block;
+    height: auto;
+    min-height: 0;
+    background: linear-gradient(180deg, rgba(79, 70, 229, 0.06), rgba(16, 185, 129, 0.04));
+}
+
+.automail-intro-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px 14px;
+    border-right: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(24px);
+    min-height: 0;
+}
+
+body.dark-mode .automail-intro-panel {
+    background: rgba(15, 23, 42, 0.55);
+}
+
+.automail-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.automail-brand h3 {
+    font-size: 0.95rem;
+    line-height: 1.2;
+    color: var(--text-color);
+}
+
+.automail-brand p {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+.automail-badge {
+    width: fit-content;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.16), rgba(16, 185, 129, 0.16));
+    color: var(--accent-color);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.automail-feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.automail-feature {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+body.dark-mode .automail-feature {
+    background: rgba(15, 23, 42, 0.72);
+    border-color: rgba(148, 163, 184, 0.08);
+}
+
+.automail-feature strong {
+    font-size: 0.8rem;
+    color: var(--text-color);
+}
+
+.automail-feature span,
+.automail-tip {
+    font-size: 0.78rem;
+    line-height: 1.35;
+    color: var(--text-muted);
+}
+
+.automail-tip {
+    margin-top: auto;
+    padding: 8px 10px;
+    border-radius: 12px;
+    background: rgba(79, 70, 229, 0.08);
+    border: 1px dashed rgba(79, 70, 229, 0.25);
+}
+
+.automail-workspace {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px;
+    min-width: 0;
+    min-height: 0;
+}
+
+.automail-upload-card,
+.automail-results-panel {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: var(--glass-shadow);
+}
+
+.automail-upload-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+}
+
+.automail-dropzone {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 14px;
+    border: 1px dashed rgba(79, 70, 229, 0.35);
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.07), rgba(16, 185, 129, 0.05));
+    cursor: pointer;
+    transition: transform var(--transition-normal), border-color var(--transition-normal), background var(--transition-normal);
+}
+
+.automail-dropzone:hover,
+.automail-dropzone.is-dragover {
+    transform: translateY(-1px);
+    border-color: var(--accent-color);
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.12), rgba(16, 185, 129, 0.08));
+}
+
+.automail-dropzone-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    color: white;
+    background: linear-gradient(135deg, var(--accent-color), #10b981);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.automail-dropzone-copy h3 {
+    font-size: 0.88rem;
+    margin-bottom: 2px;
+}
+
+.automail-dropzone-copy p {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.automail-file-meta {
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    gap: 8px;
+}
+
+.automail-file-meta > div {
+    padding: 8px 12px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .automail-file-meta > div {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(148, 163, 184, 0.08);
+}
+
+.automail-meta-label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+}
+
+.automail-file-meta strong {
+    font-size: 0.85rem;
+    color: var(--text-color);
+    word-break: break-word;
+}
+
+.automail-actions,
+.automail-results-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.automail-actions {
+    justify-content: flex-end;
+}
+
+.automail-status-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.automail-status-badge {
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.automail-status-badge.idle {
+    background: rgba(100, 116, 139, 0.16);
+    color: var(--text-muted);
+}
+
+.automail-status-badge.running {
+    background: rgba(79, 70, 229, 0.16);
+    color: var(--accent-color);
+}
+
+.automail-status-badge.success {
+    background: rgba(16, 185, 129, 0.16);
+    color: #059669;
+}
+
+.automail-status-badge.warning {
+    background: rgba(245, 158, 11, 0.18);
+    color: #b45309;
+}
+
+.automail-status-badge.error {
+    background: rgba(239, 68, 68, 0.16);
+    color: #dc2626;
+}
+
+.automail-status-detail {
+    flex: 1;
+    min-width: 0;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-align: right;
+}
+
+.automail-progress-track {
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.08);
+}
+
+body.dark-mode .automail-progress-track {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.automail-progress-fill {
+    width: 0%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--accent-color), #10b981);
+    transition: width 0.3s ease;
+}
+
+.automail-progress-fill.is-working {
+    width: 72%;
+    animation: automailPulse 1.2s ease-in-out infinite;
+}
+
+.automail-progress-fill.is-done {
+    width: 100%;
+}
+
+@keyframes automailPulse {
+    0%, 100% {
+        filter: brightness(1);
+        opacity: 0.8;
+    }
+    50% {
+        filter: brightness(1.08);
+        opacity: 1;
+    }
+}
+
+.automail-results-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 14px;
+    min-height: 0;
+}
+
+.automail-results-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.automail-results-header h3 {
+    font-size: 0.88rem;
+    color: var(--text-color);
+}
+
+.automail-report-output {
+    margin: 0;
+    padding: 12px;
+    min-height: 140px;
+    max-height: 220px;
+    overflow-y: auto;
+    overflow-x: auto;
+    border-radius: 12px;
+    background: rgba(10, 15, 25, 0.95);
+    color: #d1fae5;
+    font-family: 'Cascadia Code', 'SFMono-Regular', Consolas, monospace;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(16, 185, 129, 0.5) rgba(15, 23, 42, 0.6);
+}
+
+.automail-report-output::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.automail-report-output::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 6px;
+}
+
+.automail-report-output::-webkit-scrollbar-thumb {
+    background: rgba(16, 185, 129, 0.4);
+    border-radius: 6px;
+    border: 2px solid rgba(15, 23, 42, 0.6);
+}
+
+.automail-report-output::-webkit-scrollbar-thumb:hover {
+    background: rgba(16, 185, 129, 0.7);
+}
+
+.card-screenshot-automail {
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.95), rgba(16, 185, 129, 0.9));
+    background-image:
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.28), transparent 28%),
+        radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.18), transparent 22%),
+        linear-gradient(135deg, rgba(79, 70, 229, 0.95), rgba(16, 185, 129, 0.88));
+}
+
+@media (max-width: 1080px) {
+    .automail-shell {
+        grid-template-columns: 1fr;
+    }
+
+    .automail-intro-panel {
+        border-right: none;
+        border-bottom: 1px solid var(--glass-border);
+    }
+}
+
+@media (max-width: 768px) {
+    .automail-workspace {
+        padding: 12px;
+    }
+
+    .automail-dropzone {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .automail-file-meta {
+        grid-template-columns: 1fr;
+    }
+
+    .automail-status-row,
+    .automail-results-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .automail-status-detail {
+        text-align: left;
+    }
+}
+
+    </style>
+
+    <!-- Icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" defer></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+    <meta name="robots" content="noindex, follow">
+</head>
+
+<body>
+    <!-- Toast de bienvenida -->
+    <div class="toast" id="welcomeToast">
+        Bienvenido al portafolio de Carlos 👋
+    </div>
+
+    <!-- Contenedor principal -->
+    <div class="desktop-screen">
+
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="top-bar-left">
+                <span class="top-bar-name" id="minimizeAll" title="Minimizar todas las ventanas">
+                    <span class="name-full">Carlos Perales Dev</span>
+                    <span class="name-short">C.P. Dev</span>
+                </span>
+            </div>
+
+            <div class="top-bar-center" id="datetime" onclick="openPocketBaseAdmin()"
+                style="cursor: pointer; user-select: none;">
+                <!-- Hora y fecha se actualizan con JS -->
+            </div>
+
+            <div class="top-bar-right">
+                <label class="theme-toggle">
+                    <input type="checkbox" id="themeToggle" aria-label="Alternar modo oscuro">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </header>
+
+        <!-- Pantalla de inicio -->
+        <main class="home-screen">
+            <div class="glass-card-main">
+                <div class="glass-card-left-section">
+                    <div class="home-avatar">
+                        <img src="../img/avatar.webp" alt="Carlos Perales" class="avatar-img">
+                    </div>
+
+                    <div class="social-links-container">
+                        <a href="https://github.com/carlosperalesa/" target="_blank" class="social-link" title="GitHub">
+                            <ion-icon name="logo-github"></ion-icon>
+                        </a>
+                        <a href="https://www.linkedin.com/in/carlosperalesa" target="_blank" class="social-link"
+                            title="LinkedIn">
+                            <ion-icon name="logo-linkedin"></ion-icon>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="glass-card-right-section">
+                    <div class="home-info">
+                        <h1 class="profile-name">Carlos Perales A.</h1>
+                        <p class="profile-role">Full Stack Developer & Data Engineer</p>
+
+                        <div class="profile-status">
+                            <span class="status-badge available">
+                                <span class="status-dot"></span> Disponible
+                            </span>
+                            <span class="status-separator">•</span>
+                            <span class="location-text">📍 Santiago, Chile</span>
+                        </div>
+                    </div>
+
+                    <div class="home-profile">
+                        <h2 class="profile-title">Perfil Profesional</h2>
+                        <p class="profile-text">
+                            Desarrollador con sólida experiencia comercial. Especialista en entender necesidades de
+                            cliente
+                            y traducirlas en soluciones técnicas eficientes. Mi background en ventas me permite
+                            construir
+                            productos con una fuerte orientación al usuario final y comunicación efectiva.
+                        </p>
+                        <p class="profile-text" style="margin-top: var(--spacing-sm);">
+                            <strong>Team Player:</strong> Me desempeño mejor en estructuras colaborativas.
+                            <strong>Resolución:</strong> Enfoque pragmático para solucionar problemas bajo presión.
+                            <strong>Adaptabilidad:</strong> Rápida integración a nuevos stacks y metodologías ágiles.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Dock -->
+        <nav class="dock-container">
+            <div class="dock">
+                <div class="dock-item" data-modal="formacion">
+                    <div class="dock-icon formacion">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <span class="dock-label">Formación</span>
+                    <div class="dock-indicator"></div>
+                </div>
+
+                <div class="dock-item" data-modal="experiencia">
+                    <div class="dock-icon experiencia">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <span class="dock-label">Experiencia</span>
+                    <div class="dock-indicator"></div>
+                </div>
+
+                <div class="dock-item" data-modal="skills">
+                    <div class="dock-icon skills">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <span class="dock-label">Skills</span>
+                    <div class="dock-indicator"></div>
+                </div>
+
+                <div class="dock-item" data-modal="proyectos">
+                    <div class="dock-icon proyectos">
+                        <i class="fas fa-folder"></i>
+                    </div>
+                    <span class="dock-label">Proyectos</span>
+                    <div class="dock-indicator"></div>
+                </div>
+
+                <div class="dock-item" data-modal="certificaciones">
+                    <div class="dock-icon certificaciones">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <span class="dock-label">Certificados</span>
+                    <div class="dock-indicator"></div>
+                </div>
+
+                <div class="dock-separator"></div>
+
+                <!-- Nuevo: Icono de Contacto -->
+                <div class="dock-item" data-modal="contacto">
+                    <div class="dock-icon contacto">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <span class="dock-label">Contacto</span>
+                    <span class="dock-badge" id="contact-badge" style="display:none">0</span>
+                    <div class="dock-indicator"></div>
+                </div>
+
+                <div class="dock-item" data-modal="whatsapp">
+                    <div class="dock-icon whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <span class="dock-label">WhatsApp</span>
+                    <div class="dock-indicator"></div>
+                </div>
+
+                <div class="dock-item" data-modal="telefono">
+                    <div class="dock-icon telefono">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <span class="dock-label">Llamar</span>
+                    <div class="dock-indicator"></div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- ============================================
+         MODALES
+         ============================================ -->
+
+    <!-- Modal: Formación -->
+    <div class="modal-overlay" id="modal-formacion">
+        <div class="modal modal-lg">
+            <div class="modal-header">
+                <h2 class="modal-title">Formación</h2>
+                <div class="window-controls">
+                    <button class="modal-maximize" title="Maximizar"><i class="fas fa-expand"></i></button>
+                    <button class="modal-close" aria-label="Cerrar"></button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="timeline-item">
+                    <h3 class="timeline-title">Analista Programador</h3>
+                    <p class="timeline-subtitle">INACAP (2025 - En curso)</p>
+                    <p class="timeline-desc">
+                        Formación técnica en desarrollo de software, bases de datos, programación y metodologías de
+                        desarrollo.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3 class="timeline-title">Full Stack Python</h3>
+                    <p class="timeline-subtitle">Desafío Latam / Talento Digital / SENCE (2023–2024)</p>
+                    <p class="timeline-desc">
+                        Bootcamps intensivos en desarrollo web con Django, PostgreSQL, APIs REST, Git y despliegue de
+                        aplicaciones.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3 class="timeline-title">Full Stack Developer</h3>
+                    <p class="timeline-subtitle">UTN Buenos Aires (2023)</p>
+                    <p class="timeline-desc">
+                        Programa complementario enfocado en arquitectura web y buenas prácticas de programación.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3 class="timeline-title">Derecho (congelado)</h3>
+                    <p class="timeline-subtitle">Universidad Central (2009–2014)</p>
+                    <p class="timeline-desc">
+                        Formación en análisis crítico, normativas, protección de datos y comercio electrónico.
+                    </p>
+                </div>
+
+
+                <h3 class="skills-section-title" style="margin-top: var(--spacing-lg);">Certificaciones</h3>
+                <ul class="cert-list">
+                    <li>Full-Stack Developer (UTN.BA, 2023)</li>
+                    <li>Full Stack Python (Desafío Latam, 2024)</li>
+                    <li>Full Stack Python (SENCE, 2024)</li>
+                    <li>Full Stack Python (Talento Digital, 2024)</li>
+                    <li>Ciberseguridad & Acceso Seguro (Didactik)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Experiencia -->
+    <div class="modal-overlay" id="modal-experiencia">
+        <div class="modal modal-lg">
+            <div class="modal-header">
+                <h2 class="modal-title">Experiencia</h2>
+                <div class="window-controls">
+                    <button class="modal-maximize" title="Maximizar"><i class="fas fa-expand"></i></button>
+                    <button class="modal-close" aria-label="Cerrar"></button>
+                </div>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="timeline-item">
+                    <h3 class="timeline-title">Desarrollador Web Freelance</h3>
+                    <p class="timeline-subtitle">Hootie Hoo — 2022 a Presente</p>
+                    <p class="timeline-desc">
+                        Desarrollo y mantención de sitios web para clientes finales de la agencia, incluyendo proyectos
+                        corporativos, institucionales y catálogos de productos (ej: GHIVS, Las Triple Negativas Siempre
+                        Positivas,
+                        ProdQuim).
+                        <br><br>
+                        Implementación de WordPress con temas personalizados y builders (Elementor, Avada / Fusion
+                        Builder),
+                        integración de formularios, sistemas de contacto, catálogos y flujos de cotización.
+                        <br><br>
+                        Configuración y administración de servidores VPS Linux (DigitalOcean), gestión de dominios,
+                        certificados SSL,
+                        backups automáticos, despliegues y optimización de rendimiento.
+                        <br><br>
+                        Desarrollo de nuevos proyectos utilizando contenedores Docker para entornos de desarrollo y
+                        pruebas,
+                        con posterior despliegue en servidores productivos de clientes.
+                        <br><br>
+                        Optimización SEO on-page, soporte post-lanzamiento y capacitación básica a clientes en gestión
+                        de contenidos.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3 class="timeline-title">Backoffice Servicio Móvil</h3>
+                    <p class="timeline-subtitle">Movistar (T-Sales) — 2022</p>
+                    <p class="timeline-desc">
+                        Soporte operativo a procesos comerciales, validación de datos de ventas, control de calidad,
+                        generación de reportes operacionales y coordinación con áreas de activación, cumpliendo
+                        SLAs y políticas internas.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3 class="timeline-title">Laboratorio de Ventas</h3>
+                    <p class="timeline-subtitle">Entel — 2018 a 2021</p>
+                    <p class="timeline-desc">
+                        Pruebas de nuevos procesos comerciales, análisis de flujos en sistemas CRM, detección de errores
+                        operacionales y participación en iniciativas de mejora continua antes del despliegue masivo.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Skills -->
+    <div class="modal-overlay" id="modal-skills">
+        <div class="modal modal-lg">
+            <div class="modal-header">
+                <h2 class="modal-title">Skills Interactive Graph</h2>
+                <div class="window-controls">
+                    <button class="modal-maximize" title="Maximizar"><i class="fas fa-expand"></i></button>
+                    <button class="modal-close" aria-label="Cerrar"></button>
+                </div>
+            </div>
+
+            <div class="modal-body" style="padding: 0; overflow: hidden; height: 100%;">
+                <div id="skills-graph" style="width: 100%; height: 100%;"></div>
+
+                <div
+                    style="position: absolute; bottom: 15px; left: 20px; font-size: 0.8rem; color: var(--text-muted); pointer-events: none; z-index: 10;">
+                    <i class="fas fa-mouse-pointer"></i> Drag nodes • <i class="fas fa-search-plus"></i> Scroll Zoom
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Proyectos -->
+    <div class="modal-overlay" id="modal-proyectos">
+        <div class="modal modal-lg">
+            <div class="modal-header">
+                <h2 class="modal-title">Proyectos</h2>
+                <div class="window-controls">
+                    <button class="modal-maximize" title="Maximizar"><i class="fas fa-expand"></i></button>
+                    <button class="modal-close" aria-label="Cerrar"></button>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <div class="projects-grid">
+
+                    <!-- Hootie Hoo -->
+                    <a href="https://hootiehoo.cl/" target="_blank" class="project-app"
+                        data-description="Plataforma educativa y marketing digital. Desarrollo web, e-commerce, integraciones y gestión de infraestructura.">
+                        <div class="project-icon">
+                            <img src="../img/cards/hh.webp" alt="Hootie Hoo" loading="lazy">
+                        </div>
+                        <span class="project-name">Hootie Hoo</span>
+                    </a>
+
+                    <!-- GHIVS (cliente Hootie Hoo) -->
+                    <a href="https://ghivs.com/v2/" target="_blank" class="project-app"
+                        data-description="Sitio corporativo. WordPress (Avada), multilenguaje, formularios y optimización SEO.">
+                        <div class="project-icon">
+                            <img src="../img/cards/gv_logo.webp" alt="Ghivs" loading="lazy">
+                        </div>
+                        <span class="project-name">GHIVS</span>
+                    </a>
+
+                    <!-- ProdQuim (cliente Hootie Hoo) -->
+                    <a href="https://prodquim.cl/" target="_blank" class="project-app"
+                        data-description="Catálogo B2B con sistema de cotización. WordPress, WooCommerce, Elementor e integraciones.">
+                        <div class="project-icon">
+                            <img src="../img/cards/prodquim.webp" alt="ProdQuim" loading="lazy">
+                        </div>
+                        <span class="project-name">ProdQuim</span>
+                    </a>
+
+                    <!-- TNSP -->
+                    <a href="../other/tnsp/index.html" target="_blank" class="project-app"
+                        data-description="Sitio institucional. WordPress, Elementor, despliegue en VPS y mantenimiento.">
+                        <div class="project-icon">
+                            <img src="../img/cards/tn_logo.webp" alt="TNSP" loading="lazy">
+                        </div>
+                        <span class="project-name">TNSP</span>
+                    </a>
+
+                    <!-- Pokédex -->
+                    <a href="../other/pokedex/index.html" target="_blank" class="project-app"
+                        data-description="Frontend en JavaScript con consumo de API REST, búsqueda dinámica y renderizado de componentes.">
+                        <div class="project-icon">
+                            <img src="../img/cards/pm_logo.webp" alt="Pokédex" loading="lazy">
+                        </div>
+                        <span class="project-name">Pokédex</span>
+                    </a>
+
+                    <!-- Proton UI -->
+                    <a href="../other/proton-pass.html" target="_blank" class="project-app"
+                        data-description="Clon pixel-perfect de interfaz. Maquetación avanzada en HTML y CSS con lógica en JavaScript.">
+                        <div class="project-icon emoji">🔒</div>
+                        <span class="project-name">Proton UI</span>
+                    </a>
+
+                    <!-- Amigo Secreto -->
+                    <a href="../other/sorteo.html" target="_blank" class="project-app"
+                        data-description="Aplicación web con lógica de sorteo, validaciones y manejo de estados en JavaScript.">
+                        <div class="project-icon emoji">🎁</div>
+                        <span class="project-name">Amigo Secreto</span>
+                    </a>
+
+                    <!-- CV Online -->
+                    <a href="../other/cv/cv.html" target="_blank" class="project-app"
+                        data-description="Portafolio web con interfaz tipo sistema operativo, modales y navegación por JavaScript.">
+                        <div class="project-icon emoji">📄</div>
+                        <span class="project-name">CV Online</span>
+                    </a>
+
+                    <!-- Calculadora -->
+                    <a href="../other/calculadora-honorarios.html" target="_blank" class="project-app"
+                        data-description="Calculadora interactiva con validaciones, reglas de negocio y resultados dinámicos en JavaScript.">
+                        <div class="project-icon emoji">💰</div>
+                        <span class="project-name">Calc. Honorarios</span>
+                    </a>
+
+                    <!-- AutoMail -->
+                    <a href="#" target="_blank" class="project-app" data-kind="automail"
+                        data-description="Sube un XLSX, ejecuta la generación de correos, revisa el reporte de integridad y descarga el ZIP con los mails producidos.">
+                        <div class="project-icon emoji">✉️</div>
+                        <span class="project-name">AutoMail</span>
+                    </a>
+
+                    <!-- Laboratorio de efectos CSS -->
+                    <a href="../other/test.html" target="_blank" class="project-app"
+                        data-description="Galería interactiva de efectos CSS hover para imágenes, con variantes de zoom, rotación, latido, filtros y brillo.">
+                        <div class="project-icon emoji">🎨</div>
+                        <span class="project-name">Test CSS</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Certificaciones (macOS 3D Cover Flow) -->
+    <div class="modal-overlay" id="modal-certificaciones">
+        <div class="modal modal-lg">
+            <div class="modal-header">
+                <h2 class="modal-title">Certificaciones</h2>
+                <div class="window-controls">
+                    <button class="modal-maximize" title="Maximizar"><i class="fas fa-expand"></i></button>
+                    <button class="modal-close" aria-label="Cerrar"></button>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <div class="coverflow-container">
+                    <div class="coverflow-viewport" id="coverflow-viewport">
+                        <div class="coverflow-stage" id="coverflow-stage">
+
+                            <!-- Cert 1: Full Stack Python Desafío Latam -->
+                            <a href="../img/cert/bootcamp-desarrollo-aplicaciones-full-stack-python-trainee.webp"
+                                target="_blank" class="coverflow-card" data-title="Full Stack Python Trainee"
+                                data-desc="Desafío Latam / SENCE / Talento Digital (2024). Bootcamp intensivo de desarrollo software con Python, Django, PostgreSQL, APIs REST y Git."
+                                data-url="../img/cert/bootcamp-desarrollo-aplicaciones-full-stack-python-trainee.webp">
+                                <div class="card-screenshot"
+                                    style="background-image: url('../img/cert/bootcamp-desarrollo-aplicaciones-full-stack-python-trainee.webp')">
+                                </div>
+                                <div class="card-overlay">
+                                    <div class="project-icon emoji">📜</div>
+                                    <span class="project-name">Desafío Latam</span>
+                                </div>
+                            </a>
+
+                            <!-- Cert 2: Full Stack UTN / Incluyeme -->
+                            <a href="../img/cert/certificado-curso-fullstack-incluyeme.webp" target="_blank"
+                                class="coverflow-card" data-title="Full-Stack Developer UTN"
+                                data-desc="UTN Buenos Aires & Incluyeme (2023). Arquitectura web, desarrollo frontend/backend y buenas prácticas de programación."
+                                data-url="../img/cert/certificado-curso-fullstack-incluyeme.webp">
+                                <div class="card-screenshot"
+                                    style="background-image: url('../img/cert/certificado-curso-fullstack-incluyeme.webp')">
+                                </div>
+                                <div class="card-overlay">
+                                    <div class="project-icon emoji">🎓</div>
+                                    <span class="project-name">UTN.BA</span>
+                                </div>
+                            </a>
+
+                            <!-- Cert 3: Full Stack Python Talento Digital -->
+                            <a href="../img/cert/certificado-desarrollo-de-aplicaciones-full-stack-python-trainee.webp"
+                                target="_blank" class="coverflow-card" data-title="Desarrollo Full Stack Python"
+                                data-desc="Talento Digital para Chile (2024). Certificación en construcción de aplicaciones web escalables e integración de servicios."
+                                data-url="../img/cert/certificado-desarrollo-de-aplicaciones-full-stack-python-trainee.webp">
+                                <div class="card-screenshot"
+                                    style="background-image: url('../img/cert/certificado-desarrollo-de-aplicaciones-full-stack-python-trainee.webp')">
+                                </div>
+                                <div class="card-overlay">
+                                    <div class="project-icon emoji">🚀</div>
+                                    <span class="project-name">Talento Digital</span>
+                                </div>
+                            </a>
+
+                            <!-- Cert 4: SENCE Full Stack -->
+                            <a href="../img/cert/certificado-sence.pdf" target="_blank" class="coverflow-card"
+                                data-title="Certificación SENCE Full Stack"
+                                data-desc="SENCE (2024). Capacitación profesional en tecnologías de desarrollo de software y metodologías ágiles."
+                                data-url="../img/cert/certificado-sence.pdf">
+                                <div class="card-screenshot"
+                                    style="background-image: url('../img/cert/certificado-sence.webp')"></div>
+                                <div class="card-overlay">
+                                    <div class="project-icon emoji">🏆</div>
+                                    <span class="project-name">SENCE</span>
+                                </div>
+                            </a>
+
+                            <!-- Cert 5: Desarrollo de Aplicaciones Iniciales -->
+                            <a href="../img/cert/Certificado Desarrollo de aplicaciones iniciales.pdf"
+                                target="_blank" class="coverflow-card" data-title="Desarrollo de Aplicaciones Iniciales"
+                                data-desc="Capacitación en fundamentos de desarrollo de software, lógica de programación y estructuras de datos."
+                                data-url="../img/cert/Certificado Desarrollo de aplicaciones iniciales.pdf">
+                                <div class="card-screenshot"
+                                    style="background-image: url('../img/cert/Certificado Desarrollo de aplicaciones iniciales.webp')">
+                                </div>
+                                <div class="card-overlay">
+                                    <div class="project-icon emoji">💻</div>
+                                    <span class="project-name">Aplicaciones</span>
+                                </div>
+                            </a>
+
+                            <!-- Cert 6: Infraestructura TI Segura -->
+                            <a href="../img/cert/Certificado Infraestructura TI segura.pdf"
+                                target="_blank" class="coverflow-card" data-title="Infraestructura TI Segura"
+                                data-desc="Certificación en fundamentos de redes, administración de servidores y seguridad informática."
+                                data-url="../img/cert/Certificado Infraestructura TI segura.pdf">
+                                <div class="card-screenshot"
+                                    style="background-image: url('../img/cert/Certificado Infraestructura TI segura.webp')">
+                                </div>
+                                <div class="card-overlay">
+                                    <div class="project-icon emoji">🛡️</div>
+                                    <span class="project-name">Infraestructura TI</span>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <!-- Panel de información activa -->
+                    <div class="coverflow-info-panel" id="coverflow-info">
+                        <h3 class="cf-title" id="cf-title">Certificación</h3>
+                        <p class="cf-desc" id="cf-desc">Cargando...</p>
+                        <a class="modal-btn modal-btn-primary" id="cf-link" href="#" target="_blank">Ver Certificado</a>
+
+                        <!-- Ayuda de interacción -->
+                        <div class="coverflow-help">
+                            <span><i class="fas fa-arrows-alt-h"></i> Arrastrar</span>
+                            <span><i class="fas fa-mouse"></i> Rueda</span>
+                            <span><i class="fas fa-keyboard"></i> Flechas ◄/►</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Contacto (Nuevo) -->
+    <div class="modal-overlay" id="modal-contacto">
+        <div class="modal modal-lg">
+            <div class="modal-header">
+                <h2 class="modal-title">Contacto</h2>
+                <div class="window-controls">
+                    <button class="modal-maximize" title="Maximizar"><i class="fas fa-expand"></i></button>
+                    <button class="modal-close" aria-label="Cerrar"></button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Nombre</label>
+                    <input type="text" class="form-input" placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Teléfono</label>
+                    <input type="tel" class="form-input" placeholder="+56 9...">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Correo</label>
+                    <input type="email" class="form-input" placeholder="ejemplo@correo.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Asunto</label>
+                    <input type="text" class="form-input" placeholder="Asunto">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Mensaje</label>
+                    <textarea class="form-textarea" placeholder="Escribe tu mensaje aquí..."></textarea>
+                </div>
+                <div class="modal-confirm-actions" style="justify-content: flex-end; margin-top: 20px;">
+                    <button class="modal-btn modal-btn-secondary">Limpiar</button>
+                    <button class="modal-btn modal-btn-primary">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Detalle de Proyecto (Template Único) -->
+    <div class="modal-overlay" id="modal-proyecto-detalle">
+        <div class="modal modal-sm">
+            <div class="modal-header">
+                <h2 class="modal-title" id="p-title">Proyecto</h2>
+                <button class="modal-close" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <div class="project-detail-container">
+                    <div id="p-icon" class="project-detail-icon"></div>
+                    <p id="p-desc" class="project-detail-desc"></p>
+                    <a id="p-link" href="#" target="_blank" class="modal-btn modal-btn-primary"
+                        style="width: 100%; text-align: center;">Ir al proyecto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: AutoMail -->
+    <div class="modal-overlay" id="modal-automail">
+        <div class="modal modal-lg">
+            <div class="modal-header">
+                <h2 class="modal-title">AutoMail</h2>
+                <div class="window-controls">
+                    <button class="modal-maximize" title="Maximizar"><i class="fas fa-expand"></i></button>
+                    <button class="modal-close" aria-label="Cerrar"></button>
+                </div>
+            </div>
+            <div class="modal-body automail-modal-body">
+                <div class="automail-shell">
+                    <section class="automail-workspace">
+                        <div class="automail-upload-card">
+                            <div class="automail-dropzone" id="automail-dropzone" role="button" tabindex="0"
+                                aria-label="Subir archivo XLSX">
+                                <div class="automail-dropzone-icon">
+                                    <i class="fas fa-cloud-arrow-up"></i>
+                                </div>
+                                <div class="automail-dropzone-copy">
+                                    <h3>Arrastra tu archivo aquí</h3>
+                                    <p>o haz clic para buscar un .xlsx</p>
+                                </div>
+                            </div>
+                            <input type="file" id="automail-file-input" accept=".xlsx" hidden>
+
+                            <div class="automail-file-meta">
+                                <div>
+                                    <span class="automail-meta-label">Archivo seleccionado</span>
+                                    <strong id="automail-file-name">Ninguno</strong>
+                                </div>
+                                <div>
+                                    <span class="automail-meta-label">Tamaño</span>
+                                    <strong id="automail-file-size">-</strong>
+                                </div>
+                            </div>
+
+                            <div class="automail-actions">
+                                <button class="modal-btn modal-btn-secondary" id="automail-reset-btn">Limpiar</button>
+                                <button class="modal-btn modal-btn-secondary" id="automail-sample-btn">Ver
+                                    ayuda</button>
+                                <button class="modal-btn modal-btn-primary" id="automail-run-btn">Procesar
+                                    archivo</button>
+                            </div>
+                        </div>
+
+                        <div class="automail-progress-track" aria-hidden="true">
+                            <div class="automail-progress-fill" id="automail-progress-fill"></div>
+                        </div>
+
+                        <div class="automail-results-panel">
+                            <div class="automail-results-header">
+                                <h3>report.log</h3>
+                                <div class="automail-results-actions">
+                                    <button class="modal-btn modal-btn-secondary" id="automail-copy-btn">Copiar</button>
+                                    <a class="modal-btn modal-btn-primary" id="automail-download-link" href="#" download
+                                        style="display:none;">Descargar ZIP</a>
+                                </div>
+                            </div>
+                            <pre class="automail-report-output"
+                                id="automail-report-output">Aquí se mostrará el resultado de la ejecución.</pre>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: WhatsApp (Confirmación) -->
+    <div class="modal-overlay" id="modal-whatsapp">
+        <div class="modal modal-sm">
+            <div class="modal-header">
+                <h2 class="modal-title">WhatsApp</h2>
+                <button class="modal-close" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-confirm-icon whatsapp-icon">
+                    <svg viewBox="0 0 24 24" width="48" height="48" fill="#25D366">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                    </svg>
+                </div>
+                <p class="modal-confirm-text">¿Deseas abrir WhatsApp para contactar a Carlos?</p>
+                <div class="modal-confirm-actions">
+                    <button class="modal-btn modal-btn-secondary" data-action="cancel">Cancelar</button>
+                    <a href="https://wa.me/56962798030" target="_blank" class="modal-btn modal-btn-primary">Abrir
+                        WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Teléfono (Confirmación) -->
+    <div class="modal-overlay" id="modal-telefono">
+        <div class="modal modal-sm">
+            <div class="modal-header">
+                <h2 class="modal-title">Llamar</h2>
+                <button class="modal-close" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-confirm-icon phone-icon">
+                    <svg viewBox="0 0 24 24" width="48" height="48" fill="#3b82f6">
+                        <path
+                            d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" />
+                    </svg>
+                </div>
+                <p class="modal-confirm-text">¿Deseas llamar a Carlos al +56 9 6279 8030?</p>
+                <div class="modal-confirm-actions">
+                    <button class="modal-btn modal-btn-secondary" data-action="cancel">Cancelar</button>
+                    <a href="tel:+56962798030" class="modal-btn modal-btn-primary">Llamar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio para feedback -->
+    <audio id="tapSound" preload="auto">
+        <source src="../sounds/tap.wav" type="audio/wav">
+    </audio>
+
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+
+    <!-- Scripts -->
+    <!-- js/background.js -->
+    <script>
+
+class RetroGridBackground {
+    constructor() {
+        this.container = document.querySelector('.desktop-screen');
+        this.scene = null;
+        this.camera = null;
+        this.renderer = null;
+        this.grid = null;
+        this.terrain = null;
+        this.clock = new THREE.Clock();
+
+        // Configuration
+        this.gridColor = 0xff00ff; // Neon Pink/Magenta default
+        this.gridColorDark = 0xbc13fe;
+        this.gridColorLight = 0x4f46e5; // Indigo for light mode
+        this.fogColorDark = 0x030712; // Matches dark mode bg
+        this.fogColorLight = 0xf8fafc; // Matches light mode bg
+
+        this.init();
+    }
+
+    init() {
+        // Create Scene
+        this.scene = new THREE.Scene();
+
+        // Setup Fog (Fade distance)
+        this.scene.fog = new THREE.FogExp2(this.fogColorDark, 0.0015);
+
+        // Setup Camera
+        this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        this.camera.position.z = 200;
+        this.camera.position.y = 80;
+        this.camera.rotation.x = -0.2;
+
+        // Setup Renderer
+        this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Performance optimization
+
+        // Canvas Styling
+        this.renderer.domElement.id = 'three-bg';
+        this.renderer.domElement.style.position = 'absolute';
+        this.renderer.domElement.style.top = '0';
+        this.renderer.domElement.style.left = '0';
+        this.renderer.domElement.style.width = '100%';
+        this.renderer.domElement.style.height = '100%';
+        this.renderer.domElement.style.zIndex = '-1';
+        this.renderer.domElement.style.pointerEvents = 'none'; // Allow clicks to pass through
+
+        // Insert before desktop-screen content, but we want it effectively as the background
+        // Since .desktop-screen is the container, we can prepend it or append it to body.
+        // Appending to body and using z-index -1 is safest.
+        document.body.prepend(this.renderer.domElement);
+
+        this.createGrid();
+        this.createParticles();
+        this.setupLights();
+
+        // Event Listeners
+        window.addEventListener('resize', () => this.onResize());
+
+        // Check initial theme
+        this.checkTheme();
+
+        // Watch for theme class changes on body using MutationObserver
+        // This avoids race conditions where the 'change' event fires before the class is toggled
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'class') {
+                    this.checkTheme();
+                }
+            });
+        });
+
+        observer.observe(document.body, { attributes: true });
+
+        this.animationFrameId = null;
+
+        // Watch for page visibility changes to pause rendering when hidden
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                if (this.animationFrameId) {
+                    cancelAnimationFrame(this.animationFrameId);
+                    this.animationFrameId = null;
+                }
+            } else {
+                if (!this.animationFrameId) {
+                    this.clock.getDelta(); // reset delta timer
+                    this.animate();
+                }
+            }
+        });
+
+        // Start Loop
+        this.animate();
+    }
+
+    createGrid() {
+        // Create a moving plane with grid texture or actual grid helper
+        // Using a moving PlaneGeometry with wireframe for the "Terrain" look
+
+        const geometry = new THREE.PlaneGeometry(2000, 2000, 40, 40);
+
+        // Displace vertices to create "hills" on the sides
+        const count = geometry.attributes.position.count;
+        const positionAttribute = geometry.attributes.position;
+
+        for (let i = 0; i < count; i++) {
+            const x = positionAttribute.getX(i);
+            const y = positionAttribute.getY(i);
+
+            // Create a "valley" in the middle
+            const distFromCenter = Math.abs(x);
+            let zHeight = 0;
+
+            if (distFromCenter > 200) {
+                // Add noise/height to sides
+                zHeight = Math.sin(x * 0.01) * 30 + Math.cos(y * 0.01) * 30;
+                if (zHeight < 0) zHeight = 0;
+            }
+
+            // We modify Z here because Plane is created on XY plane, then we rotate it.
+            // Actually PlaneGeometry is on XY. We will rotate -90 deg on X.
+            // So Z in local space becomes Y in world space (height).
+            positionAttribute.setZ(i, zHeight);
+        }
+
+        geometry.computeVertexNormals();
+
+        const material = new THREE.MeshBasicMaterial({
+            color: this.gridColor,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.15
+        });
+
+        this.terrain = new THREE.Mesh(geometry, material);
+        this.terrain.rotation.x = -Math.PI / 2;
+        this.terrain.position.y = -50;
+        this.scene.add(this.terrain);
+
+        // Add a second grid for the "floor" purely flat
+        const gridHelper = new THREE.GridHelper(2000, 60, this.gridColor, this.gridColor);
+        gridHelper.position.y = -50;
+        gridHelper.material.transparent = true;
+        gridHelper.material.opacity = 0.1;
+        this.scene.add(gridHelper);
+    }
+
+    createParticles() {
+        // Floating particles for depth
+        const geometry = new THREE.BufferGeometry();
+        const vertices = [];
+
+        for (let i = 0; i < 600; i++) {
+            vertices.push(
+                (Math.random() - 0.5) * 1500,
+                (Math.random() - 0.5) * 500 + 200, // floating above
+                (Math.random() - 0.5) * 1500
+            );
+        }
+
+        geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+
+        const material = new THREE.PointsMaterial({ color: 0xffffff, size: 2, transparent: true, opacity: 0.6 });
+
+        const particles = new THREE.Points(geometry, material);
+        this.scene.add(particles);
+        this.particles = particles;
+    }
+
+    setupLights() {
+        const ambientLight = new THREE.AmbientLight(0x404040); // soft white light
+        this.scene.add(ambientLight);
+    }
+
+    checkTheme() {
+        // Check localstorage for initial load speed, or classList for runtime toggles
+        const isDark = document.body.classList.contains('dark-mode') || localStorage.getItem('theme') === 'dark';
+
+        if (isDark) {
+            // Dark Mode / Cyber settings
+            this.scene.fog.color.setHex(this.fogColorDark);
+            this.scene.background = new THREE.Color(this.fogColorDark); // Ensure bg is solid color so CSS behind doesn't matter
+
+            if (this.terrain) {
+                this.terrain.material.color.setHex(this.gridColorDark);
+                this.terrain.material.opacity = 0.2;
+            }
+        } else {
+            // Light Mode settings
+            this.scene.fog.color.setHex(this.fogColorLight);
+            this.scene.background = new THREE.Color(this.fogColorLight);
+
+            if (this.terrain) {
+                this.terrain.material.color.setHex(this.gridColorLight);
+                this.terrain.material.opacity = 0.15;
+            }
+        }
+    }
+
+    onResize() {
+        this.camera.aspect = window.innerWidth / window.innerHeight;
+        this.camera.updateProjectionMatrix();
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    animate() {
+        if (document.hidden) return;
+        this.animationFrameId = requestAnimationFrame(() => this.animate());
+
+        const delta = this.clock.getDelta();
+
+        // Move Terrain towards camera to simulate flight
+        if (this.terrain) {
+            this.terrain.position.z += 40 * delta;
+            // Loop the terrain
+            if (this.terrain.position.z > 200) {
+                this.terrain.position.z = 0;
+            }
+        }
+
+        // Rotate particles slowly
+        if (this.particles) {
+            this.particles.rotation.y += 0.05 * delta;
+        }
+
+        this.renderer.render(this.scene, this.camera);
+    }
+}
+
+// Initialize when ready
+new RetroGridBackground();
+
+    </script> <!-- Cyber Grid Background -->
+    <!-- js/skills-graph.js -->
+    <script>
+
+class SkillsGraph {
+    constructor() {
+        this.containerId = 'skills-graph';
+        this.container = document.getElementById(this.containerId);
+        this.simulation = null;
+        this.svg = null;
+        this.initialized = false;
+
+        // Data
+        this.data = {
+            nodes: [
+                { id: "Carlos", group: 0, size: 30 },
+
+                { id: "Frontend", group: 1, size: 20 },
+                { id: "HTML5", group: 1, size: 10 },
+                { id: "CSS3", group: 1, size: 10 },
+                { id: "JS", group: 1, size: 12 },
+                { id: "React", group: 1, size: 8 },
+                { id: "Git", group: 1, size: 8 },
+
+                { id: "Backend", group: 2, size: 20 },
+                { id: "Python", group: 2, size: 12 },
+                { id: "Django", group: 2, size: 10 },
+                { id: "SQL", group: 2, size: 8 },
+                { id: "Postgres", group: 2, size: 8 },
+                { id: "APIs", group: 2, size: 8 },
+
+                { id: "CMS", group: 3, size: 15 },
+                { id: "WordPress", group: 3, size: 10 },
+                { id: "WooCommerce", group: 3, size: 8 },
+                { id: "Elementor", group: 3, size: 8 },
+
+                { id: "DevOps", group: 4, size: 15 },
+                { id: "Docker", group: 4, size: 10 },
+                { id: "Linux", group: 4, size: 8 },
+                { id: "Nginx", group: 4, size: 8 },
+
+                { id: "Soft Skills", group: 5, size: 15 },
+                { id: "Comms", group: 5, size: 8 },
+                { id: "Analysis", group: 5, size: 8 },
+                { id: "Solving", group: 5, size: 8 },
+            ],
+            links: [
+                { source: "Carlos", target: "Frontend" },
+                { source: "Carlos", target: "Backend" },
+                { source: "Carlos", target: "CMS" },
+                { source: "Carlos", target: "DevOps" },
+                { source: "Carlos", target: "Soft Skills" },
+
+                { source: "Frontend", target: "HTML5" },
+                { source: "Frontend", target: "CSS3" },
+                { source: "Frontend", target: "JS" },
+                { source: "Frontend", target: "React" },
+                { source: "Frontend", target: "Git" },
+
+                { source: "Backend", target: "Python" },
+                { source: "Backend", target: "Django" },
+                { source: "Backend", target: "SQL" },
+                { source: "Backend", target: "Postgres" },
+                { source: "Backend", target: "APIs" },
+
+                { source: "CMS", target: "WordPress" },
+                { source: "CMS", target: "WooCommerce" },
+                { source: "CMS", target: "Elementor" },
+
+                { source: "DevOps", target: "Docker" },
+                { source: "DevOps", target: "Linux" },
+                { source: "DevOps", target: "Nginx" },
+
+                { source: "Soft Skills", target: "Comms" },
+                { source: "Soft Skills", target: "Analysis" },
+                { source: "Soft Skills", target: "Solving" },
+
+                { source: "JS", target: "React" },
+                { source: "Python", target: "Django" },
+                { source: "WordPress", target: "WooCommerce" },
+            ]
+        };
+
+        // Colors
+        this.colors = ["#ffffff", "#ef4444", "#3b82f6", "#f59e0b", "#10b981", "#8b5cf6"];
+
+        // Listener
+        document.addEventListener('modal:opened', (e) => {
+            if (e.detail.id === 'skills') {
+                this.init();
+            }
+        });
+
+        document.addEventListener('modal:closed', (e) => {
+            if (e.detail && e.detail.id === 'skills' && this.simulation) {
+                this.simulation.stop();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (this.initialized && document.getElementById('modal-skills').classList.contains('active')) {
+                this.resize();
+            }
+        });
+    }
+
+    init() {
+        if (!this.container) this.container = document.getElementById(this.containerId);
+        if (!this.container) return;
+
+        // Clear previous
+        this.container.innerHTML = '';
+
+        const width = this.container.clientWidth;
+        const height = this.container.clientHeight;
+
+        if (width === 0 || height === 0) {
+            // Retry if not rendered yet
+            setTimeout(() => this.init(), 100);
+            return;
+        }
+
+        this.initialized = true;
+
+        this.svg = d3.select(this.container).append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .attr("viewBox", [0, 0, width, height]);
+
+        this.simulation = d3.forceSimulation(this.data.nodes)
+            .force("link", d3.forceLink(this.data.links).id(d => d.id).distance(50))
+            .force("charge", d3.forceManyBody().strength(-200))
+            .force("center", d3.forceCenter(width / 2, height / 2))
+            .force("collide", d3.forceCollide(d => d.size + 10).iterations(2));
+
+        const link = this.svg.append("g")
+            .attr("stroke", "#999")
+            .attr("stroke-opacity", 0.6)
+            .selectAll("line")
+            .data(this.data.links)
+            .join("line")
+            .attr("stroke-width", 1.5);
+
+        const node = this.svg.append("g")
+            .selectAll("g")
+            .data(this.data.nodes)
+            .join("g")
+            .call(this.drag(this.simulation));
+
+        // Node circles
+        node.append("circle")
+            .attr("r", d => d.size)
+            .attr("fill", d => this.colors[d.group])
+            .attr("stroke", "#fff")
+            .attr("stroke-width", 2)
+            .attr("style", "cursor: pointer;");
+
+        // Labels
+        node.append("text")
+            .attr("x", 0)
+            .attr("y", d => d.size + 12)
+            .attr("text-anchor", "middle")
+            .text(d => d.id)
+            .style("font-size", "10px")
+            .style("fill", "var(--text-color)")
+            .style("font-family", "inherit")
+            .style("pointer-events", "none")
+            .style("text-shadow", "0 1px 2px rgba(0,0,0,0.5)");
+
+        this.simulation.on("tick", () => {
+            link
+                .attr("x1", d => d.source.x)
+                .attr("y1", d => d.source.y)
+                .attr("x2", d => d.target.x)
+                .attr("y2", d => d.target.y);
+
+            node
+                .attr("transform", d => `translate(${d.x},${d.y})`);
+        });
+
+        // Zoom behavior
+        const zoom = d3.zoom()
+            .scaleExtent([0.1, 4])
+            .on("zoom", (event) => {
+                this.svg.selectAll("g").attr("transform", event.transform);
+            });
+
+        this.svg.call(zoom);
+    }
+
+    resize() {
+        if (!this.svg) return;
+        const width = this.container.clientWidth;
+        const height = this.container.clientHeight;
+
+        this.svg.attr("width", width).attr("height", height)
+            .attr("viewBox", [0, 0, width, height]);
+
+        this.simulation.force("center", d3.forceCenter(width / 2, height / 2));
+        this.simulation.alpha(0.3).restart();
+    }
+
+    drag(simulation) {
+        function dragstarted(event) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            event.subject.fx = event.subject.x;
+            event.subject.fy = event.subject.y;
+        }
+
+        function dragged(event) {
+            event.subject.fx = event.x;
+            event.subject.fy = event.y;
+        }
+
+        function dragended(event) {
+            if (!event.active) simulation.alphaTarget(0);
+            event.subject.fx = null;
+            event.subject.fy = null;
+        }
+
+        return d3.drag()
+            .on("start", dragstarted)
+            .on("drag", dragged)
+            .on("end", dragended);
+    }
+}
+
+// Initialize
+new SkillsGraph();
+
+    </script> <!-- D3 Skills Graph -->
+    <!-- js/app.js -->
+    <script>
+/**
+ * App Global Configuration & Utilities
+ * Centralizes logic for the entire portfolio site.
+ */
+
+const App = {
+    // Check if device is mobile
+    isMobile: () => window.innerWidth <= 768,
+
+    // PocketBase Configuration
+    pocketbase: {
+        getBaseUrl: () => {
+            const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+            const localDefault = 'http://127.0.0.1:8090';
+            const prodDefault = 'https://carlosperales.dev';
+            return window.PB_BASE_URL || (isLocal ? localDefault : prodDefault);
+        },
+        collections: {
+            messages: 'messages'
+        }
+    },
+
+    automail: {
+        getBaseUrl: () => {
+            const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+            const localDefault = 'http://127.0.0.1:8092';
+            const prodDefault = 'https://carlosperales.dev/automail-api';
+            return window.AUTOMAIL_BASE_URL || (isLocal ? localDefault : prodDefault);
+        }
+    },
+
+    // Initialization logic
+    init: () => {
+        console.log('🚀 Carlos Perales Portfolio - App Initialized');
+        // Expose global helpers if needed
+    }
+};
+
+function openPocketBaseAdmin() {
+    const baseUrl = App.pocketbase.getBaseUrl();
+    const adminUrl = `${baseUrl}/_/`;
+    window.open(adminUrl, '_blank', 'noopener');
+}
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', App.init);
+
+// Expose to window for other scripts
+window.App = App;
+
+    </script>
+    <!-- js/ui.js -->
+    <script>
+// ============================================
+// UI GENERAL: TEMA
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+
+    // Cargar tema guardado
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        body.classList.add('dark-mode');
+        if (themeToggle) themeToggle.checked = true;
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('change', () => {
+            if (typeof playTap === 'function') playTap();
+
+            if (themeToggle.checked) {
+                body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    }
+
+    // Minimizar todo al hacer clic en el nombre
+    document.getElementById('minimizeAll')?.addEventListener('click', () => {
+        if (typeof minimizeAll === 'function') minimizeAll();
+    });
+});
+
+// ============================================
+// TYPEWRITER EFFECT
+// ============================================
+class Typewriter {
+    constructor(elementSelector, phrases, options = {}) {
+        this.element = document.querySelector(elementSelector);
+        this.phrases = phrases;
+        this.loop = options.loop !== false;
+        this.typingSpeed = options.typingSpeed || 100;
+        this.deletingSpeed = options.deletingSpeed || 50;
+        this.pauseDuration = options.pauseDuration || 2000;
+
+        this.phraseIndex = 0;
+        this.charIndex = 0;
+        this.isDeleting = false;
+        this.timeout = null;
+
+        if (this.element) {
+            this.start();
+        }
+    }
+
+    start() {
+        const currentPhrase = this.phrases[this.phraseIndex];
+
+        if (this.isDeleting) {
+            this.element.textContent = currentPhrase.substring(0, this.charIndex - 1);
+            this.charIndex--;
+        } else {
+            this.element.textContent = currentPhrase.substring(0, this.charIndex + 1);
+            this.charIndex++;
+        }
+
+        let speed = this.typingSpeed;
+
+        if (this.isDeleting) {
+            speed = this.deletingSpeed;
+        }
+
+        if (!this.isDeleting && this.charIndex === currentPhrase.length) {
+            // Finished typing phrase
+            speed = this.pauseDuration;
+            this.isDeleting = true;
+        } else if (this.isDeleting && this.charIndex === 0) {
+            // Finished deleting phrase
+            this.isDeleting = false;
+            this.phraseIndex = (this.phraseIndex + 1) % this.phrases.length;
+            if (!this.loop && this.phraseIndex === 0) return; // Stop if no loop
+            speed = 500; // Pause before typing next
+        }
+
+        this.timeout = setTimeout(() => this.start(), speed);
+    }
+}
+
+// Init Typewriter
+document.addEventListener('DOMContentLoaded', () => {
+    // Only init if element exists
+    if (document.querySelector('.profile-role')) {
+        new Typewriter('.profile-role', [
+            'Full Stack Developer & Data Engineer',
+            'Python Specialist (Django/Flask)',
+            'Creative Frontend Developer',
+            'Problem Solver & Tech Enthusiast'
+        ]);
+    }
+});
+
+    </script>
+    <!-- js/time.js -->
+    <script>
+// ============================================
+// HORA Y FECHA EN TIEMPO REAL
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+    const datetimeEl = document.getElementById('datetime');
+
+    function updateDateTime() {
+        if (!datetimeEl) return;
+
+        const now = new Date();
+
+        // Use Intl for cleaner formatting
+        const timeOptions = { hour: '2-digit', minute: '2-digit', hour12: false };
+        const dateOptions = { day: 'numeric', month: 'short', year: 'numeric' };
+
+        const timeStr = now.toLocaleTimeString('es-CL', timeOptions);
+        const dateStr = now.toLocaleDateString('es-CL', dateOptions);
+
+        // Remove dots from month (Ene. -> Ene) if browser adds them, for consistency
+        const cleanDateStr = dateStr.replace('.', '');
+
+        datetimeEl.textContent = `${timeStr} | ${cleanDateStr}`;
+    }
+
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+});
+
+    </script>
+    <!-- js/sound.js -->
+    <script>
+// ============================================
+// SONIDO
+// ============================================
+let tapSound;
+
+document.addEventListener('DOMContentLoaded', () => {
+    tapSound = document.getElementById('tapSound');
+    if (tapSound) {
+        tapSound.volume = 0.3;
+    }
+
+    // Sonido en items de proyecto
+    const projectApps = document.querySelectorAll('.project-app');
+    projectApps.forEach(app => {
+        app.addEventListener('click', playTap);
+    });
+});
+
+function playTap() {
+    if (tapSound) {
+        tapSound.currentTime = 0;
+        tapSound.play().catch(() => { }); // Ignorar errores de autoplay
+    }
+}
+
+    </script>
+    <!-- js/toast.js -->
+    <script>
+// ============================================
+// TOAST DE BIENVENIDA
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+    const toast = document.getElementById('welcomeToast');
+
+    if (toast) {
+        setTimeout(() => {
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }, 500);
+    }
+});
+
+    </script>
+    <!-- js/modals.js -->
+    <script>
+// ============================================
+// SISTEMA DE MODALES
+// ============================================
+let openModals = [];
+let zIndexCounter = 1;
+const modalPositions = {};
+
+document.addEventListener('DOMContentLoaded', () => {
+    const dockItems = document.querySelectorAll('.dock-item');
+    const modalOverlays = document.querySelectorAll('.modal-overlay');
+
+    // Click en dock items
+    dockItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const modalId = item.dataset.modal;
+
+            // Si el modal ya está abierto, cerrarlo
+            if (openModals.includes(modalId)) {
+                closeModal(modalId);
+            } else {
+                openModal(modalId);
+            }
+        });
+    });
+
+    // Click en botón cerrar de modales y overlay
+    modalOverlays.forEach(overlay => {
+        const closeBtn = overlay.querySelector('.modal-close');
+        const maximizeBtn = overlay.querySelector('.modal-maximize');
+        const cancelBtn = overlay.querySelector('[data-action="cancel"]');
+
+        if (maximizeBtn) {
+            maximizeBtn.addEventListener('click', (e) => {
+                const modal = overlay.querySelector('.modal');
+                modal.classList.toggle('maximized');
+                // Al maximizar/restaurar, evitar propagación
+                e.preventDefault();
+            });
+        }
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => closeModal(overlay.id.replace('modal-', '')));
+        }
+
+        if (cancelBtn) {
+            cancelBtn.addEventListener('click', () => closeModal(overlay.id.replace('modal-', '')));
+        }
+
+        // Click fuera del modal para cerrar (SOLO en móvil)
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay && App.isMobile()) {
+                closeModal(overlay.id.replace('modal-', ''));
+            }
+        });
+
+        // Traer al frente al hacer click
+        const modal = overlay.querySelector('.modal');
+        if (modal) {
+            modal.addEventListener('mousedown', () => {
+                if (!App.isMobile()) {
+                    overlay.style.zIndex = 2000 + zIndexCounter++;
+                }
+            });
+        }
+    });
+
+    // Tecla Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && openModals.length > 0) {
+            closeModal(openModals[openModals.length - 1]);
+        }
+    });
+
+    // Manejo de clicks en proyectos para abrir detalle
+    document.querySelectorAll('.project-app').forEach(app => {
+        app.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            if (app.dataset.kind === 'automail') {
+                openModal('automail');
+                return;
+            }
+
+            const title = app.querySelector('.project-name').innerText;
+            const iconHtml = app.querySelector('.project-icon').innerHTML;
+            const description = app.dataset.description;
+            const url = app.href;
+
+            // Rellenar modal
+            document.getElementById('p-title').innerText = title;
+            document.getElementById('p-icon').innerHTML = iconHtml;
+            document.getElementById('p-desc').innerText = description;
+            const linkBtn = document.getElementById('p-link');
+            if (linkBtn) {
+                linkBtn.href = url;
+            }
+
+            openModal('proyecto-detalle');
+        });
+    });
+});
+
+// Obtener posición del icono del dock
+function getDockIconPosition(modalId) {
+    const dockItem = document.querySelector(`.dock-item[data-modal="${modalId}"]`);
+    if (!dockItem) return null;
+
+    const icon = dockItem.querySelector('.dock-icon');
+    const rect = icon.getBoundingClientRect();
+
+    return {
+        x: rect.left + rect.width / 2,
+        y: rect.top + rect.height / 2
+    };
+}
+
+function openModal(modalId) {
+    const overlay = document.getElementById(`modal-${modalId}`);
+    if (!overlay) return;
+
+    const modal = overlay.querySelector('.modal');
+
+    if (typeof playTap === 'function') playTap();
+
+    // En móvil, cerrar modal anterior
+    if (App.isMobile() && openModals.length > 0) {
+        closeModal(openModals[openModals.length - 1], false);
+    }
+
+    // Obtener posición del icono para transform-origin
+    const iconPos = getDockIconPosition(modalId);
+
+    if (!App.isMobile() && iconPos) {
+        // Calcular posición central (usamos tamaño fijo conocido del modal)
+        const modalWidth = 600;
+        const modalHeight = 400;
+
+        let targetX, targetY;
+        if (modalPositions[modalId]) {
+            targetX = modalPositions[modalId].x;
+            targetY = modalPositions[modalId].y;
+        } else {
+            // Centrar horizontal y verticalmente
+            targetX = Math.max(20, (window.innerWidth - modalWidth) / 2);
+            targetY = Math.max(60, (window.innerHeight - modalHeight) / 2);
+        }
+
+        // Calcular transform-origin relativo al modal
+        const originX = iconPos.x - targetX;
+        const originY = iconPos.y - targetY;
+
+        modal.style.transformOrigin = `${originX}px ${originY}px`;
+        modal.style.left = `${targetX}px`;
+        modal.style.top = `${targetY}px`;
+    }
+
+    // Activar modal con z-index dinámico
+    overlay.classList.remove('closing');
+    overlay.classList.add('active');
+    overlay.style.zIndex = 2000 + zIndexCounter++;
+
+    // Dispatch event for other scripts (e.g., Skills Graph)
+    document.dispatchEvent(new CustomEvent('modal:opened', { detail: { id: modalId } }));
+
+    // Agregar a lista de modales abiertos
+    if (!openModals.includes(modalId)) {
+        openModals.push(modalId);
+    }
+
+    // Activar indicador en dock
+    const dockItem = document.querySelector(`.dock-item[data-modal="${modalId}"]`);
+    if (dockItem) {
+        dockItem.classList.add('active');
+    }
+}
+
+function closeModal(modalId, withSound = true) {
+    const overlay = document.getElementById(`modal-${modalId}`);
+    if (!overlay) return;
+
+    const modal = overlay.querySelector('.modal');
+
+    if (withSound && typeof playTap === 'function') playTap();
+
+    // Guardar posición actual en desktop
+    if (!App.isMobile()) {
+        const rect = modal.getBoundingClientRect();
+        modalPositions[modalId] = {
+            x: rect.left,
+            y: rect.top
+        };
+
+        // Actualizar transform-origin para animación de cierre
+        const iconPos = getDockIconPosition(modalId);
+        if (iconPos) {
+            const originX = iconPos.x - rect.left;
+            const originY = iconPos.y - rect.top;
+            modal.style.transformOrigin = `${originX}px ${originY}px`;
+        }
+    }
+
+    // Animación de cierre
+    overlay.classList.add('closing');
+
+    // Esperar que termine la animación
+    setTimeout(() => {
+        overlay.classList.remove('active', 'closing');
+
+        // Remover de lista
+        openModals = openModals.filter(id => id !== modalId);
+
+        // Desactivar indicador en dock
+        const dockItem = document.querySelector(`.dock-item[data-modal="${modalId}"]`);
+        if (dockItem) {
+            dockItem.classList.remove('active');
+        }
+
+        // Dispatch event for other scripts
+        document.dispatchEvent(new CustomEvent('modal:closed', { detail: { id: modalId } }));
+    }, 300);
+}
+
+function minimizeAll() {
+    if (typeof playTap === 'function') playTap();
+
+    // Cerrar todos con animación escalonada
+    openModals.forEach((modalId, index) => {
+        setTimeout(() => {
+            const overlay = document.getElementById(`modal-${modalId}`);
+            if (overlay) {
+                const modal = overlay.querySelector('.modal');
+
+                // Guardar posición
+                if (!App.isMobile()) {
+                    const rect = modal.getBoundingClientRect();
+                    modalPositions[modalId] = { x: rect.left, y: rect.top };
+
+                    const iconPos = getDockIconPosition(modalId);
+                    if (iconPos) {
+                        const originX = iconPos.x - rect.left;
+                        const originY = iconPos.y - rect.top;
+                        modal.style.transformOrigin = `${originX}px ${originY}px`;
+                    }
+                }
+
+                overlay.classList.add('closing');
+
+                setTimeout(() => {
+                    overlay.classList.remove('active', 'closing');
+                }, 300);
+            }
+
+            const dockItem = document.querySelector(`.dock-item[data-modal="${modalId}"]`);
+            if (dockItem) {
+                dockItem.classList.remove('active');
+            }
+        }, index * 50);
+    });
+
+    openModals = [];
+    zIndexCounter = 1;
+}
+
+    </script>
+    <!-- js/coverflow.js -->
+    <script>
+// ============================================
+// MACOS 3D COVER FLOW FOR PROJECTS
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+    const stage = document.getElementById('coverflow-stage');
+    const viewport = document.getElementById('coverflow-viewport');
+
+    if (!stage || !viewport) return;
+
+    const cards = Array.from(document.querySelectorAll('.coverflow-card'));
+    const infoPanel = document.getElementById('coverflow-info');
+    const infoTitle = document.getElementById('cf-title');
+    const infoDesc = document.getElementById('cf-desc');
+    const infoLink = document.getElementById('cf-link');
+
+    let activeIndex = Math.floor(cards.length / 2); // Start at the center project
+    let isDragging = false;
+    let startX = 0;
+    let currentX = 0;
+    const dragThreshold = 50; // pixels of movement required to switch cards
+
+    // 1. Core calculation of 3D rotations & translations
+    function updateCoverflow() {
+        cards.forEach((card, index) => {
+            const offset = index - activeIndex;
+            const absOffset = Math.abs(offset);
+
+            let transform = '';
+            let zIndex = 100 - absOffset;
+            let opacity = 1;
+
+            if (offset === 0) {
+                // Center active card
+                transform = 'translate3d(0, 0, 150px) rotateY(0deg)';
+                opacity = 1;
+                card.classList.add('active');
+            } else {
+                // Side cards
+                card.classList.remove('active');
+                const direction = offset > 0 ? 1 : -1;
+
+                // Rotations and horizontal offsets
+                const rotateY = -direction * 40;
+                const translateX = offset * 90 + direction * 40;
+                const translateZ = 0 - absOffset * 65;
+
+                transform = `translate3d(${translateX}px, 0, ${translateZ}px) rotateY(${rotateY}deg)`;
+
+                // Keep all cards opaque (no transparency)
+                opacity = 1;
+            }
+
+            card.style.transform = transform;
+            card.style.zIndex = zIndex;
+            card.style.opacity = opacity;
+            // Enable pointer interactions on all cards so they can be selected
+            card.style.pointerEvents = 'auto';
+        });
+
+        // Update active project info panel
+        const activeCard = cards[activeIndex];
+        if (activeCard && infoPanel) {
+            infoPanel.classList.remove('visible');
+
+            // Short timeout to allow fade-out before changing content
+            setTimeout(() => {
+                infoTitle.innerText = activeCard.dataset.title;
+                infoDesc.innerText = activeCard.dataset.desc;
+                const isAutomail = activeCard.dataset.kind === 'automail';
+                infoLink.href = isAutomail ? '#' : activeCard.dataset.url;
+                infoLink.dataset.action = isAutomail ? 'open-automail' : 'open-link';
+                infoLink.textContent = isAutomail ? 'Abrir AutoMail' : 'Ver certificado';
+                infoPanel.classList.add('visible');
+            }, 150);
+        }
+    }
+
+    // 2. Event Listeners for Navigation
+
+    // A. Clicking a card: center it if inactive, or open link/modal if already active
+    cards.forEach((card, index) => {
+        card.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            if (activeIndex !== index) {
+                activeIndex = index;
+                updateCoverflow();
+            } else {
+                if (card.dataset.kind === 'automail' && typeof window.openAutoMailModal === 'function') {
+                    window.openAutoMailModal();
+                } else {
+                    const url = card.dataset.url || card.getAttribute('href');
+                    if (url && url !== '#') {
+                        window.open(url, '_blank');
+                    }
+                }
+            }
+        });
+    });
+
+    // B. Mouse Wheel scroll
+    let scrollTimeout = null;
+    viewport.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        if (scrollTimeout) return;
+
+        // Throttling wheel events for smooth transitions
+        scrollTimeout = setTimeout(() => {
+            scrollTimeout = null;
+        }, 150);
+
+        if (e.deltaY > 0 || e.deltaX > 0) {
+            if (activeIndex < cards.length - 1) activeIndex++;
+        } else {
+            if (activeIndex > 0) activeIndex--;
+        }
+        updateCoverflow();
+    }, { passive: false });
+
+    // C. Touch/Mouse drag gesture
+    viewport.addEventListener('pointerdown', (e) => {
+        isDragging = true;
+        startX = e.clientX;
+        viewport.setPointerCapture(e.pointerId);
+    });
+
+    viewport.addEventListener('pointermove', (e) => {
+        if (!isDragging) return;
+        currentX = e.clientX;
+        const deltaX = currentX - startX;
+
+        if (Math.abs(deltaX) > dragThreshold) {
+            if (deltaX > 0 && activeIndex > 0) {
+                activeIndex--;
+                startX = currentX; // Reset base to enable continuous dragging
+            } else if (deltaX < 0 && activeIndex < cards.length - 1) {
+                activeIndex++;
+                startX = currentX;
+            }
+            updateCoverflow();
+        }
+    });
+
+    viewport.addEventListener('pointerup', (e) => {
+        isDragging = false;
+        viewport.releasePointerCapture(e.pointerId);
+    });
+
+    viewport.addEventListener('pointercancel', (e) => {
+        isDragging = false;
+        try {
+            viewport.releasePointerCapture(e.pointerId);
+        } catch (err) {}
+    });
+
+    // D. Keyboard accessibility (Left/Right arrow keys)
+    document.addEventListener('keydown', (e) => {
+        // Only run keyboard navigation if the Certificaciones modal is active/open
+        const certModal = document.getElementById('modal-certificaciones');
+        if (!certModal || !certModal.classList.contains('active')) return;
+
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            if (activeIndex > 0) activeIndex--;
+            updateCoverflow();
+        } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            if (activeIndex < cards.length - 1) activeIndex++;
+            updateCoverflow();
+        }
+    });
+
+    // E. Hook into system modal opening events
+    document.addEventListener('modal:opened', (e) => {
+        if (e.detail.id === 'certificaciones') {
+            // Recalculate/update layouts in case modal bounds changed or initialized hidden
+            setTimeout(updateCoverflow, 50);
+        }
+    });
+
+    // Initialize layout
+    updateCoverflow();
+});
+
+    </script>
+    <!-- js/drag.js -->
+    <script>
+// ============================================
+// ARRASTRE DE VENTANAS
+// ============================================
+let isDragging = false;
+let dragModal = null;
+let dragOffset = { x: 0, y: 0 };
+
+// Obtener coordenadas del evento (mouse o touch)
+function getEventCoords(e) {
+    if (e.touches && e.touches.length > 0) {
+        return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    }
+    if (e.changedTouches && e.changedTouches.length > 0) {
+        return { x: e.changedTouches[0].clientX, y: e.changedTouches[0].clientY };
+    }
+    return { x: e.clientX, y: e.clientY };
+}
+
+function initDragging(modalHandle, e) {
+    const modalEl = modalHandle.closest('.modal');
+    const isSmallModal = modalEl.classList.contains('modal-sm');
+    const isMobile = App.isMobile();
+
+    // En móvil solo permitir arrastre de modales pequeños (Login, WA, Tel)
+    if (isMobile && !isSmallModal) return;
+
+    // Prevenir comportamiento por defecto en touch
+    if (e.cancelable) {
+        e.preventDefault();
+    }
+
+    const overlay = modalHandle.closest('.modal-overlay');
+
+    isDragging = true;
+    dragModal = modalEl;
+
+    const rect = modalEl.getBoundingClientRect();
+    const coords = getEventCoords(e);
+    dragOffset.x = coords.x - rect.left;
+    dragOffset.y = coords.y - rect.top;
+
+    modalEl.classList.add('dragging');
+
+    // Habilitar posición absoluta para modales pequeños en móvil
+    if (isMobile && isSmallModal) {
+        modalEl.style.position = 'absolute';
+        modalEl.style.margin = '0';
+        modalEl.style.left = `${rect.left}px`;
+        modalEl.style.top = `${rect.top}px`;
+    }
+
+    // Traer al frente
+    overlay.style.zIndex = 2000 + zIndexCounter++;
+}
+
+function handleDrag(e) {
+    if (!isDragging || !dragModal) return;
+
+    // Prevenir scroll mientras arrastramos
+    if (e.cancelable) {
+        e.preventDefault();
+    }
+
+    const coords = getEventCoords(e);
+    let x = coords.x - dragOffset.x;
+    let y = coords.y - dragOffset.y;
+
+    // Limitar dentro del viewport
+    const modalWidth = dragModal.offsetWidth;
+    const modalHeight = dragModal.offsetHeight;
+    const isMobile = App.isMobile();
+    const minY = isMobile ? 0 : 44;
+    const maxY = (isMobile ? window.innerHeight - 80 - 44 : window.innerHeight) - modalHeight;
+    const minX = 20 - modalWidth;
+    const maxX = window.innerWidth - 20;
+
+    x = Math.max(minX, Math.min(maxX, x));
+    y = Math.max(minY, Math.min(maxY, y));
+
+    dragModal.style.left = `${x}px`;
+    dragModal.style.top = `${y}px`;
+}
+
+function endDrag(e) {
+    if (!isDragging || !dragModal) return;
+
+    dragModal.classList.remove('dragging');
+
+    // Guardar posición
+    const overlay = dragModal.closest('.modal-overlay');
+    const modalId = overlay.id.replace('modal-', '');
+    const rect = dragModal.getBoundingClientRect();
+    if (modalPositions) {
+        modalPositions[modalId] = { x: rect.left, y: rect.top };
+    }
+
+    isDragging = false;
+    dragModal = null;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const modalOverlays = document.querySelectorAll('.modal-overlay');
+
+    // Event listeners para arrastre - Mouse
+    document.addEventListener('mousemove', handleDrag);
+    document.addEventListener('mouseup', endDrag);
+
+    // Event listeners para arrastre - Touch (passive: false para poder preventDefault)
+    document.addEventListener('touchmove', handleDrag, { passive: false });
+    document.addEventListener('touchend', endDrag);
+    document.addEventListener('touchcancel', endDrag);
+
+    // Inicializar arrastre en headers de modales (y cuerpo para modales pequeños en móvil)
+    modalOverlays.forEach(overlay => {
+        const modal = overlay.querySelector('.modal');
+        const header = overlay.querySelector('.modal-header');
+        const isSmall = modal && modal.classList.contains('modal-sm');
+
+        // Arrastre por Header (Comportamiento Desktop normal y Móvil para modales grandes si se habilitara)
+        if (header) {
+            header.addEventListener('mousedown', (e) => {
+                if (e.target.closest('.modal-close, .modal-maximize')) return;
+                initDragging(header, e);
+            });
+
+            header.addEventListener('touchstart', (e) => {
+                if (e.target.closest('.modal-close, .modal-maximize, button')) return;
+                initDragging(header, e);
+            }, { passive: false });
+        }
+
+        // En móvil, permitir arrastrar modales pequeños desde CUALQUIER punto
+        if (isSmall) {
+            modal.addEventListener('touchstart', (e) => {
+                // Si tocamos botones de acción, cierre o campos de entrada, no iniciar drag
+                if (e.target.closest('button, a, .modal-close, input, textarea, select')) return;
+                // Si no estamos en móvil, el header ya se encarga
+                if (!App.isMobile()) return;
+
+                initDragging(modal, e);
+            }, { passive: false });
+        }
+    });
+});
+
+    </script>
+    <!-- js/contact.js -->
+    <script>
+/**
+ * Contact Form Handler
+ * Maneja el envío del formulario de contacto al backend API
+ */
+
+const CONTACT_API_BASE = App.pocketbase.getBaseUrl();
+
+document.addEventListener('DOMContentLoaded', () => {
+    const contactModal = document.getElementById('modal-contacto');
+    if (!contactModal) return;
+
+    const form = contactModal.querySelector('.modal-body');
+    const submitBtn = form.querySelector('.modal-btn-primary');
+    const clearBtn = form.querySelector('.modal-btn-secondary');
+
+    const API_URL = `${CONTACT_API_BASE}/api/collections/${App.pocketbase.collections.messages}/records`;
+
+    /**
+     * Obtiene los valores del formulario
+     */
+    function getFormData() {
+        const inputs = form.querySelectorAll('.form-input');
+        const textarea = form.querySelector('.form-textarea');
+
+        return {
+            name: inputs[0].value.trim(),
+            phone: inputs[1].value.trim(),
+            email: inputs[2].value.trim(),
+            subject: inputs[3].value.trim(),
+            message: textarea.value.trim()
+        };
+    }
+
+    /**
+     * Valida los campos del formulario
+     */
+    function validateForm(data) {
+        const errors = [];
+
+        if (!data.name) {
+            errors.push('El nombre es obligatorio');
+        }
+
+        if (!data.email) {
+            errors.push('El email es obligatorio');
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+            errors.push('El email no es válido');
+        }
+
+        if (!data.message) {
+            errors.push('El mensaje es obligatorio');
+        }
+
+        return errors;
+    }
+
+    /**
+     * Limpia el formulario
+     */
+    function clearForm() {
+        form.querySelectorAll('.form-input').forEach(input => input.value = '');
+        form.querySelector('.form-textarea').value = '';
+    }
+
+    /**
+     * Muestra un toast de notificación
+     */
+    function showToast(message, type = 'success') {
+        const toast = document.getElementById('welcomeToast');
+        if (!toast) return;
+
+        toast.textContent = message;
+        toast.style.background = type === 'success'
+            ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+            : 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)';
+
+        toast.classList.add('show');
+
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 4000);
+    }
+
+    /**
+     * Deshabilita/habilita los botones durante el envío
+     */
+    function setButtonsState(disabled) {
+        submitBtn.disabled = disabled;
+        clearBtn.disabled = disabled;
+        submitBtn.style.opacity = disabled ? '0.5' : '1';
+        submitBtn.style.cursor = disabled ? 'not-allowed' : 'pointer';
+        submitBtn.textContent = disabled ? 'Enviando...' : 'Enviar';
+    }
+
+    /**
+     * Envía el formulario al backend
+     */
+    async function submitForm(e) {
+        e.preventDefault();
+
+        const formData = getFormData();
+        const errors = validateForm(formData);
+
+        // Validación
+        if (errors.length > 0) {
+            showToast(errors.join(', '), 'error');
+            return;
+        }
+
+        // Deshabilitar botones
+        setButtonsState(true);
+
+        try {
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                showToast('✅ Mensaje enviado correctamente. Te contactaré pronto!', 'success');
+                clearForm();
+                updateContactBadge();
+
+                // Cerrar modal después de 2 segundos
+                setTimeout(() => {
+                    const closeBtn = contactModal.querySelector('.modal-close');
+                    if (closeBtn) closeBtn.click();
+                }, 2000);
+            } else {
+                throw new Error(result.message || 'Error al enviar el mensaje');
+            }
+
+        } catch (error) {
+            console.error('Error al enviar formulario:', error);
+            showToast(
+                '❌ Error al enviar el mensaje. Por favor, intenta nuevamente o contáctame por WhatsApp.',
+                'error'
+            );
+        } finally {
+            setButtonsState(false);
+        }
+    }
+
+    // Event Listeners
+    submitBtn.addEventListener('click', submitForm);
+    clearBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        clearForm();
+        showToast('Formulario limpiado', 'success');
+    });
+
+    // Enviar con Enter en campos de texto (excepto textarea)
+    form.querySelectorAll('.form-input').forEach(input => {
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                submitBtn.click();
+            }
+        });
+    });
+});
+
+/* =================================
+   BADGE NOTIFICACIONES
+   ================================= */
+function updateContactBadge() {
+    const url = `${CONTACT_API_BASE}/api/collections/${App.pocketbase.collections.messages}/records?page=1&perPage=1`;
+
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            if (typeof data.totalItems === 'number') {
+                const badge = document.getElementById('contact-badge');
+                if (badge) {
+                    if (data.totalItems > 0) {
+                        badge.textContent = data.totalItems > 99 ? '99+' : data.totalItems;
+                        badge.style.display = 'flex';
+                        badge.classList.remove('popIn');
+                        void badge.offsetWidth; // Trigger reflow
+                        badge.style.animation = 'none';
+                        badge.style.animation = 'popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                    } else {
+                        badge.style.display = 'none';
+                    }
+                }
+            }
+        })
+        .catch(err => console.log('Silently ignoring badge error:', err));
+}
+
+// Check al iniciar y cada 30 segundos
+document.addEventListener('DOMContentLoaded', () => {
+    updateContactBadge();
+    setInterval(updateContactBadge, 30000);
+});
+
+    </script>
+    <!-- js/automail.js -->
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('modal-automail');
+    if (!modal) return;
+
+    const dropzone = document.getElementById('automail-dropzone');
+    const fileInput = document.getElementById('automail-file-input');
+    const fileName = document.getElementById('automail-file-name');
+    const fileSize = document.getElementById('automail-file-size');
+    const resetBtn = document.getElementById('automail-reset-btn');
+    const sampleBtn = document.getElementById('automail-sample-btn');
+    const runBtn = document.getElementById('automail-run-btn');
+    const copyBtn = document.getElementById('automail-copy-btn');
+    const reportOutput = document.getElementById('automail-report-output');
+    const statusBadge = document.getElementById('automail-status-badge');
+    const statusDetail = document.getElementById('automail-status-detail');
+    const progressFill = document.getElementById('automail-progress-fill');
+    const downloadLink = document.getElementById('automail-download-link');
+    const infoLink = document.getElementById('cf-link');
+
+    const MAX_FILE_SIZE = 25 * 1024 * 1024;
+    const baseUrl = App.automail.getBaseUrl();
+
+    let selectedFile = null;
+    let currentJobId = null;
+    let pollTimer = null;
+
+    const sampleReport = [
+        'AutoMail listo.',
+        '',
+        'Sube un archivo .xlsx para ejecutar la validación, generar los correos y producir el report.log.',
+        '',
+        'El resultado se mostrará aquí una vez terminado el procesamiento.'
+    ].join('\n');
+
+    function formatBytes(bytes) {
+        if (!bytes && bytes !== 0) return '-';
+        const units = ['B', 'KB', 'MB', 'GB'];
+        let value = bytes;
+        let unitIndex = 0;
+
+        while (value >= 1024 && unitIndex < units.length - 1) {
+            value /= 1024;
+            unitIndex += 1;
+        }
+
+        return `${value.toFixed(value < 10 && unitIndex > 0 ? 1 : 0)} ${units[unitIndex]}`;
+    }
+
+    function setStatus(type, title, message) {
+        if (statusBadge) {
+            statusBadge.className = `automail-status-badge ${type}`;
+            statusBadge.textContent = title;
+        }
+        if (statusDetail) {
+            statusDetail.textContent = message;
+        }
+    }
+
+    function setProgress(state) {
+        progressFill.classList.remove('is-working', 'is-done');
+        progressFill.style.width = '0%';
+
+        if (state === 'working') {
+            progressFill.classList.add('is-working');
+        } else if (state === 'done') {
+            progressFill.classList.add('is-done');
+        }
+    }
+
+    function renderReport(text) {
+        reportOutput.textContent = text || 'Sin contenido de report.log.';
+    }
+
+    async function parseJsonResponse(response) {
+        const contentType = response.headers.get('content-type') || '';
+        if (contentType.includes('application/json')) {
+            return await response.json();
+        }
+
+        const text = await response.text();
+        return {
+            error: text.slice(0, 500) || 'Respuesta inesperada del servidor.',
+        };
+    }
+
+    function clearDownload() {
+        downloadLink.style.display = 'none';
+        downloadLink.href = '#';
+    }
+
+    function updateFilePreview(file) {
+        if (!file) {
+            fileName.textContent = 'Ninguno';
+            fileSize.textContent = '-';
+            selectedFile = null;
+            return;
+        }
+
+        fileName.textContent = file.name;
+        fileSize.textContent = formatBytes(file.size);
+        selectedFile = file;
+    }
+
+    function clearState() {
+        if (pollTimer) {
+            clearTimeout(pollTimer);
+            pollTimer = null;
+        }
+
+        currentJobId = null;
+        updateFilePreview(null);
+        setStatus('idle', 'Esperando archivo', 'Selecciona un XLSX para comenzar.');
+        setProgress('idle');
+        renderReport(sampleReport);
+        clearDownload();
+        fileInput.value = '';
+        dropzone.classList.remove('is-dragover');
+    }
+
+    function showToast(message, type = 'success') {
+        const toast = document.getElementById('welcomeToast');
+        if (!toast) return;
+
+        toast.textContent = message;
+        toast.style.background = type === 'success'
+            ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+            : 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)';
+
+        toast.classList.add('show');
+
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 4000);
+    }
+
+    function validateFile(file) {
+        if (!file) return 'Selecciona un archivo .xlsx.';
+        if (!file.name.toLowerCase().endsWith('.xlsx')) {
+            return 'Solo se permiten archivos .xlsx.';
+        }
+        if (file.size > MAX_FILE_SIZE) {
+            return 'El archivo supera el límite de 25 MB.';
+        }
+        return '';
+    }
+
+    function setProcessingState(isProcessing) {
+        runBtn.disabled = isProcessing;
+        resetBtn.disabled = isProcessing;
+        sampleBtn.disabled = isProcessing;
+        copyBtn.disabled = isProcessing;
+        fileInput.disabled = isProcessing;
+        dropzone.style.pointerEvents = isProcessing ? 'none' : 'auto';
+        runBtn.textContent = isProcessing ? 'Procesando...' : 'Procesar archivo';
+    }
+
+    async function pollJob() {
+        if (!currentJobId) return;
+
+        try {
+            const response = await fetch(`${baseUrl}/jobs/${currentJobId}`);
+            const data = await parseJsonResponse(response);
+
+            if (!response.ok) {
+                throw new Error(data.error || 'No fue posible consultar el estado del trabajo.');
+            }
+
+            if (data.status === 'queued' || data.status === 'running') {
+                setStatus('running', 'Procesando', data.message || 'AutoMail sigue ejecutándose...');
+                setProgress('working');
+                reportOutput.textContent = data.report_text || reportOutput.textContent;
+                pollTimer = setTimeout(pollJob, 1500);
+                return;
+            }
+
+            if (data.report_text) {
+                renderReport(data.report_text);
+            }
+
+            if (data.download_url) {
+                downloadLink.href = `${baseUrl}${data.download_url}`;
+                downloadLink.style.display = 'inline-flex';
+            }
+
+            if (data.status === 'done') {
+                setStatus('success', 'Listo', data.message || 'La generación terminó correctamente.');
+                setProgress('done');
+                showToast('AutoMail terminó correctamente', 'success');
+            } else if (data.status === 'blocked') {
+                setStatus('warning', 'Revisar datos', data.message || 'Se encontraron errores de integridad y no se generaron correos.');
+                setProgress('done');
+                showToast('AutoMail detectó inconsistencias en el archivo', 'error');
+            } else {
+                setStatus('error', 'Error', data.message || 'Ocurrió un error durante la ejecución.');
+                setProgress('idle');
+                showToast('No se pudo completar AutoMail', 'error');
+            }
+        } catch (error) {
+            console.error(error);
+            setStatus('error', 'Error', error.message || 'Error desconocido.');
+            setProgress('idle');
+            showToast('Error al consultar el trabajo de AutoMail', 'error');
+        } finally {
+            setProcessingState(false);
+            if (pollTimer) {
+                clearTimeout(pollTimer);
+                pollTimer = null;
+            }
+        }
+    }
+
+    async function startJob() {
+        if (!selectedFile) {
+            showToast('Debes seleccionar un archivo .xlsx', 'error');
+            return;
+        }
+
+        const validationError = validateFile(selectedFile);
+        if (validationError) {
+            showToast(validationError, 'error');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('file', selectedFile);
+
+        try {
+            setProcessingState(true);
+            setStatus('running', 'Subiendo', 'El archivo se está cargando y preparando para ejecutar AutoMail.');
+            setProgress('working');
+            renderReport('Procesando archivo...');
+            clearDownload();
+
+            const response = await fetch(`${baseUrl}/jobs`, {
+                method: 'POST',
+                body: formData
+            });
+
+            const data = await parseJsonResponse(response);
+            if (!response.ok) {
+                throw new Error(data.error || 'No se pudo iniciar el procesamiento.');
+            }
+
+            currentJobId = data.job_id;
+            setStatus('running', 'Procesando', data.message || 'AutoMail ya está ejecutándose.');
+            pollTimer = setTimeout(pollJob, 1000);
+        } catch (error) {
+            console.error(error);
+            setStatus('error', 'Error', error.message || 'No se pudo iniciar AutoMail.');
+            setProgress('idle');
+            setProcessingState(false);
+            showToast(error.message || 'No se pudo iniciar AutoMail', 'error');
+        }
+    }
+
+    function openAutomailModal() {
+        clearState();
+        if (typeof openModal === 'function') {
+            openModal('automail');
+        }
+    }
+
+    function copyReport() {
+        const text = reportOutput.textContent || '';
+        navigator.clipboard.writeText(text)
+            .then(() => showToast('Reporte copiado al portapapeles', 'success'))
+            .catch(() => showToast('No se pudo copiar el reporte', 'error'));
+    }
+
+    function showSampleHelp() {
+        renderReport([
+            'AutoMail - Ayuda rápida',
+            '',
+            '1. Sube un archivo .xlsx válido.',
+            '2. El sistema lo valida y ejecuta generate_emails.py.',
+            '3. El report.log se mostrará en esta sección.',
+            '4. Si el proceso termina bien, podrás descargar mail_generados.zip.',
+            '',
+            'Notas:',
+            '- El archivo debe mantener las hojas esperadas por AutoMail.',
+            '- Si hay diferencias de conciliación, el sistema las reportará antes de generar.'
+        ].join('\n'));
+        setStatus('idle', 'Ayuda', 'Revisa el flujo antes de subir un archivo nuevo.');
+    }
+
+    function handleFile(file) {
+        const validationError = validateFile(file);
+        if (validationError) {
+            showToast(validationError, 'error');
+            return;
+        }
+
+        updateFilePreview(file);
+        setStatus('idle', 'Archivo listo', `${file.name} preparado para procesar.`);
+        setProgress('idle');
+        renderReport(sampleReport);
+        clearDownload();
+    }
+
+    dropzone.addEventListener('click', () => fileInput.click());
+    dropzone.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            fileInput.click();
+        }
+    });
+
+    fileInput.addEventListener('change', () => {
+        const file = fileInput.files && fileInput.files[0];
+        if (file) handleFile(file);
+    });
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropzone.addEventListener(eventName, (event) => {
+            event.preventDefault();
+            dropzone.classList.add('is-dragover');
+        });
+    });
+
+    ['dragleave', 'dragend', 'drop'].forEach(eventName => {
+        dropzone.addEventListener(eventName, (event) => {
+            event.preventDefault();
+            dropzone.classList.remove('is-dragover');
+        });
+    });
+
+    dropzone.addEventListener('drop', (event) => {
+        const file = event.dataTransfer && event.dataTransfer.files ? event.dataTransfer.files[0] : null;
+        if (!file) return;
+        const transfer = new DataTransfer();
+        transfer.items.add(file);
+        fileInput.files = transfer.files;
+        handleFile(file);
+    });
+
+    runBtn.addEventListener('click', startJob);
+    resetBtn.addEventListener('click', clearState);
+    copyBtn.addEventListener('click', copyReport);
+    sampleBtn.addEventListener('click', showSampleHelp);
+
+    if (infoLink) {
+        infoLink.addEventListener('click', (event) => {
+            if (infoLink.dataset.action === 'open-automail') {
+                event.preventDefault();
+                openAutomailModal();
+            }
+        });
+    }
+
+    window.openAutoMailModal = openAutomailModal;
+
+    clearState();
+});
+
+    </script>
+</body>
+
+</html>

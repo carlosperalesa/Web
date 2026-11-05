@@ -1,278 +1,111 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-
-    <title>Carlos Perales | Full Stack Developer & Design Specialist</title>
-    <meta name="description"
-        content="Portafolio de Carlos Perales A. Desarrollador Full Stack y especialista en Diseño Web.">
-
-    <!-- SEO & Open Graph -->
-    <meta property="og:title" content="Carlos Perales | Full Stack Developer">
-    <meta property="og:description" content="Portafolio profesional. Desarrollo Web, Python, JS, y Diseño UI/UX.">
-    <meta property="og:image" content="https://carlosperalesa.github.io/img/avatar.webp">
-    <meta property="og:url" content="https://carlosperalesa.github.io/">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-
-    <!-- Preconnect CDNs -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="preconnect" href="https://unpkg.com" crossorigin>
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="https://unpkg.com">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/modal.css">
-    <link rel="stylesheet" href="css/coverflow.css">
-    <link rel="stylesheet" href="css/automail.css">
-
-    <!-- Icons -->
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" defer></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Carlos Perales | Desarrollador Full Stack en Santiago, Chile</title>
+<meta name="description" content="Desarrollo proyectos informáticos para personas. Sitios web, aplicaciones y soluciones a medida con Carlos Perales, desarrollador Full Stack en Santiago, Chile.">
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/atmospheres.css" id="section-atmospheres">
+<link rel="stylesheet" href="css/carousels.css" id="carousel-and-stack-styles">
+<link rel="stylesheet" href="css/header-effects.css" id="header-and-label-effects">
+<link rel="stylesheet" href="css/header.css" id="clerk-header-effect">
+<link rel="stylesheet" href="css/preview-orbit.css" id="preview-orbit-styles">
+<link rel="stylesheet" href="css/project-fade.css" id="continuous-project-fade">
+<link rel="stylesheet" href="css/brand-colors.css" id="brand-colors-and-card-light">
+<link rel="stylesheet" href="css/museum.css" id="museum-styles">
+<link rel="stylesheet" href="css/certifications.css">
+<link rel="stylesheet" href="css/stack-motion.css">
+<meta name="author" content="Carlos Perales Ayala">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CL">
+<meta property="og:site_name" content="Carlos Perales">
+<meta property="og:title" content="Carlos Perales | Desarrollador Full Stack en Santiago, Chile">
+<meta property="og:description" content="Desarrollo proyectos informáticos para personas. Sitios web, aplicaciones y soluciones a medida con Carlos Perales, desarrollador Full Stack en Santiago, Chile.">
+<meta property="og:url" content="https://carlosperales.dev/">
+<meta property="og:image" content="https://carlosperales.dev/img/site/social-card.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Carlos Perales. Tecnología para personas. Ideas que toman forma.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Carlos Perales | Desarrollador Full Stack en Santiago, Chile">
+<meta name="twitter:description" content="Desarrollo proyectos informáticos para personas. Sitios web, aplicaciones y soluciones a medida con Carlos Perales, desarrollador Full Stack en Santiago, Chile.">
+<meta name="twitter:image" content="https://carlosperales.dev/img/site/social-card.webp">
+<meta name="twitter:image:alt" content="Carlos Perales. Tecnología para personas. Ideas que toman forma.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://carlosperales.dev/#person",
+      "name": "Carlos Perales Ayala",
+      "alternateName": "Carlos Perales",
+      "jobTitle": "Desarrollador Full Stack",
+      "url": "https://carlosperales.dev/",
+      "image": "https://carlosperales.dev/img/avatar.webp",
+      "sameAs": [
+        "https://github.com/carlosperalesa/",
+        "https://www.linkedin.com/in/carlosperalesa"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://carlosperales.dev/#website",
+      "url": "https://carlosperales.dev/",
+      "name": "Carlos Perales",
+      "inLanguage": "es-CL",
+      "publisher": {
+        "@id": "https://carlosperales.dev/#person"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://carlosperales.dev/#webpage",
+      "url": "https://carlosperales.dev/",
+      "name": "Carlos Perales | Desarrollador Full Stack en Santiago, Chile",
+      "description": "Desarrollo proyectos informáticos para personas. Sitios web, aplicaciones y soluciones a medida con Carlos Perales, desarrollador Full Stack en Santiago, Chile.",
+      "inLanguage": "es-CL",
+      "isPartOf": {
+        "@id": "https://carlosperales.dev/#website"
+      },
+      "mainEntity": {
+        "@id": "https://carlosperales.dev/#person"
+      }
+    }
+  ]
+}
+</script>
 </head>
-
 <body>
-    <!-- Toast de bienvenida -->
-    <div class="toast" id="welcomeToast">
-        Bienvenido al portafolio de Carlos 👋
-    </div>
-
-    <!-- Contenedor principal -->
-    <div class="desktop-screen">
-
-        <!-- Top Bar -->
-        <header class="top-bar">
-            <div class="top-bar-left">
-                <span class="top-bar-name" id="minimizeAll" title="Minimizar todas las ventanas">
-                    <span class="name-full">Carlos Perales Dev</span>
-                    <span class="name-short">C.P. Dev</span>
-                </span>
-            </div>
-
-            <div class="top-bar-center" id="datetime" onclick="openPocketBaseAdmin()"
-                style="cursor: pointer; user-select: none;">
-                <!-- Hora y fecha se actualizan con JS -->
-            </div>
-
-            <div class="top-bar-right">
-                <label class="theme-toggle">
-                    <input type="checkbox" id="themeToggle" aria-label="Alternar modo oscuro">
-                    <span class="slider"></span>
-                </label>
-            </div>
-        </header>
-
-        <!-- Pantalla de inicio -->
-        <main class="home-screen">
-            <div class="glass-card-main">
-                <div class="glass-card-left-section">
-                    <div class="home-avatar">
-                        <img src="./img/avatar.webp" alt="Carlos Perales" class="avatar-img">
-                    </div>
-
-                    <div class="social-links-container">
-                        <a href="https://github.com/carlosperalesa/" target="_blank" class="social-link" title="GitHub">
-                            <ion-icon name="logo-github"></ion-icon>
-                        </a>
-                        <a href="https://www.linkedin.com/in/carlosperalesa" target="_blank" class="social-link"
-                            title="LinkedIn">
-                            <ion-icon name="logo-linkedin"></ion-icon>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="glass-card-right-section">
-                    <div class="home-info">
-                        <h1 class="profile-name">Carlos Perales A.</h1>
-                        <p class="profile-role">Full Stack Developer & Data Engineer</p>
-
-                        <div class="profile-status">
-                            <span class="status-badge available">
-                                <span class="status-dot"></span> Disponible
-                            </span>
-                            <span class="status-separator">•</span>
-                            <span class="location-text">📍 Santiago, Chile</span>
-                        </div>
-                    </div>
-
-                    <div class="home-profile">
-                        <h2 class="profile-title">Perfil Profesional</h2>
-                        <p class="profile-text">
-                            Desarrollador con sólida experiencia comercial. Especialista en entender necesidades de
-                            cliente
-                            y traducirlas en soluciones técnicas eficientes. Mi background en ventas me permite
-                            construir
-                            productos con una fuerte orientación al usuario final y comunicación efectiva.
-                        </p>
-                        <p class="profile-text" style="margin-top: var(--spacing-sm);">
-                            <strong>Team Player:</strong> Me desempeño mejor en estructuras colaborativas.
-                            <strong>Resolución:</strong> Enfoque pragmático para solucionar problemas bajo presión.
-                            <strong>Adaptabilidad:</strong> Rápida integración a nuevos stacks y metodologías ágiles.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <!-- Dock -->
-        <nav class="dock-container">
-            <div class="dock">
-                <div class="dock-item" data-modal="formacion">
-                    <div class="dock-icon formacion">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <span class="dock-label">Formación</span>
-                    <div class="dock-indicator"></div>
-                </div>
-
-                <div class="dock-item" data-modal="experiencia">
-                    <div class="dock-icon experiencia">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <span class="dock-label">Experiencia</span>
-                    <div class="dock-indicator"></div>
-                </div>
-
-                <div class="dock-item" data-modal="skills">
-                    <div class="dock-icon skills">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <span class="dock-label">Skills</span>
-                    <div class="dock-indicator"></div>
-                </div>
-
-                <div class="dock-item" data-modal="proyectos">
-                    <div class="dock-icon proyectos">
-                        <i class="fas fa-folder"></i>
-                    </div>
-                    <span class="dock-label">Proyectos</span>
-                    <div class="dock-indicator"></div>
-                </div>
-
-                <div class="dock-item" data-modal="certificaciones">
-                    <div class="dock-icon certificaciones">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <span class="dock-label">Certificados</span>
-                    <div class="dock-indicator"></div>
-                </div>
-
-                <div class="dock-separator"></div>
-
-                <!-- Nuevo: Icono de Contacto -->
-                <div class="dock-item" data-modal="contacto">
-                    <div class="dock-icon contacto">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <span class="dock-label">Contacto</span>
-                    <span class="dock-badge" id="contact-badge" style="display:none">0</span>
-                    <div class="dock-indicator"></div>
-                </div>
-
-                <div class="dock-item" data-modal="whatsapp">
-                    <div class="dock-icon whatsapp">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <span class="dock-label">WhatsApp</span>
-                    <div class="dock-indicator"></div>
-                </div>
-
-                <div class="dock-item" data-modal="telefono">
-                    <div class="dock-icon telefono">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <span class="dock-label">Llamar</span>
-                    <div class="dock-indicator"></div>
-                </div>
-            </div>
-        </nav>
-    </div>
-
-    <!-- ============================================
-         MODALES
-         ============================================ -->
-
-    <!-- Modal: Formación -->
-    <div class="modal-overlay" id="modal-formacion">
-        <div class="modal modal-lg">
-            <div class="modal-header">
-                <h2 class="modal-title">Formación</h2>
-                <div class="window-controls">
-                    <button class="modal-maximize" title="Maximizar"><i class="fas fa-expand"></i></button>
-                    <button class="modal-close" aria-label="Cerrar"></button>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div class="timeline-item">
-                    <h3 class="timeline-title">Analista Programador</h3>
-                    <p class="timeline-subtitle">INACAP (2025 - En curso)</p>
-                    <p class="timeline-desc">
-                        Formación técnica en desarrollo de software, bases de datos, programación y metodologías de
-                        desarrollo.
-                    </p>
-                </div>
-
-                <div class="timeline-item">
-                    <h3 class="timeline-title">Full Stack Python</h3>
-                    <p class="timeline-subtitle">Desafío Latam / Talento Digital / SENCE (2023–2024)</p>
-                    <p class="timeline-desc">
-                        Bootcamps intensivos en desarrollo web con Django, PostgreSQL, APIs REST, Git y despliegue de
-                        aplicaciones.
-                    </p>
-                </div>
-
-                <div class="timeline-item">
-                    <h3 class="timeline-title">Full Stack Developer</h3>
-                    <p class="timeline-subtitle">UTN Buenos Aires (2023)</p>
-                    <p class="timeline-desc">
-                        Programa complementario enfocado en arquitectura web y buenas prácticas de programación.
-                    </p>
-                </div>
-
-                <div class="timeline-item">
-                    <h3 class="timeline-title">Derecho (congelado)</h3>
-                    <p class="timeline-subtitle">Universidad Central (2009–2014)</p>
-                    <p class="timeline-desc">
-                        Formación en análisis crítico, normativas, protección de datos y comercio electrónico.
-                    </p>
-                </div>
-
-
-                <h3 class="skills-section-title" style="margin-top: var(--spacing-lg);">Certificaciones</h3>
-                <ul class="cert-list">
-                    <li>Full-Stack Developer (UTN.BA, 2023)</li>
-                    <li>Full Stack Python (Desafío Latam, 2024)</li>
-                    <li>Full Stack Python (SENCE, 2024)</li>
-                    <li>Full Stack Python (Talento Digital, 2024)</li>
-                    <li>Ciberseguridad & Acceso Seguro (Didactik)</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal: Experiencia -->
-    <div class="modal-overlay" id="modal-experiencia">
-        <div class="modal modal-lg">
-            <div class="modal-header">
-                <h2 class="modal-title">Experiencia</h2>
-                <div class="window-controls">
-                    <button class="modal-maximize" title="Maximizar"><i class="fas fa-expand"></i></button>
-                    <button class="modal-close" aria-label="Cerrar"></button>
-                </div>
-            </div>
-
-            <div class="modal-body">
-
-                <div class="timeline-item">
-                    <h3 class="timeline-title">Desarrollador Web Freelance</h3>
-                    <p class="timeline-subtitle">Hootie Hoo — 2022 a Presente</p>
-                    <p class="timeline-desc">
+<script src="js/theme-init.js"></script>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header"><div class="header-backdrop" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="header-inner"><a class="brand" href="#inicio" aria-label="Carlos Perales, inicio"><span class="monogram">c<span>p</span>.</span><span>Carlos Perales<span class="brand-suffix"> / dev</span></span></a><nav class="main-nav" aria-label="Navegación principal"><a href="#proyectos">Proyectos</a><a href="#skills">Stack</a><a href="#trayectoria">Trayectoria</a><a href="#contacto">Contacto</a></nav><div class="header-actions"><button id="themeToggle" class="theme-button" aria-label="Cambiar tema" aria-pressed="false"><i class="fas fa-moon" aria-hidden="true"></i></button><a class="button primary header-cta" href="#contacto">Hablemos <span aria-hidden="true">↗</span></a><button class="menu-button" aria-label="Abrir navegación" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span></button></div></div><nav id="mobile-nav" class="mobile-nav" aria-label="Navegación móvil" hidden><a href="#proyectos">Proyectos</a><a href="#skills">Stack</a><a href="#trayectoria">Trayectoria</a><a href="#certificaciones">Certificaciones</a><a href="#contacto">Contacto</a></nav></header>
+<main id="contenido" class="page-frame">
+<section class="section-paper hero" id="inicio" aria-labelledby="hero-title"><div class="scene-atmosphere" aria-hidden="true"><span class="scene-orb"></span><span class="scene-orb secondary"></span><span class="scene-pattern"></span><span class="scene-orbit"></span><span class="scene-beam"></span><span class="scene-beam second"></span><span class="scene-pointer"></span></div><div class="hero-halo" aria-hidden="true"></div><a href="#contacto" class="availability"><span class="status-dot"></span> Disponible para nuevos proyectos <span aria-hidden="true">→</span></a><p class="eyebrow hero-eyebrow">CARLOS PERALES A. / SANTIAGO, CHILE</p><h1 id="hero-title">Ideas que se convierten<br>en <span>experiencias digitales.</span></h1><p class="hero-description">Desarrollo proyectos informáticos para personas.<br>Te escucho, entiendo lo que necesitas y lo transformamos en una solución que tenga sentido para ti.</p><div class="hero-actions"><a href="#proyectos" class="button primary">Explorar proyectos <span aria-hidden="true">→</span></a><a href="#contacto" class="button secondary">Conversemos <span aria-hidden="true">↗</span></a></div>
+<div class="showcase" aria-label="Explora mis áreas de trabajo"><div class="showcase-tabs" role="tablist" aria-label="Áreas de especialidad"><button id="tab-web" role="tab" aria-selected="true" aria-controls="preview-web" tabindex="0" data-tab="web"><i class="fas fa-code" aria-hidden="true"></i> Desarrollo web</button><button id="tab-datos" role="tab" aria-selected="false" aria-controls="preview-datos" tabindex="-1" data-tab="datos"><i class="fas fa-database" aria-hidden="true"></i> Datos</button><button id="tab-auto" role="tab" aria-selected="false" aria-controls="preview-auto" tabindex="-1" data-tab="auto"><i class="fas fa-bolt" aria-hidden="true"></i> Automatización</button></div>
+<div class="showcase-stage" data-scene="web"><div class="stage-grid" aria-hidden="true"></div><div class="stage-ring ring-one" aria-hidden="true"></div><div class="stage-ring ring-two" aria-hidden="true"></div>
+<div id="preview-web" class="scene-panel" role="tabpanel" aria-labelledby="tab-web" tabindex="0"><a href="#proyectos" class="floating-card preview-main"><div class="preview-label"><span class="small-symbol">&lt;/&gt;</span> Desarrollo Full Stack <span class="live-dot"></span></div><div class="preview-browser"><span></span><span></span><span></span><small>ideas → productos</small></div><div class="mock-layout" aria-hidden="true"><div class="mock-sidebar"><b></b><i></i><i></i><i></i></div><div class="mock-content"><div class="mock-heading"></div><div class="mock-line"></div><div class="mock-chart"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="mock-tiles"><i></i><i></i><i></i></div></div></div><div class="preview-foot">Interfaces cuidadas. Lógica sólida. <span aria-hidden="true">↗</span></div></a><a href="#skills" class="floating-card preview-left"><span class="mini-icon"><i class="fab fa-python" aria-hidden="true"></i></span><strong>Backend con Python</strong><small>Django · APIs · PostgreSQL</small><div class="code-lines"><span>def</span> construir(idea):<br>&nbsp; return <b>solución</b></div></a><a href="#contacto" class="floating-card preview-right"><div class="mini-profile"><img src="img/avatar.webp" alt="Carlos Perales" class="avatar-img" width="1024" height="1024" decoding="async"><span><strong>Carlos Perales</strong><small>Full Stack Developer</small></span></div><div class="preview-rule"></div><span class="online-text"><span class="status-dot"></span> Construyamos algo juntos</span><span class="mini-link">Hablemos del proyecto <span aria-hidden="true">→</span></span></a><div class="stage-tag tag-one" aria-hidden="true"><i class="fab fa-js"></i> JavaScript</div><div class="stage-tag tag-two" aria-hidden="true"><i class="fab fa-docker"></i> Docker</div></div>
+<div id="preview-datos" class="scene-panel" role="tabpanel" aria-labelledby="tab-datos" tabindex="0" hidden><a href="#skills" class="floating-card preview-main"><div class="preview-label"><span class="small-symbol"><i class="fas fa-database" aria-hidden="true"></i></span> Datos con propósito <span class="live-dot"></span></div><div class="data-flow"><span>Datos</span><i class="fas fa-arrow-right" aria-hidden="true"></i><span>Python</span><i class="fas fa-arrow-right" aria-hidden="true"></i><span>Decisiones</span></div><div class="data-table"><div><span>ORIGEN</span><span>PROCESO</span><span>RESULTADO</span></div><div><span>API REST</span><span>Integración</span><b>Conectado</b></div><div><span>PostgreSQL</span><span>Consulta</span><b>Estructurado</b></div><div><span>Excel</span><span>Validación</span><b>Verificado</b></div></div><div class="preview-foot">Explorar el stack de datos <span aria-hidden="true">↗</span></div></a><div class="floating-card preview-left"><span class="mini-icon"><i class="fas fa-server" aria-hidden="true"></i></span><strong>PostgreSQL</strong><small>Modelado · consultas · integración</small><div class="code-lines"><span>SELECT</span> ideas<br><span>FROM</span> posibilidades;</div></div><a href="#archivo" class="floating-card preview-right"><span class="mini-icon"><i class="fas fa-file-excel" aria-hidden="true"></i></span><strong>Del archivo a la acción</strong><small>Validación y procesamiento de datos.</small><span class="mini-link">Visitar el archivo <span aria-hidden="true">→</span></span></a></div>
+<div id="preview-auto" class="scene-panel" role="tabpanel" aria-labelledby="tab-auto" tabindex="0" hidden><a href="#proyectos" class="floating-card preview-main"><div class="preview-label"><span class="small-symbol"><i class="fas fa-bolt" aria-hidden="true"></i></span> Menos tareas. Más posibilidades. <span class="live-dot"></span></div><div class="automation-flow"><span><i class="fas fa-file-excel" aria-hidden="true"></i><small>Datos de entrada</small></span><b aria-hidden="true">→</b><span><i class="fab fa-python" aria-hidden="true"></i><small>Validar y transformar</small></span><b aria-hidden="true">→</b><span><i class="fas fa-envelope" aria-hidden="true"></i><small>Resultado ?til</small></span></div><div class="flow-track" aria-hidden="true"><span></span></div><div class="preview-foot">Explorar proyectos de desarrollo <span aria-hidden="true">↗</span></div></a><div class="floating-card preview-left"><span class="mini-icon"><i class="fas fa-terminal" aria-hidden="true"></i></span><strong>Automatización útil</strong><small>Flujos que reducen trabajo manual.</small><div class="code-lines"><span>input</span> → proceso<br><span>output</span> → resultado</div></div><a href="#archivo" class="floating-card preview-right"><span class="mini-icon"><i class="fas fa-envelope" aria-hidden="true"></i></span><strong>AutoMail</strong><small>Generación de correos desde Excel.</small><span class="mini-link">Probar herramienta <span aria-hidden="true">→</span></span></a></div>
+</div></div><div class="stack-rail"><div class="stack-topline"><span>UN STACK. MUCHAS POSIBILIDADES.</span><button id="stack-motion-toggle" class="stack-motion-toggle" aria-label="Alternar animaci?n de tecnologías" aria-pressed="true"><i class="fas fa-pause" aria-hidden="true"></i> Pausar logos</button></div><div class="stack-marquee" role="region" aria-label="Tecnolog?as principales"><div class="stack-track"><div class="stack-group"><a class="tech-logo tech-python" href="#skills"><span class="tech-symbol" aria-hidden="true"><span class="tech-outline"><i class="fab fa-python" aria-hidden="true"></i></span><span class="tech-color"><i class="fab fa-python" aria-hidden="true"></i></span></span><span class="tech-name">Python<span class="tech-detail">Backend & datos</span></span></a><a class="tech-logo tech-django" href="#skills"><span class="tech-symbol django-mark" aria-hidden="true"><span class="tech-outline">dj</span><span class="tech-color">dj</span></span><span class="tech-name">Django<span class="tech-detail">Framework web</span></span></a><a class="tech-logo tech-javascript" href="#skills"><span class="tech-symbol" aria-hidden="true"><span class="tech-outline"><i class="fab fa-js" aria-hidden="true"></i></span><span class="tech-color"><i class="fab fa-js" aria-hidden="true"></i></span></span><span class="tech-name">JavaScript<span class="tech-detail">Frontend</span></span></a><a class="tech-logo tech-postgresql" href="#skills"><span class="tech-symbol" aria-hidden="true"><span class="tech-outline"><i class="fas fa-database" aria-hidden="true"></i></span><span class="tech-color"><i class="fas fa-database" aria-hidden="true"></i></span></span><span class="tech-name">PostgreSQL<span class="tech-detail">Base de datos</span></span></a><a class="tech-logo tech-docker" href="#skills"><span class="tech-symbol" aria-hidden="true"><span class="tech-outline"><i class="fab fa-docker" aria-hidden="true"></i></span><span class="tech-color"><i class="fab fa-docker" aria-hidden="true"></i></span></span><span class="tech-name">Docker<span class="tech-detail">Infraestructura</span></span></a></div></div></div></div></section>
+<section class="section-ink section projects-section" id="proyectos" aria-labelledby="projects-title"><div class="scene-atmosphere" aria-hidden="true"><span class="scene-orb"></span><span class="scene-orb secondary"></span><span class="scene-pattern"></span><span class="scene-orbit"></span><span class="scene-beam"></span><span class="scene-beam second"></span><span class="scene-pointer"></span></div><div class="section-heading reveal"><p class="eyebrow"><span class="section-icon">01</span> PROYECTOS</p><h2 id="projects-title">De la idea<br>a la <span>experiencia real.</span></h2><p>Sitios, aplicaciones y herramientas. Cada proyecto resuelve una necesidad concreta.</p></div><div class="project-carousel" role="region" aria-roledescription="carrusel" aria-label="Proyectos"><div class="carousel-toolbar"><span class="carousel-caption">Explora el trabajo, proyecto a proyecto.</span><span id="project-count" class="carousel-count">01 / 11</span></div><div class="projects-grid" id="project-track" tabindex="0" aria-label="Proyectos: usa las flechas o desliza para explorar"><a class="project-card interactive-card reveal" href="proyectos/tnsp/"><div class="project-top"><span class="project-index">01 / PROYECTO</span><span class="card-arrow" aria-hidden="true">↗</span></div><div class="project-art"><div class="project-icon">
+                            <img src="img/cards/tn_logo.webp" alt="TNSP" loading="lazy" width="600" height="600" decoding="async">
+                        </div></div><h3>TNSP</h3><p>Sitio autoadministrable para una fundación: información, comunidad, puesta en marcha, seguridad y mantenimiento.</p><span class="project-bottom">Ver caso de estudio <span aria-hidden="true">→</span></span></a>
+<a class="project-card interactive-card reveal" href="proyectos/ghivs/"><div class="project-top"><span class="project-index">02 / PROYECTO</span><span class="card-arrow" aria-hidden="true">↗</span></div><div class="project-art"><div class="project-icon">
+                            <img src="img/cards/gv_logo.webp" alt="Ghivs" loading="lazy" width="150" height="150" decoding="async">
+                        </div></div><h3>GHIVS</h3><p>Renovación de un sitio corporativo para presentar mejor a la empresa, su identidad y su trabajo.</p><span class="project-bottom">Ver caso de estudio <span aria-hidden="true">→</span></span></a>
+<a class="project-card interactive-card reveal" href="proyectos/prodquim/"><div class="project-top"><span class="project-index">03 / PROYECTO</span><span class="card-arrow" aria-hidden="true">↗</span></div><div class="project-art"><div class="project-icon">
+                            <img src="img/cards/prodquim.webp" alt="ProdQuim" loading="lazy" width="1081" height="1920" decoding="async">
+                        </div></div><h3>ProdQuim</h3><p>Evolución técnica continua y hardening para acompañar un proyecto en crecimiento.</p><span class="project-bottom">Ver caso de estudio <span aria-hidden="true">→</span></span></a>
+<a class="project-card interactive-card reveal" href="https://hootiehoo.cl/" target="_blank" rel="noopener noreferrer"><div class="project-top"><span class="project-index">04 / PROYECTO</span><span class="card-arrow" aria-hidden="true">↗</span></div><div class="project-art"><div class="project-icon"><img src="img/cards/hh.webp" alt="Hootie Hoo" loading="lazy" width="868" height="287" decoding="async"></div></div><h3>Hootie Hoo</h3><p>Plataforma educativa y marketing digital. Desarrollo web, e-commerce, integraciones y gestión de infraestructura.</p><span class="project-bottom">Ver proyecto <span aria-hidden="true">→</span></span></a>
+<a class="project-card interactive-card reveal" href="./other/pokedex/index.html" target="_blank" rel="noopener noreferrer"><div class="project-top"><span class="project-index">05 / PROYECTO</span><span class="card-arrow" aria-hidden="true">↗</span></div><div class="project-art"><div class="project-icon">
+                            <img src="img/cards/pm_logo.webp" alt="Pokédex" loading="lazy" width="900" height="900" decoding="async">
+                        </div></div><h3>Pokédex</h3><p>Frontend en JavaScript con consumo de API REST, búsqueda dinámica y renderizado de componentes.</p><span class="project-bottom">Ver proyecto <span aria-hidden="true">→</span></span></a>
+<a class="project-card interactive-card reveal" href="./other/cv/cv.html" target="_blank" rel="noopener noreferrer"><div class="project-top"><span class="project-index">06 / PROYECTO</span><span class="card-arrow" aria-hidden="true">↗</span></div><div class="project-art"><div class="project-icon emoji">📄</div></div><h3>CV Online</h3><p>Portafolio web con interfaz tipo sistema operativo, modales y navegación por JavaScript.</p><span class="project-bottom">Ver proyecto <span aria-hidden="true">→</span></span></a>
+<a class="project-card interactive-card reveal" href="./other/calculadora-honorarios.html" target="_blank" rel="noopener noreferrer"><div class="project-top"><span class="project-index">07 / PROYECTO</span><span class="card-arrow" aria-hidden="true">↗</span></div><div class="project-art"><div class="project-icon emoji">💰</div></div><h3>Calc. Honorarios</h3><p>Calculadora interactiva con validaciones, reglas de negocio y resultados dinámicos en JavaScript.</p><span class="project-bottom">Ver proyecto <span aria-hidden="true">→</span></span></a>
+<a class="project-card interactive-card reveal" href="./other/test.html" target="_blank" rel="noopener noreferrer"><div class="project-top"><span class="project-index">08 / PROYECTO</span><span class="card-arrow" aria-hidden="true">↗</span></div><div class="project-art"><div class="project-icon emoji">🎨</div></div><h3>Test CSS</h3><p>Galería interactiva de efectos CSS hover para imágenes, con variantes de zoom, rotación, latido, filtros y brillo.</p><span class="project-bottom">Ver proyecto <span aria-hidden="true">→</span></span></a></div><div class="carousel-progress" aria-hidden="true"><span></span></div><div class="carousel-hint"><span>Desliza o usa la rueda del mouse</span><span>11 proyectos · enlaces directos ↗</span></div></div></section>
+<section class="section-paper section skills-section" id="skills" aria-labelledby="skills-title"><div class="scene-atmosphere" aria-hidden="true"><span class="scene-orb"></span><span class="scene-orb secondary"></span><span class="scene-pattern"></span><span class="scene-orbit"></span><span class="scene-beam"></span><span class="scene-beam second"></span><span class="scene-pointer"></span></div><div class="section-heading reveal"><p class="eyebrow"><span class="section-icon">02</span> TECNOLOGÍAS</p><h2 id="skills-title">Las piezas detrás<br>de cada <span>solución.</span></h2><p>Frontend, backend e infraestructura conectados en un mismo ecosistema.</p></div><div class="skills-layout"><div class="skill-families"><article class="skill-family interactive-card reveal"><span class="mini-icon"><i class="fas fa-code" aria-hidden="true"></i></span><h3>Interfaces que se sienten bien</h3><p>HTML5, CSS3, JavaScript y React. Diseño responsive y atención al detalle.</p><div class="tech-chips"><span>Frontend</span><span>UI / UX</span></div></article><article class="skill-family interactive-card reveal"><span class="mini-icon"><i class="fas fa-database" aria-hidden="true"></i></span><h3>Una base sólida</h3><p>Python, Django, SQL, PostgreSQL y APIs REST para conectar datos y procesos.</p><div class="tech-chips"><span>Backend</span><span>Datos</span></div></article><article class="skill-family interactive-card reveal"><span class="mini-icon"><i class="fab fa-docker" aria-hidden="true"></i></span><h3>Del código al despliegue</h3><p>Docker, Linux, Nginx, Git y WordPress. Construcción y mantenimiento de productos.</p><div class="tech-chips"><span>DevOps</span><span>CMS</span></div></article></div><div class="graph-card reveal"><div class="graph-heading"><span class="status-dot"></span> Mi ecosistema tecnológico <span class="graph-hint">Arrastra · explora · conecta</span></div><div id="skills-graph" role="img" aria-label="Grafo interactivo de habilidades: frontend, backend, CMS, DevOps y habilidades de comunicación"></div><p>Explora las conexiones entre mis herramientas.</p></div></div></section>
+<section class="section-ink section about-section" id="perfil" aria-labelledby="about-title"><div class="scene-atmosphere" aria-hidden="true"><span class="scene-orb"></span><span class="scene-orb secondary"></span><span class="scene-pattern"></span><span class="scene-orbit"></span><span class="scene-beam"></span><span class="scene-beam second"></span><span class="scene-pointer"></span></div><div class="about-portrait interactive-card reveal"><img src="img/avatar.webp" alt="Carlos Perales" class="avatar-img" width="1024" height="1024" decoding="async"><div><p class="eyebrow">DETRÁS DEL CÓDIGO</p><h3>Carlos Perales A.</h3><p>Full Stack Developer & Data Engineer</p><div class="profile-socials"><a href="https://github.com/carlosperalesa/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a><a href="https://www.linkedin.com/in/carlosperalesa" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a></div></div></div><div class="about-copy reveal"><p class="eyebrow">TECNOLOGÍA CON CONTEXTO</p><h2 id="about-title">Entender primero.<br><span>Construir mejor.</span></h2><p>Desarrollador con sólida experiencia comercial. Especialista en entender necesidades de cliente y traducirlas en soluciones técnicas eficientes. Mi background en ventas me permite construir productos con una fuerte orientación al usuario final y comunicación efectiva.</p><div class="about-traits"><span>Trabajo en equipo</span><span>Resolución pragmática</span><span>Adaptabilidad</span></div></div></section>
+<section class="section-paper section journey-section" id="trayectoria" aria-labelledby="journey-title"><div class="scene-atmosphere" aria-hidden="true"><span class="scene-orb"></span><span class="scene-orb secondary"></span><span class="scene-pattern"></span><span class="scene-orbit"></span><span class="scene-beam"></span><span class="scene-beam second"></span><span class="scene-pointer"></span></div><div class="section-heading reveal"><p class="eyebrow"><span class="section-icon">03</span> TRAYECTORIA</p><h2 id="journey-title">Experiencia que aporta<br><span>otra perspectiva.</span></h2><p>La conexión entre el negocio, las personas y el desarrollo de software.</p></div><div class="journey-columns"><div><h3 class="column-label">Experiencia profesional</h3><details class="timeline-entry reveal" open><summary><span class="timeline-number">01</span><span><strong>Desarrollador Web Freelance</strong><small>Hootie Hoo — 2022 a Presente</small></span><span class="plus" aria-hidden="true">+</span></summary><div class="timeline-copy">
                         Desarrollo y mantención de sitios web para clientes finales de la agencia, incluyendo proyectos
                         corporativos, institucionales y catálogos de productos (ej: GHIVS, Las Triple Negativas Siempre
                         Positivas,
@@ -292,474 +125,50 @@
                         <br><br>
                         Optimización SEO on-page, soporte post-lanzamiento y capacitación básica a clientes en gestión
                         de contenidos.
-                    </p>
-                </div>
-
-                <div class="timeline-item">
-                    <h3 class="timeline-title">Backoffice Servicio Móvil</h3>
-                    <p class="timeline-subtitle">Movistar (T-Sales) — 2022</p>
-                    <p class="timeline-desc">
+                    </div></details>
+<details class="timeline-entry reveal"><summary><span class="timeline-number">02</span><span><strong>Backoffice Servicio Móvil</strong><small>Movistar (T-Sales) — 2022</small></span><span class="plus" aria-hidden="true">+</span></summary><div class="timeline-copy">
                         Soporte operativo a procesos comerciales, validación de datos de ventas, control de calidad,
                         generación de reportes operacionales y coordinación con áreas de activación, cumpliendo
                         SLAs y políticas internas.
-                    </p>
-                </div>
-
-                <div class="timeline-item">
-                    <h3 class="timeline-title">Laboratorio de Ventas</h3>
-                    <p class="timeline-subtitle">Entel — 2018 a 2021</p>
-                    <p class="timeline-desc">
+                    </div></details>
+<details class="timeline-entry reveal"><summary><span class="timeline-number">03</span><span><strong>Laboratorio de Ventas</strong><small>Entel — 2018 a 2021</small></span><span class="plus" aria-hidden="true">+</span></summary><div class="timeline-copy">
                         Pruebas de nuevos procesos comerciales, análisis de flujos en sistemas CRM, detección de errores
                         operacionales y participación en iniciativas de mejora continua antes del despliegue masivo.
-                    </p>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal: Skills -->
-    <div class="modal-overlay" id="modal-skills">
-        <div class="modal modal-lg">
-            <div class="modal-header">
-                <h2 class="modal-title">Skills Interactive Graph</h2>
-                <div class="window-controls">
-                    <button class="modal-maximize" title="Maximizar"><i class="fas fa-expand"></i></button>
-                    <button class="modal-close" aria-label="Cerrar"></button>
-                </div>
-            </div>
-
-            <div class="modal-body" style="padding: 0; overflow: hidden; height: 100%;">
-                <div id="skills-graph" style="width: 100%; height: 100%;"></div>
-
-                <div
-                    style="position: absolute; bottom: 15px; left: 20px; font-size: 0.8rem; color: var(--text-muted); pointer-events: none; z-index: 10;">
-                    <i class="fas fa-mouse-pointer"></i> Drag nodes • <i class="fas fa-search-plus"></i> Scroll Zoom
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal: Proyectos -->
-    <div class="modal-overlay" id="modal-proyectos">
-        <div class="modal modal-lg">
-            <div class="modal-header">
-                <h2 class="modal-title">Proyectos</h2>
-                <div class="window-controls">
-                    <button class="modal-maximize" title="Maximizar"><i class="fas fa-expand"></i></button>
-                    <button class="modal-close" aria-label="Cerrar"></button>
-                </div>
-            </div>
-
-            <div class="modal-body">
-                <div class="projects-grid">
-
-                    <!-- Hootie Hoo -->
-                    <a href="https://hootiehoo.cl/" target="_blank" class="project-app"
-                        data-description="Plataforma educativa y marketing digital. Desarrollo web, e-commerce, integraciones y gestión de infraestructura.">
-                        <div class="project-icon">
-                            <img src="./img/cards/hh.webp" alt="Hootie Hoo" loading="lazy">
-                        </div>
-                        <span class="project-name">Hootie Hoo</span>
-                    </a>
-
-                    <!-- GHIVS (cliente Hootie Hoo) -->
-                    <a href="https://ghivs.com/v2/" target="_blank" class="project-app"
-                        data-description="Sitio corporativo. WordPress (Avada), multilenguaje, formularios y optimización SEO.">
-                        <div class="project-icon">
-                            <img src="./img/cards/gv_logo.webp" alt="Ghivs" loading="lazy">
-                        </div>
-                        <span class="project-name">GHIVS</span>
-                    </a>
-
-                    <!-- ProdQuim (cliente Hootie Hoo) -->
-                    <a href="https://prodquim.cl/" target="_blank" class="project-app"
-                        data-description="Catálogo B2B con sistema de cotización. WordPress, WooCommerce, Elementor e integraciones.">
-                        <div class="project-icon">
-                            <img src="./img/cards/prodquim.webp" alt="ProdQuim" loading="lazy">
-                        </div>
-                        <span class="project-name">ProdQuim</span>
-                    </a>
-
-                    <!-- TNSP -->
-                    <a href="./other/tnsp/index.html" target="_blank" class="project-app"
-                        data-description="Sitio institucional. WordPress, Elementor, despliegue en VPS y mantenimiento.">
-                        <div class="project-icon">
-                            <img src="./img/cards/tn_logo.webp" alt="TNSP" loading="lazy">
-                        </div>
-                        <span class="project-name">TNSP</span>
-                    </a>
-
-                    <!-- Pokédex -->
-                    <a href="./other/pokedex/index.html" target="_blank" class="project-app"
-                        data-description="Frontend en JavaScript con consumo de API REST, búsqueda dinámica y renderizado de componentes.">
-                        <div class="project-icon">
-                            <img src="./img/cards/pm_logo.webp" alt="Pokédex" loading="lazy">
-                        </div>
-                        <span class="project-name">Pokédex</span>
-                    </a>
-
-                    <!-- Proton UI -->
-                    <a href="./other/proton-pass.html" target="_blank" class="project-app"
-                        data-description="Clon pixel-perfect de interfaz. Maquetación avanzada en HTML y CSS con lógica en JavaScript.">
-                        <div class="project-icon emoji">🔒</div>
-                        <span class="project-name">Proton UI</span>
-                    </a>
-
-                    <!-- Amigo Secreto -->
-                    <a href="./other/sorteo.html" target="_blank" class="project-app"
-                        data-description="Aplicación web con lógica de sorteo, validaciones y manejo de estados en JavaScript.">
-                        <div class="project-icon emoji">🎁</div>
-                        <span class="project-name">Amigo Secreto</span>
-                    </a>
-
-                    <!-- CV Online -->
-                    <a href="./other/cv/cv.html" target="_blank" class="project-app"
-                        data-description="Portafolio web con interfaz tipo sistema operativo, modales y navegación por JavaScript.">
-                        <div class="project-icon emoji">📄</div>
-                        <span class="project-name">CV Online</span>
-                    </a>
-
-                    <!-- Calculadora -->
-                    <a href="./other/calculadora-honorarios.html" target="_blank" class="project-app"
-                        data-description="Calculadora interactiva con validaciones, reglas de negocio y resultados dinámicos en JavaScript.">
-                        <div class="project-icon emoji">💰</div>
-                        <span class="project-name">Calc. Honorarios</span>
-                    </a>
-
-                    <!-- AutoMail -->
-                    <a href="#" target="_blank" class="project-app" data-kind="automail"
-                        data-description="Sube un XLSX, ejecuta la generación de correos, revisa el reporte de integridad y descarga el ZIP con los mails producidos.">
-                        <div class="project-icon emoji">✉️</div>
-                        <span class="project-name">AutoMail</span>
-                    </a>
-
-                    <!-- Laboratorio de efectos CSS -->
-                    <a href="./other/test.html" target="_blank" class="project-app"
-                        data-description="Galería interactiva de efectos CSS hover para imágenes, con variantes de zoom, rotación, latido, filtros y brillo.">
-                        <div class="project-icon emoji">🎨</div>
-                        <span class="project-name">Test CSS</span>
-                    </a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal: Certificaciones (macOS 3D Cover Flow) -->
-    <div class="modal-overlay" id="modal-certificaciones">
-        <div class="modal modal-lg">
-            <div class="modal-header">
-                <h2 class="modal-title">Certificaciones</h2>
-                <div class="window-controls">
-                    <button class="modal-maximize" title="Maximizar"><i class="fas fa-expand"></i></button>
-                    <button class="modal-close" aria-label="Cerrar"></button>
-                </div>
-            </div>
-
-            <div class="modal-body">
-                <div class="coverflow-container">
-                    <div class="coverflow-viewport" id="coverflow-viewport">
-                        <div class="coverflow-stage" id="coverflow-stage">
-
-                            <!-- Cert 1: Full Stack Python Desafío Latam -->
-                            <a href="./img/cert/bootcamp-desarrollo-aplicaciones-full-stack-python-trainee.webp"
-                                target="_blank" class="coverflow-card" data-title="Full Stack Python Trainee"
-                                data-desc="Desafío Latam / SENCE / Talento Digital (2024). Bootcamp intensivo de desarrollo software con Python, Django, PostgreSQL, APIs REST y Git."
-                                data-url="./img/cert/bootcamp-desarrollo-aplicaciones-full-stack-python-trainee.webp">
-                                <div class="card-screenshot"
-                                    style="background-image: url('img/cert/bootcamp-desarrollo-aplicaciones-full-stack-python-trainee.webp')">
-                                </div>
-                                <div class="card-overlay">
-                                    <div class="project-icon emoji">📜</div>
-                                    <span class="project-name">Desafío Latam</span>
-                                </div>
-                            </a>
-
-                            <!-- Cert 2: Full Stack UTN / Incluyeme -->
-                            <a href="./img/cert/certificado-curso-fullstack-incluyeme.webp" target="_blank"
-                                class="coverflow-card" data-title="Full-Stack Developer UTN"
-                                data-desc="UTN Buenos Aires & Incluyeme (2023). Arquitectura web, desarrollo frontend/backend y buenas prácticas de programación."
-                                data-url="./img/cert/certificado-curso-fullstack-incluyeme.webp">
-                                <div class="card-screenshot"
-                                    style="background-image: url('img/cert/certificado-curso-fullstack-incluyeme.webp')">
-                                </div>
-                                <div class="card-overlay">
-                                    <div class="project-icon emoji">🎓</div>
-                                    <span class="project-name">UTN.BA</span>
-                                </div>
-                            </a>
-
-                            <!-- Cert 3: Full Stack Python Talento Digital -->
-                            <a href="./img/cert/certificado-desarrollo-de-aplicaciones-full-stack-python-trainee.webp"
-                                target="_blank" class="coverflow-card" data-title="Desarrollo Full Stack Python"
-                                data-desc="Talento Digital para Chile (2024). Certificación en construcción de aplicaciones web escalables e integración de servicios."
-                                data-url="./img/cert/certificado-desarrollo-de-aplicaciones-full-stack-python-trainee.webp">
-                                <div class="card-screenshot"
-                                    style="background-image: url('img/cert/certificado-desarrollo-de-aplicaciones-full-stack-python-trainee.webp')">
-                                </div>
-                                <div class="card-overlay">
-                                    <div class="project-icon emoji">🚀</div>
-                                    <span class="project-name">Talento Digital</span>
-                                </div>
-                            </a>
-
-                            <!-- Cert 4: SENCE Full Stack -->
-                            <a href="./img/cert/certificado-sence.pdf" target="_blank" class="coverflow-card"
-                                data-title="Certificación SENCE Full Stack"
-                                data-desc="SENCE (2024). Capacitación profesional en tecnologías de desarrollo de software y metodologías ágiles."
-                                data-url="./img/cert/certificado-sence.pdf">
-                                <div class="card-screenshot"
-                                    style="background-image: url('img/cert/certificado-sence.webp')"></div>
-                                <div class="card-overlay">
-                                    <div class="project-icon emoji">🏆</div>
-                                    <span class="project-name">SENCE</span>
-                                </div>
-                            </a>
-
-                            <!-- Cert 5: Desarrollo de Aplicaciones Iniciales -->
-                            <a href="./img/cert/Certificado Desarrollo de aplicaciones iniciales.pdf"
-                                target="_blank" class="coverflow-card" data-title="Desarrollo de Aplicaciones Iniciales"
-                                data-desc="Capacitación en fundamentos de desarrollo de software, lógica de programación y estructuras de datos."
-                                data-url="./img/cert/Certificado Desarrollo de aplicaciones iniciales.pdf">
-                                <div class="card-screenshot"
-                                    style="background-image: url('img/cert/Certificado Desarrollo de aplicaciones iniciales.webp')">
-                                </div>
-                                <div class="card-overlay">
-                                    <div class="project-icon emoji">💻</div>
-                                    <span class="project-name">Aplicaciones</span>
-                                </div>
-                            </a>
-
-                            <!-- Cert 6: Infraestructura TI Segura -->
-                            <a href="./img/cert/Certificado Infraestructura TI segura.pdf"
-                                target="_blank" class="coverflow-card" data-title="Infraestructura TI Segura"
-                                data-desc="Certificación en fundamentos de redes, administración de servidores y seguridad informática."
-                                data-url="./img/cert/Certificado Infraestructura TI segura.pdf">
-                                <div class="card-screenshot"
-                                    style="background-image: url('img/cert/Certificado Infraestructura TI segura.webp')">
-                                </div>
-                                <div class="card-overlay">
-                                    <div class="project-icon emoji">🛡️</div>
-                                    <span class="project-name">Infraestructura TI</span>
-                                </div>
-                            </a>
-
-                        </div>
-                    </div>
-
-                    <!-- Panel de información activa -->
-                    <div class="coverflow-info-panel" id="coverflow-info">
-                        <h3 class="cf-title" id="cf-title">Certificación</h3>
-                        <p class="cf-desc" id="cf-desc">Cargando...</p>
-                        <a class="modal-btn modal-btn-primary" id="cf-link" href="#" target="_blank">Ver Certificado</a>
-
-                        <!-- Ayuda de interacción -->
-                        <div class="coverflow-help">
-                            <span><i class="fas fa-arrows-alt-h"></i> Arrastrar</span>
-                            <span><i class="fas fa-mouse"></i> Rueda</span>
-                            <span><i class="fas fa-keyboard"></i> Flechas ◄/►</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal: Contacto (Nuevo) -->
-    <div class="modal-overlay" id="modal-contacto">
-        <div class="modal modal-lg">
-            <div class="modal-header">
-                <h2 class="modal-title">Contacto</h2>
-                <div class="window-controls">
-                    <button class="modal-maximize" title="Maximizar"><i class="fas fa-expand"></i></button>
-                    <button class="modal-close" aria-label="Cerrar"></button>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label class="form-label">Nombre</label>
-                    <input type="text" class="form-input" placeholder="Tu nombre">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Teléfono</label>
-                    <input type="tel" class="form-input" placeholder="+56 9...">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Correo</label>
-                    <input type="email" class="form-input" placeholder="ejemplo@correo.com">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Asunto</label>
-                    <input type="text" class="form-input" placeholder="Asunto">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Mensaje</label>
-                    <textarea class="form-textarea" placeholder="Escribe tu mensaje aquí..."></textarea>
-                </div>
-                <div class="modal-confirm-actions" style="justify-content: flex-end; margin-top: 20px;">
-                    <button class="modal-btn modal-btn-secondary">Limpiar</button>
-                    <button class="modal-btn modal-btn-primary">Enviar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal: Detalle de Proyecto (Template Único) -->
-    <div class="modal-overlay" id="modal-proyecto-detalle">
-        <div class="modal modal-sm">
-            <div class="modal-header">
-                <h2 class="modal-title" id="p-title">Proyecto</h2>
-                <button class="modal-close" aria-label="Cerrar"></button>
-            </div>
-            <div class="modal-body">
-                <div class="project-detail-container">
-                    <div id="p-icon" class="project-detail-icon"></div>
-                    <p id="p-desc" class="project-detail-desc"></p>
-                    <a id="p-link" href="#" target="_blank" class="modal-btn modal-btn-primary"
-                        style="width: 100%; text-align: center;">Ir al proyecto</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal: AutoMail -->
-    <div class="modal-overlay" id="modal-automail">
-        <div class="modal modal-lg">
-            <div class="modal-header">
-                <h2 class="modal-title">AutoMail</h2>
-                <div class="window-controls">
-                    <button class="modal-maximize" title="Maximizar"><i class="fas fa-expand"></i></button>
-                    <button class="modal-close" aria-label="Cerrar"></button>
-                </div>
-            </div>
-            <div class="modal-body automail-modal-body">
-                <div class="automail-shell">
-                    <section class="automail-workspace">
-                        <div class="automail-upload-card">
-                            <div class="automail-dropzone" id="automail-dropzone" role="button" tabindex="0"
-                                aria-label="Subir archivo XLSX">
-                                <div class="automail-dropzone-icon">
-                                    <i class="fas fa-cloud-arrow-up"></i>
-                                </div>
-                                <div class="automail-dropzone-copy">
-                                    <h3>Arrastra tu archivo aquí</h3>
-                                    <p>o haz clic para buscar un .xlsx</p>
-                                </div>
-                            </div>
-                            <input type="file" id="automail-file-input" accept=".xlsx" hidden>
-
-                            <div class="automail-file-meta">
-                                <div>
-                                    <span class="automail-meta-label">Archivo seleccionado</span>
-                                    <strong id="automail-file-name">Ninguno</strong>
-                                </div>
-                                <div>
-                                    <span class="automail-meta-label">Tamaño</span>
-                                    <strong id="automail-file-size">-</strong>
-                                </div>
-                            </div>
-
-                            <div class="automail-actions">
-                                <button class="modal-btn modal-btn-secondary" id="automail-reset-btn">Limpiar</button>
-                                <button class="modal-btn modal-btn-secondary" id="automail-sample-btn">Ver
-                                    ayuda</button>
-                                <button class="modal-btn modal-btn-primary" id="automail-run-btn">Procesar
-                                    archivo</button>
-                            </div>
-                        </div>
-
-                        <div class="automail-progress-track" aria-hidden="true">
-                            <div class="automail-progress-fill" id="automail-progress-fill"></div>
-                        </div>
-
-                        <div class="automail-results-panel">
-                            <div class="automail-results-header">
-                                <h3>report.log</h3>
-                                <div class="automail-results-actions">
-                                    <button class="modal-btn modal-btn-secondary" id="automail-copy-btn">Copiar</button>
-                                    <a class="modal-btn modal-btn-primary" id="automail-download-link" href="#" download
-                                        style="display:none;">Descargar ZIP</a>
-                                </div>
-                            </div>
-                            <pre class="automail-report-output"
-                                id="automail-report-output">Aquí se mostrará el resultado de la ejecución.</pre>
-                        </div>
-                    </section>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal: WhatsApp (Confirmación) -->
-    <div class="modal-overlay" id="modal-whatsapp">
-        <div class="modal modal-sm">
-            <div class="modal-header">
-                <h2 class="modal-title">WhatsApp</h2>
-                <button class="modal-close" aria-label="Cerrar"></button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-confirm-icon whatsapp-icon">
-                    <svg viewBox="0 0 24 24" width="48" height="48" fill="#25D366">
-                        <path
-                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                    </svg>
-                </div>
-                <p class="modal-confirm-text">¿Deseas abrir WhatsApp para contactar a Carlos?</p>
-                <div class="modal-confirm-actions">
-                    <button class="modal-btn modal-btn-secondary" data-action="cancel">Cancelar</button>
-                    <a href="https://wa.me/56962798030" target="_blank" class="modal-btn modal-btn-primary">Abrir
-                        WhatsApp</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal: Teléfono (Confirmación) -->
-    <div class="modal-overlay" id="modal-telefono">
-        <div class="modal modal-sm">
-            <div class="modal-header">
-                <h2 class="modal-title">Llamar</h2>
-                <button class="modal-close" aria-label="Cerrar"></button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-confirm-icon phone-icon">
-                    <svg viewBox="0 0 24 24" width="48" height="48" fill="#3b82f6">
-                        <path
-                            d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" />
-                    </svg>
-                </div>
-                <p class="modal-confirm-text">¿Deseas llamar a Carlos al +56 9 6279 8030?</p>
-                <div class="modal-confirm-actions">
-                    <button class="modal-btn modal-btn-secondary" data-action="cancel">Cancelar</button>
-                    <a href="tel:+56962798030" class="modal-btn modal-btn-primary">Llamar</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Audio para feedback -->
-    <audio id="tapSound" preload="auto">
-        <source src="sounds/tap.wav" type="audio/wav">
-    </audio>
-
-    <!-- External Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js" defer></script>
-
-    <!-- Scripts -->
-    <script src="js/background.js" defer></script> <!-- Cyber Grid Background -->
-    <script src="js/skills-graph.js" defer></script> <!-- D3 Skills Graph -->
-    <script src="js/app.js" defer></script>
-    <script src="js/ui.js" defer></script>
-    <script src="js/time.js" defer></script>
-    <script src="js/sound.js" defer></script>
-    <script src="js/toast.js" defer></script>
-    <script src="js/modals.js" defer></script>
-    <script src="js/coverflow.js" defer></script>
-    <script src="js/drag.js" defer></script>
-    <script src="js/contact.js" defer></script>
-    <script src="js/automail.js" defer></script>
-</body>
-
-</html>
+                    </div></details></div><div><h3 class="column-label">Formación</h3><details class="timeline-entry reveal" open><summary><span class="timeline-number">01</span><span><strong>Analista Programador</strong><small>INACAP (2025 - En curso)</small></span><span class="plus" aria-hidden="true">+</span></summary><div class="timeline-copy">
+                        Formación técnica en desarrollo de software, bases de datos, programación y metodologías de
+                        desarrollo.
+                    </div></details>
+<details class="timeline-entry reveal"><summary><span class="timeline-number">02</span><span><strong>Full Stack Python</strong><small>Desafío Latam / Talento Digital / SENCE (2023–2024)</small></span><span class="plus" aria-hidden="true">+</span></summary><div class="timeline-copy">
+                        Bootcamps intensivos en desarrollo web con Django, PostgreSQL, APIs REST, Git y despliegue de
+                        aplicaciones.
+                    </div></details>
+<details class="timeline-entry reveal"><summary><span class="timeline-number">03</span><span><strong>Full Stack Developer</strong><small>UTN Buenos Aires (2023)</small></span><span class="plus" aria-hidden="true">+</span></summary><div class="timeline-copy">
+                        Programa complementario enfocado en arquitectura web y buenas prácticas de programación.
+                    </div></details>
+<details class="timeline-entry reveal"><summary><span class="timeline-number">04</span><span><strong>Derecho (congelado)</strong><small>Universidad Central (2009–2014)</small></span><span class="plus" aria-hidden="true">+</span></summary><div class="timeline-copy">
+                        Formación en análisis crítico, normativas, protección de datos y comercio electrónico.
+                    </div></details></div></div></section>
+<section class="section-ink section certificates-section" id="certificaciones" aria-labelledby="certs-title"><div class="scene-atmosphere" aria-hidden="true"><span class="scene-orb"></span><span class="scene-orb secondary"></span><span class="scene-pattern"></span><span class="scene-orbit"></span><span class="scene-beam"></span><span class="scene-beam second"></span><span class="scene-pointer"></span></div><div class="section-heading reveal"><p class="eyebrow"><span class="section-icon">04</span> APRENDIZAJE CONTINUO</p><h2 id="certs-title">Seguir aprendiendo.<br><span>Seguir construyendo.</span></h2><p>Formación y certificaciones que respaldan mi trabajo.</p></div><div class="certificates-grid certificates-bento"><a class="certificate interactive-card reveal" target="_blank" rel="noopener noreferrer" href="img/cert/Certificado Desarrollo de aplicaciones iniciales.pdf"><div class="cert-preview"><img class="card-screenshot" src="img/cert/Certificado Desarrollo de aplicaciones iniciales.webp" width="1275" height="1650" alt="" loading="lazy" decoding="async"></div><div class="cert-copy"><span class="eyebrow">CERTIFICACIÓN <span aria-hidden="true">↗</span></span><h3>Desarrollo de Aplicaciones Iniciales</h3><p>INACAP (2025). Capacitación en fundamentos de desarrollo de software, lógica de programación y estructuras de datos.</p></div></a>
+<a class="certificate interactive-card reveal" target="_blank" rel="noopener noreferrer" href="img/cert/Certificado Infraestructura TI segura.pdf"><div class="cert-preview"><img class="card-screenshot" src="img/cert/Certificado Infraestructura TI segura.webp" width="1275" height="1650" alt="" loading="lazy" decoding="async"></div><div class="cert-copy"><span class="eyebrow">CERTIFICACIÓN <span aria-hidden="true">↗</span></span><h3>Infraestructura TI Segura</h3><p>INACAP (2025). Certificación en fundamentos de redes, administración de servidores y seguridad informática.</p></div></a>
+<a class="certificate interactive-card reveal" target="_blank" rel="noopener noreferrer" href="img/cert/bootcamp-desarrollo-aplicaciones-full-stack-python-trainee.webp"><div class="cert-preview"><img class="card-screenshot" src="img/cert/bootcamp-desarrollo-aplicaciones-full-stack-python-trainee.webp" width="1200" height="644" alt="" loading="lazy" decoding="async"></div><div class="cert-copy"><span class="eyebrow">CERTIFICACIÓN <span aria-hidden="true">↗</span></span><h3>Full Stack Python Trainee</h3><p>Desafío Latam / SENCE / Talento Digital (2024). Bootcamp intensivo de desarrollo software con Python, Django, PostgreSQL, APIs REST y Git.</p></div></a>
+<a class="certificate interactive-card reveal" target="_blank" rel="noopener noreferrer" href="img/cert/certificado-desarrollo-de-aplicaciones-full-stack-python-trainee.webp"><div class="cert-preview"><img class="card-screenshot" src="img/cert/certificado-desarrollo-de-aplicaciones-full-stack-python-trainee.webp" width="1650" height="1275" alt="" loading="lazy" decoding="async"></div><div class="cert-copy"><span class="eyebrow">CERTIFICACIÓN <span aria-hidden="true">↗</span></span><h3>Desarrollo Full Stack Python</h3><p>Talento Digital para Chile (2024). Certificación en construcción de aplicaciones web escalables e integración de servicios.</p></div></a>
+<a class="certificate interactive-card reveal" target="_blank" rel="noopener noreferrer" href="img/cert/certificado-sence.pdf"><div class="cert-preview"><img class="card-screenshot" src="img/cert/certificado-sence.webp" width="608" height="565" alt="" loading="lazy" decoding="async"></div><div class="cert-copy"><span class="eyebrow">CERTIFICACIÓN <span aria-hidden="true">↗</span></span><h3>Certificación SENCE Full Stack</h3><p>SENCE (2024). Capacitación profesional en tecnologías de desarrollo de software y metodologías ágiles.</p></div></a>
+<a class="certificate interactive-card reveal" target="_blank" rel="noopener noreferrer" href="img/cert/certificado-curso-fullstack-incluyeme.webp"><div class="cert-preview"><img class="card-screenshot" src="img/cert/certificado-curso-fullstack-incluyeme.webp" width="1684" height="1190" alt="" loading="lazy" decoding="async"></div><div class="cert-copy"><span class="eyebrow">CERTIFICACIÓN <span aria-hidden="true">↗</span></span><h3>Full-Stack Developer UTN</h3><p>UTN Buenos Aires &amp; Incluyeme (2023). Arquitectura web, desarrollo frontend/backend y buenas prácticas de programación.</p></div></a></div></section>
+<section class="section-paper section museum-section" id="archivo" aria-labelledby="museum-title"><div class="scene-atmosphere" aria-hidden="true"><span class="scene-orb"></span><span class="scene-orb secondary"></span><span class="scene-pattern"></span><span class="scene-orbit"></span><span class="scene-beam"></span><span class="scene-beam second"></span><span class="scene-pointer"></span></div>
+<div class="museum-intro"><div><p class="eyebrow"><span class="section-icon">05</span> ARCHIVO VIVO</p><h2 id="museum-title">Siempre en<br><span>constante evolución.</span></h2></div>
+<div class="museum-intro-copy"><p>Las tecnologías cambian. Mi compromiso con resolver bien permanece.</p><p>Aprendo nuevas herramientas, reviso mis decisiones y adapto cada solución a lo que necesita el proyecto. Estas versiones de mi portafolio muestran ese proceso: distintas formas de diseñar, construir y mejorar una experiencia.</p><span class="museum-collection"><span class="live-dot" aria-hidden="true"></span> Tres versiones. Un recorrido que sigue.</span></div></div>
+<div class="museum-exhibit" id="museum-exhibit"><div class="museum-versions" role="group" aria-label="Elige una versión del portafolio">
+<button type="button" class="museum-version" data-version="1" aria-pressed="true" aria-controls="museum-display"><span class="museum-version-number">V1 <span aria-hidden="true">&#8599;</span></span><strong>El punto de partida</strong><small>Contenido e interacciones</small></button>
+<button type="button" class="museum-version" data-version="2" aria-pressed="false" aria-controls="museum-display"><span class="museum-version-number">V2 <span aria-hidden="true">&#8599;</span></span><strong>Explorar nuevas formas</strong><small>Tarjetas, capas y movimiento</small></button>
+<button type="button" class="museum-version" data-version="3" aria-pressed="false" aria-controls="museum-display"><span class="museum-version-number">V3 <span aria-hidden="true">&#8599;</span></span><strong>La web como experiencia</strong><small>Un escritorio interactivo</small></button>
+</div><div class="museum-browser" id="museum-display"><div class="museum-browser-bar"><span class="museum-window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span id="museum-address">archivo / versión 01</span><button type="button" id="museum-stop" hidden>Volver a la vista previa <span aria-hidden="true">&#8630;</span></button><span class="museum-browser-label" id="museum-mode">VISTA PREVIA</span></div>
+<div class="museum-stage" id="museum-stage"><img id="museum-image" src="img/historial/v1.webp" width="1200" height="800" alt="Vista previa de la primera versión del portafolio" loading="lazy" decoding="async"><div class="museum-preview-action" id="museum-preview-action"><button type="button" class="button primary" id="museum-explore">Explorar V1 <span aria-hidden="true">&#8594;</span></button><span>Una versión real. Puedes recorrerla.</span></div><p class="museum-load-status" id="museum-load-status" role="status" hidden>Cargando versión…</p></div></div>
+<div class="museum-caption"><div aria-live="polite" aria-atomic="true"><p class="eyebrow" id="museum-chapter">01 / EL PUNTO DE PARTIDA</p><h3 id="museum-version-title">Organizar antes de diseñar.</h3><p id="museum-description">La primera versión reúne contenido profesional, proyectos y certificados. Un punto de partida para trabajar la jerarquía de la información y las primeras interacciones.</p></div><a class="museum-open" id="museum-open" href="historial/indexV1.html" target="_blank" rel="noopener noreferrer">Abrir V1 en otra pestaña <span aria-hidden="true">&#8599;</span></a></div></div></section>
+<section class="section-ink section contact-section" id="contacto" aria-labelledby="contact-title"><div class="scene-atmosphere" aria-hidden="true"><span class="scene-orb"></span><span class="scene-orb secondary"></span><span class="scene-pattern"></span><span class="scene-orbit"></span><span class="scene-beam"></span><span class="scene-beam second"></span><span class="scene-pointer"></span></div><div class="contact-copy reveal"><p class="eyebrow"><span class="status-dot"></span> CONSTRUYAMOS ALGO JUNTOS</p><h2 id="contact-title">Tu próxima idea<br><span>empieza aquí.</span></h2><p>Cuéntame qué tienes en mente. Conversemos sobre cómo convertirlo en una solución.</p><div class="contact-links"><a class="button secondary" href="https://wa.me/56962798030" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp <span aria-hidden="true">↗</span></a></div><span class="contact-location">Santiago, Chile · Disponible para proyectos</span></div><form id="contact-form" class="contact-form reveal"><div class="form-row"><div class="form-field"><label for="contact-name">Nombre <span>*</span></label><input id="contact-name" name="name" autocomplete="name" placeholder="Tu nombre" required maxlength="150"></div><div class="form-field"><label for="contact-phone">Teléfono</label><input id="contact-phone" name="phone" type="tel" autocomplete="tel" placeholder="+56 9…" maxlength="40"></div></div><div class="form-field"><label for="contact-email">Email <span>*</span></label><input id="contact-email" name="email" type="email" autocomplete="email" placeholder="tu@email.com" required maxlength="254"></div><div class="form-field"><label for="contact-subject">Asunto</label><input id="contact-subject" name="subject" placeholder="¿Qué quieres construir?" maxlength="200"></div><div class="form-field"><label for="contact-message">Mensaje <span>*</span></label><textarea id="contact-message" name="message" placeholder="Cuéntame sobre tu proyecto…" required rows="4" maxlength="10000"></textarea></div><p id="contact-feedback" class="form-feedback" role="status" aria-live="polite"></p><div class="form-actions"><button type="reset" class="button secondary">Limpiar</button><button type="submit" class="button primary">Enviar mensaje <span aria-hidden="true">→</span></button></div></form></section>
+</main><footer class="site-footer"><a class="brand" href="#inicio"><span class="monogram">c<span>p</span>.</span><span>Carlos Perales</span></a><span>Desarrollo, datos y diseño.</span><div><a href="https://github.com/carlosperalesa/" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/carlosperalesa" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="#inicio">Volver arriba ↑</a></div></footer><div id="welcomeToast" class="toast" role="status" aria-live="polite"></div>
+<script src="js/vendor/d3.js" defer></script>
+<script src="js/app.js" defer></script>
+<script src="js/atmospheres.js" defer id="section-atmospheres-script"></script>
+<script src="js/carousels.js" defer id="carousel-and-stack-script"></script>
+<script src="js/header.js" defer id="header-scroll-effect"></script>
+<script src="js/museum.js" defer id="museum-script"></script></body></html>

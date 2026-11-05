@@ -1,0 +1,43 @@
+/* Full-width sticky header with Clerk's progressive backdrop blur. */
+body .site-header {
+    --header-mask-opacity:0;
+    isolation:isolate; top:0; width:100%; margin:0; border:0;
+    border-bottom:1px solid var(--border); border-radius:0;
+    background:rgba(248,248,248,.90);
+    backdrop-filter:none; -webkit-backdrop-filter:none;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 2px 3px rgba(0,0,0,.04),0 4px 6px rgba(34,42,53,.04);
+}
+.site-header[data-scrolled="true"] { --header-mask-opacity:1; }
+body .site-header .header-inner {
+    position:relative; z-index:1; width:100%; max-width:1200px;
+    margin-inline:auto; border-radius:0; background:transparent; box-shadow:none;
+}
+body .site-header .mobile-nav {
+    position:relative; z-index:1; width:100%; margin:0; border-radius:0;
+    background:var(--bg); box-shadow:none;
+}
+.header-backdrop { position:absolute; inset:0 0 -16px; z-index:0; pointer-events:none; }
+.header-backdrop > span {
+    position:absolute; inset:0; pointer-events:none;
+    backdrop-filter:blur(var(--blur)); -webkit-backdrop-filter:blur(var(--blur));
+    mask-image:linear-gradient(to bottom,rgba(0,0,0,var(--header-mask-opacity)) 40%,transparent var(--fade-end));
+    -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,var(--header-mask-opacity)) 40%,transparent var(--fade-end));
+}
+@media(prefers-reduced-transparency:reduce) {
+    .header-backdrop { display:none; }
+    body .site-header { background:var(--bg); }
+}
+
+/* Progressive blur layers, in visual stacking order. */
+.header-backdrop > span:nth-child(1) {--blur:1px;--fade-end:100%;}
+.header-backdrop > span:nth-child(2) {--blur:1px;--fade-end:95%;}
+.header-backdrop > span:nth-child(3) {--blur:2px;--fade-end:90%;}
+.header-backdrop > span:nth-child(4) {--blur:2px;--fade-end:85%;}
+.header-backdrop > span:nth-child(5) {--blur:3px;--fade-end:80%;}
+.header-backdrop > span:nth-child(6) {--blur:4px;--fade-end:75%;}
+.header-backdrop > span:nth-child(7) {--blur:5px;--fade-end:70%;}
+.header-backdrop > span:nth-child(8) {--blur:6px;--fade-end:65%;}
+.header-backdrop > span:nth-child(9) {--blur:8px;--fade-end:60%;}
+.header-backdrop > span:nth-child(10) {--blur:10px;--fade-end:55%;}
+.header-backdrop > span:nth-child(11) {--blur:12px;--fade-end:50%;}
+.header-backdrop > span:nth-child(12) {--blur:16px;--fade-end:45%;}

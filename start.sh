@@ -124,8 +124,14 @@ if [ -f "$MAIN_DIR/other/AutoMail/launch.sh" ]; then
 fi
 
 if [ ! -x "$MAIN_DIR/pocketbase" ]; then
-    echo -e "${YELLOW} PocketBase no encontrado, descargando v${PB_VERSION}...${NC}"
-    run_step "cd '$MAIN_DIR' && curl -sL https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSION}/pocketbase_${PB_VERSION}_linux_amd64.zip -o pb.zip && unzip -o pb.zip pocketbase && rm -f pb.zip && chmod +x pocketbase" "2. Descargando PocketBase v${PB_VERSION}"
+    ARCH=$(uname -m)
+    case "$ARCH" in
+        x86_64) PB_ARCH="linux_amd64" ;;
+        aarch64|arm64) PB_ARCH="linux_arm64" ;;
+        *) PB_ARCH="linux_amd64" ;;
+    esac
+    echo -e "${YELLOW} PocketBase no encontrado, descargando v${PB_VERSION} ($PB_ARCH)...${NC}"
+    run_step "cd '$MAIN_DIR' && curl -sL https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSION}/pocketbase_${PB_VERSION}_${PB_ARCH}.zip -o pb.zip && unzip -o pb.zip pocketbase && rm -f pb.zip && chmod +x pocketbase" "2. Descargando PocketBase v${PB_VERSION} ($PB_ARCH)"
 fi
 
 if command -v systemctl >/dev/null 2>&1; then
@@ -165,6 +171,7 @@ mkdir -p "$MAIN_DIR/other/AutoMail/runtime"
 chown -R www-data:www-data "$MAIN_DIR/other/AutoMail/runtime" 2>/dev/null || true
 
 echo -e "   -> Configurando permisos PocketBase (pocketbase)..."
+mkdir -p "$MAIN_DIR/pb_data" "$MAIN_DIR/pb_hooks" 2>/dev/null || true
 [ -e "$MAIN_DIR/pocketbase" ] && chown pocketbase:pocketbase "$MAIN_DIR/pocketbase" 2>/dev/null || true
 [ -d "$MAIN_DIR/pb_data" ] && chown -R pocketbase:pocketbase "$MAIN_DIR/pb_data" 2>/dev/null || true
 [ -d "$MAIN_DIR/pb_hooks" ] && chown -R pocketbase:pocketbase "$MAIN_DIR/pb_hooks" 2>/dev/null || true

@@ -1,0 +1,117 @@
+/* Alternating paper / ink chapters. Violet remains an interaction accent. */
+body .page-frame > :is(#proyectos,#perfil,#certificaciones,#contacto) {
+    color-scheme:dark; --scene-base:#101011; --scene-light:#aaa; --scene-secondary:#666;
+    --scene-grid:#ffffff0a; --scene-line:#ffffff36; --scene-strength:.1;
+    --bg:#101011; --surface:#1b1b1d; --surface-raised:#242426; --soft:#232325;
+    --text:#f5f5f6; --muted:#a6a6ad; --border:#ffffff17;
+    --accent:#b79aff; --accent-light:#d4c1ff; --accent-soft:#b79aff12;
+    --text-color:var(--text); --text-muted:var(--muted); --glass-bg:var(--surface); --glass-border:var(--border);
+    color:var(--text); background:var(--scene-base);
+}
+body.dark-mode .page-frame > :is(#proyectos,#perfil,#certificaciones,#contacto) {
+    --scene-base:#050506; --bg:#050506; --surface:#141416; --surface-raised:#202022;
+    --soft:#1b1b1e; --border:#ffffff15; --scene-strength:.08;
+}
+body .page-frame > #archivo.section-paper {
+    color-scheme:light; --scene-base:#fff; --scene-light:#aaa; --scene-secondary:#ccc;
+    --scene-grid:#1717190a; --scene-line:#17171925; --scene-strength:.12;
+    --bg:#fafafa; --surface:#fff; --surface-raised:#fff; --soft:#f4f4f5;
+    --text:#171719; --muted:#6f6f75; --border:#e5e5e7;
+    --accent:#6c47ff; --accent-light:#a685ff; --accent-soft:#6c47ff0c;
+    --text-color:var(--text); --text-muted:var(--muted); --glass-bg:var(--surface); --glass-border:var(--border);
+    color:var(--text); background:var(--scene-base);
+}
+body.dark-mode .page-frame > #archivo.section-paper {
+    color-scheme:dark; --scene-base:#1b1b1e; --bg:#161618; --surface:#252528; --surface-raised:#2c2c30;
+    --soft:#202023; --text:#f5f5f6; --muted:#aaaab2; --border:#ffffff1c;
+    --accent:#b79aff; --accent-light:#d4c1ff; --accent-soft:#b79aff14;
+    --scene-grid:#ffffff09; --scene-line:#ffffff30;
+}
+body.dark-mode .page-frame > :is(#inicio,#skills,#trayectoria) { --scene-base:#1b1b1e; }
+#archivo .section-icon { background:var(--surface); border-color:var(--border); box-shadow:none; }
+#contacto .contact-form { box-shadow:0 20px 65px #0002; }
+#perfil .about-portrait { box-shadow:0 12px 50px #0002; }
+body[data-atmosphere="proyectos"],body[data-atmosphere="perfil"],body[data-atmosphere="certificaciones"],body[data-atmosphere="contacto"] { --page-canvas:#101011; }
+body.dark-mode[data-atmosphere="proyectos"],body.dark-mode[data-atmosphere="perfil"],body.dark-mode[data-atmosphere="certificaciones"],body.dark-mode[data-atmosphere="contacto"] { --page-canvas:#050506; }
+body[data-atmosphere="automail"] { --page-canvas:#fafafa; }
+body.dark-mode[data-atmosphere="automail"],body.dark-mode[data-atmosphere="inicio"],body.dark-mode[data-atmosphere="skills"],body.dark-mode[data-atmosphere="trayectoria"] { --page-canvas:#1b1b1e; }
+/* Native horizontal carousel: every original project remains a real link. */
+.project-carousel { min-width:0; position:relative; }
+.carousel-toolbar { display:flex; align-items:center; justify-content:space-between; gap:20px; padding-bottom:18px; }
+.carousel-caption { font-size:10px; color:var(--muted); letter-spacing:.25px; }
+
+
+
+
+
+.carousel-count { font:10px/1.5 Consolas,monospace; color:var(--muted); min-width:52px; text-align:right; }
+#proyectos .projects-grid {
+    display:flex; gap:18px; overflow-x:auto; overflow-y:hidden; scroll-snap-type:none;
+    scroll-padding-inline:4px; overscroll-behavior-x:contain; scrollbar-width:thin;
+    scrollbar-color:var(--border) transparent; padding:12px 4px 26px; margin-inline:-4px;
+    cursor:grab; touch-action:pan-x pan-y; border-radius:10px;
+}
+#proyectos .projects-grid.is-dragging { cursor:grabbing; scroll-snap-type:none; user-select:none; }
+#proyectos .projects-grid.is-dragging a { cursor:grabbing; }
+#proyectos .projects-grid > .project-card { flex:0 0 310px; width:310px; min-height:350px; scroll-snap-align:none; scroll-snap-stop:normal; opacity:1!important; translate:none!important; }
+
+#proyectos .project-art { height:130px; background:radial-gradient(ellipse,#ffffff07,transparent 75%); border:1px solid #ffffff05; }
+#proyectos .project-icon { width:70px; height:70px; }
+#proyectos .project-icon img { max-height:70px; max-width:70px; }
+#proyectos .project-card:hover .project-icon { transform:translateY(-7px) rotate(-5deg) scale(1.12); }
+.carousel-progress { width:100%; height:2px; background:var(--border); overflow:hidden; border-radius:2px; margin-top:10px; }
+.carousel-progress > span { display:block; height:100%; width:9.09%; background:var(--accent); transition:width .25s; }
+.carousel-hint { font-size:9px; color:var(--muted); padding-top:12px; display:flex; align-items:center; justify-content:space-between; }
+/* Logo conveyor: seamless group duplication is decorative and inert. */
+.stack-rail { padding-top:25px; padding-bottom:32px; }
+.stack-rail > .stack-topline { display:flex; align-items:center; justify-content:space-between; max-width:none; margin:0 0 22px; gap:15px; }
+.stack-topline > span { font-size:8px; letter-spacing:1.6px; color:var(--muted); }
+.stack-motion-toggle { display:flex; gap:7px; align-items:center; font-size:9px; color:var(--muted); background:transparent; padding:5px 8px; border:1px solid var(--border); border-radius:5px; }
+.stack-motion-toggle:hover { color:var(--accent); border-color:var(--accent); }
+.stack-motion-toggle:disabled { opacity:.4; cursor:default; }
+.stack-rail > .stack-marquee { display:block; max-width:none; margin:0; overflow-x:auto; mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent); }
+.stack-marquee.ticker-ready { overflow:hidden; }
+.stack-track { display:flex; width:max-content; }
+.stack-group { display:flex; flex:none; gap:16px; padding:8px 16px 14px 0; }
+.tech-logo {
+    position:relative; isolation:isolate; display:flex; align-items:center; gap:15px; flex:0 0 224px;
+    width:224px; height:80px; padding:15px 20px; background:var(--surface); border:1px solid var(--border);
+    border-radius:9px; text-align:left; overflow:hidden;
+    transition:transform .35s,border-color .35s,box-shadow .35s;
+}
+.tech-logo::after { content:''; position:absolute; inset:-50% -100%; pointer-events:none; background:linear-gradient(110deg,transparent 43%,#a685ff13 50%,transparent 57%); transform:translateX(-50%); transition:transform .8s; }
+.tech-logo:hover::after { transform:translateX(50%); }
+.tech-logo:hover { transform:translateY(-4px); border-color:color-mix(in srgb,var(--accent) 40%,var(--border)); box-shadow:0 8px 24px #00000009; }
+.tech-symbol { display:grid; place-items:center; width:36px; height:42px; font-size:30px; color:var(--text); transition:transform .5s,color .3s; }
+.tech-symbol.django-mark { font-size:29px; font-weight:800; letter-spacing:-3px; }
+.tech-logo:hover .tech-symbol,.tech-logo:focus-visible .tech-symbol { color:var(--accent); transform:rotate(-8deg) scale(1.12); }
+.tech-logo { cursor:pointer; }
+.tech-logo:hover .tech-name,.tech-logo:focus-visible .tech-name { color:var(--accent); }
+.tech-name { font-size:16px; font-weight:550; letter-spacing:-.5px; transition:color .3s; }
+.tech-detail { display:block; font-size:8px; font-weight:400; letter-spacing:.8px; text-transform:uppercase; color:var(--muted); margin-top:3px; }
+.ticker-ready .stack-track { animation:stackConveyor 34s linear infinite reverse; animation-play-state:paused; }
+.ticker-ready.ticker-visible:not(.ticker-paused):not(:hover):not(:focus-within) .stack-track { animation-play-state:running; }
+body.ambient-page-hidden .ticker-ready .stack-track { animation-play-state:paused!important; }
+@keyframes stackConveyor { to { transform:translateX(-50%); } }
+@media(max-width:768px) {
+    #proyectos .projects-grid > .project-card { flex-basis:280px; width:280px; min-height:330px; }
+
+    .carousel-caption { font-size:9px; max-width:150px; }
+
+
+    .carousel-count { font-size:9px; min-width:40px; }
+    .carousel-hint { font-size:8px; }
+    .stack-topline > span { font-size:7px; letter-spacing:1px; }
+    .stack-motion-toggle { font-size:8px; }
+    .tech-logo { width:170px; flex-basis:170px; height:70px; padding:12px 15px; gap:12px; }
+    .tech-name { font-size:13px; }
+    .tech-symbol { font-size:26px; width:30px; }
+    .tech-detail { font-size:7px; }
+}
+@media(prefers-reduced-motion:reduce) {
+    .ticker-ready .stack-track { animation:none; transform:none; }
+    .stack-marquee.ticker-ready { overflow:auto; mask-image:none; }
+    .stack-group[aria-hidden="true"] { display:none; }
+    .tech-logo:hover,.tech-logo:hover .tech-symbol,.tech-logo:focus-visible .tech-symbol { transform:none; }
+    #proyectos .project-card:hover .project-icon { transform:none; }
+}

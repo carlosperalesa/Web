@@ -1,0 +1,10 @@
+/* Clerk-inspired floating marks, independent of the horizontal conveyor. */
+.stack-group .tech-logo:nth-child(3n+1) { --logo-delay:-1.2s; }
+.stack-group .tech-logo:nth-child(3n+2) { --logo-delay:-3.1s; }
+.stack-group .tech-logo:nth-child(3n) { --logo-delay:-4.4s; }
+.ticker-ready .tech-symbol { animation:stackIconFloat 5.5s ease-in-out infinite; animation-delay:var(--logo-delay,0s); animation-play-state:paused; }
+.ticker-ready.ticker-visible:not(.ticker-paused) .tech-symbol { animation-play-state:running; }
+.ticker-ready:is(:hover,:focus-within) .tech-symbol { animation-play-state:paused; }
+.tech-logo::after { opacity:.45; }
+@keyframes stackIconFloat { 0%,100% { translate:0 2px; } 50% { translate:0 -3px; } }
+@media(prefers-reduced-motion:reduce) { .ticker-ready .tech-symbol { animation:none; translate:none; } }

@@ -1,0 +1,1 @@
+try{const theme=localStorage.getItem('theme');document.body.classList.toggle('dark-mode',theme==='dark'||(!theme&&matchMedia('(prefers-color-scheme: dark)').matches));}catch{document.body.classList.toggle('dark-mode',matchMedia('(prefers-color-scheme: dark)').matches);}
