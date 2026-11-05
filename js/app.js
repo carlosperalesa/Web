@@ -198,7 +198,7 @@ class SkillsGraph {
             .attr("text-anchor", "middle")
             .text(d => d.id)
             .style("font-size", "10px")
-            .style("fill", "var(--text-color)")
+            .style("fill", "var(--text, #171719)")
             .style("font-family", "inherit")
             .style("pointer-events", "none")
             .style("text-shadow", "none");
@@ -418,6 +418,28 @@ document.addEventListener('DOMContentLoaded', () => {
             if (next !== undefined) { event.preventDefault(); selectTab(tabs[next],true,travel); }
         });
     });
+    // Horizontal touch gestures move the hero wheel; vertical page scroll stays native.
+    let swipe=null,suppressClickUntil=0;
+    stage.addEventListener('pointerdown',event=>{
+        if(event.pointerType==='mouse'||!event.isPrimary||orbitRunning)return;
+        swipe={id:event.pointerId,x:event.clientX,y:event.clientY,dx:0,dragging:false};
+    });
+    stage.addEventListener('pointermove',event=>{
+        if(!swipe||event.pointerId!==swipe.id)return;
+        const dx=event.clientX-swipe.x,dy=event.clientY-swipe.y;
+        if(!swipe.dragging&&Math.abs(dy)>18&&Math.abs(dy)>Math.abs(dx)){swipe=null;return;}
+        if(!swipe.dragging&&Math.abs(dx)>14&&Math.abs(dx)>Math.abs(dy)*1.2){swipe.dragging=true;stage.setPointerCapture(event.pointerId);stage.classList.add('is-swiping');}
+        if(swipe.dragging){swipe.dx=dx;wheel.style.translate=`${Math.max(-120,Math.min(120,dx))}px 0`;if(event.cancelable)event.preventDefault();}
+    },{passive:false});
+    const endSwipe=(event,cancelled=false)=>{
+        if(!swipe||event.pointerId!==swipe.id)return;
+        const gesture=swipe;swipe=null;stage.classList.remove('is-swiping');wheel.style.removeProperty('translate');
+        if(stage.hasPointerCapture(event.pointerId))stage.releasePointerCapture(event.pointerId);
+        if(gesture.dragging)suppressClickUntil=performance.now()+500;
+        if(!cancelled&&gesture.dragging&&Math.abs(gesture.dx)>45){const current=tabs.findIndex(t=>t.getAttribute('aria-selected')==='true');const direction=gesture.dx<0?1:-1;selectTab(tabs[(current+direction+tabs.length)%tabs.length],false,direction);}
+    };
+    stage.addEventListener('pointerup',event=>endSwipe(event));stage.addEventListener('pointercancel',event=>endSwipe(event,true));
+    stage.addEventListener('click',event=>{if(performance.now()<suppressClickUntil){event.preventDefault();event.stopPropagation();}},{capture:true});
     motionPreference.addEventListener('change',() => { if (motionPreference.matches) finishOrbit(); });
     window.addEventListener('resize',() => finishOrbit(),{passive:true});
     document.addEventListener('visibilitychange',() => { if (document.hidden) finishOrbit(); });
