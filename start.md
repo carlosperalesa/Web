@@ -1,58 +1,57 @@
-# Documentación de `start.sh`
+# Despliegue y operación de CarlosPerales.dev
 
-El script `start.sh` es la herramienta principal para desplegar y actualizar el sistema de **CarlosPerales.dev**.
+Documentación contrastada con `start.sh`, los servicios systemd y Nginx del repositorio el 16 de noviembre de 2026. La web está alojada en la VM de Azure `vm-carlosperales` (Azure for Students, `westus`, IP `20.237.211.250`). El inventario y las comprobaciones públicas están en [README.md](README.md).
 
-## Flujo de Ejecución
+## Alcance de start.sh
 
-El script sigue un orden lógico estricto para asegurar un despliegue sin interrupciones:
+El script requiere Linux, permisos administrativos y un checkout Git existente. Utiliza servicios del host (systemd, Nginx y un entorno virtual Python); no despliega contenedores. No se ejecutó durante la revisión documental.
 
-### 1. Actualización de Código (`Git Pull`)
-*   Se mueve al directorio raíz del proyecto.
-*   Ejecuta `git pull` para descargar los últimos cambios desde el repositorio remoto.
+1. Carga `/etc/environment` y determina `MAIN_DIR` mediante `DEPLOY_ROOT`, cuyo valor por defecto es `/var/www/portafolio`.
+2. Sincroniza Git mediante `fetch --all --prune --tags`, selecciona `main`, `master` o la rama actual y ejecuta `reset --hard` contra la rama remota, con fallback a `HEAD`. También elimina una lista fija de archivos residuales.
+3. Instala soporte Python mediante apt, crea el entorno `other/AutoMail/.venv` e instala sus dependencias.
+4. Si falta el ejecutable, descarga PocketBase **0.36.5** en `MAIN_DIR`, seleccionando el binario según arquitectura. Esa es la versión fijada por el script, no una versión instalada comprobada.
+5. Copia las unidades `pocketbase.service` y `automail.service`, recarga systemd, habilita y reinicia los servicios.
+6. Ajusta permisos de recursos estáticos y directorios de datos/runtime.
+7. Copia la configuración de Nginx, crea el enlace en `sites-enabled`, ejecuta `nginx -t` y, si pasa, recarga Nginx.
 
-### 2. Despliegue de Servicios (`Deploy`)
-Gestiona el servicio de PocketBase via systemd (`pocketbase`).
+## Condiciones antes de desplegar
 
-Si el binario no esta instalado, usa:
+- El checkout debe existir en `/var/www/portafolio` y tener acceso al repositorio remoto.
+- Revisar y respaldar cambios locales del servidor: `reset --hard` descarta modificaciones de archivos rastreados. No es un despliegue que preserve automáticamente cambios locales.
+- Nginx, systemd, curl, unzip y los certificados referenciados deben estar preparados; el script no configura por completo un servidor vacío.
+- El usuario y grupo `pocketbase` deben existir; el script no los crea.
+- Respaldar datos de PocketBase y configuración operativa antes de cambios.
+- Las rutas de las unidades, el launcher y Nginx están fijadas en `/var/www/portafolio`. Cambiar solo `DEPLOY_ROOT` no basta.
 
-```bash
-sudo useradd -r -s /usr/sbin/nologin pocketbase || true
-sudo mkdir -p /opt/pocketbase
-PB_VERSION="0.36.5"
-cd /opt/pocketbase
-sudo curl -L -o pocketbase.zip "https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSION}/pocketbase_${PB_VERSION}_linux_amd64.zip"
-sudo apt-get install -y unzip
-sudo unzip pocketbase.zip
-sudo rm pocketbase.zip
-sudo chown -R pocketbase:pocketbase /opt/pocketbase
-sudo chmod +x /opt/pocketbase/pocketbase
-sudo cp /var/www/portafolio/pocketbase.service /etc/systemd/system/pocketbase.service
-sudo systemctl daemon-reload
-sudo systemctl enable pocketbase
-sudo systemctl restart pocketbase
-```
+## Servicios versionados
 
-### 3. Ajuste de Permisos (`Permissions`)
-Una vez que los contenedores están definidos, el script corrige los permisos del sistema de archivos para garantizar que tanto el servidor web como los contenedores puedan leer/escribir donde corresponde.
-*   **Archivos Estáticos (Web)**: Se asignan al usuario `www-data` (Nginx) para que puedan ser servidos públicamente.
+| Servicio | Configuración |
+|---|---|
+| PocketBase | Usuario/grupo `pocketbase`; directorio `/var/www/portafolio`; ejecutable `./pocketbase serve --http=127.0.0.1:8090` |
+| AutoMail | Usuario/grupo `root`; directorio `/var/www/portafolio/other/AutoMail`; ejecuta `launch.sh` |
+| Launcher AutoMail | Crea `.venv` si falta, instala dependencias y ejecuta `server.py` en `127.0.0.1:8092` |
+| Nginx | HTTP a HTTPS; raíz `/var/www/portafolio`; proxies PocketBase, AutoMail y BT |
 
-### 4. Configuración del Sistema (`System Config`)
-Aplica configuraciones a nivel de servidor (Host).
-*   **Nginx**: Valida configuración y recarga el servicio Nginx.
+La configuración de BT apunta a `127.0.0.1:8091`, pero este script no instala ni reinicia ese backend.
 
-## Uso
+## Ejecución y automatización
 
-Simplemente ejecutar desde la raíz del proyecto:
+El mecanismo existente es `start.sh`, ejecutado con privilegios administrativos en el servidor desde un checkout revisado. El script reinicia servicios y puede interrumpir peticiones; no ofrece garantía de despliegue sin interrupciones ni rollback automático.
 
-```bash
-./start.sh
-```
+Las directrices del proyecto piden canalizar automatizaciones mediante Makefile, pero este checkout todavía no lo incluye. No hay workflows en `.github/workflows` ni se confirmó CI/CD externo. Esta documentación no introduce una automatización nueva ni ejecuta el script.
 
-El script está diseñado para ser idempotente: puede ejecutarse múltiples veces sin causar daños, simplemente reaplicará el estado deseado.
+## Verificación posterior
 
-## Verificación
-El script ya no ejecuta automáticamente el chequeo de salud. Para verificar el estado del sistema después de un despliegue, ejecute manualmente:
+Comprobar de forma independiente:
 
-```bash
-./check.sh
-```
+- `https://carlosperales.dev/`: página principal y recursos estáticos.
+- `https://carlosperales.dev/api/health`: salud de PocketBase.
+- `https://carlosperales.dev/automail-api/health`: salud de AutoMail, pendiente de comprobar en esta revisión.
+- Estado y logs de `pocketbase`, `automail` y Nginx mediante systemd/journal en el servidor.
+- Formulario y entrega de correo mediante una prueba acordada; la salud de la API no prueba ambos flujos.
+
+No existe `check.sh` en este checkout. No utilizar las referencias antiguas a ese archivo como un procedimiento disponible.
+
+## Diagnóstico
+
+Si falla una comprobación, revisar los logs del servicio afectado y el resultado de `nginx -t` antes de volver a desplegar. Ejecutar `start.sh` como diagnóstico puede descartar cambios y reiniciar servicios innecesariamente. Las reglas de privacidad de mensajes también requieren una revisión específica; consultar los pendientes del README.

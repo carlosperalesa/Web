@@ -1,263 +1,94 @@
-# 🚀 Carlos Perales | Portafolio Ecosistema Web
+# Carlos Perales | Portafolio web
 
-<div align="center">
+Portafolio profesional publicado en [carlosperales.dev](https://carlosperales.dev/).
+Frontend estático en HTML, CSS y JavaScript, con PocketBase para el formulario de contacto.
 
-![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-success?style=for-the-badge&logo=github)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![PocketBase](https://img.shields.io/badge/PocketBase-B8DBE8?style=for-the-badge&logo=pocketbase&logoColor=black)
+## Infraestructura verificada
 
-**Portafolio digital profesional estilo Sistema Operativo (macOS Desktop UI) con backend integrado, modales interactivos y micro-servicios.**
+Revisión del 16 de noviembre de 2026 mediante DNS, peticiones HTTPS y consultas de solo lectura a Azure.
 
-[🌐 **Ver Sitio en Vivo**](https://carlosperales.dev/)
+| Elemento | Valor |
+|---|---|
+| Repositorio | https://github.com/carlosperalesa/Web.git |
+| Carpeta local | `D:\OneDrive\GitHub\dev\Web` |
+| Proyecto vecino | `D:\OneDrive\GitHub\dev\Khai` (independiente de esta web) |
+| Proveedor | Microsoft Azure |
+| Suscripción | Azure for Students |
+| Máquina virtual | `vm-carlosperales` |
+| Grupo de recursos | `rg-carlosperales` |
+| Región | `westus` |
+| IP pública | `20.237.211.250` |
+| Dominio | `carlosperales.dev` |
+| Estado de la VM | `VM running` al verificar |
 
-</div>
+El dominio resolvió a la IP de esta VM. La página principal y `js/app.js` respondieron HTTP 200, con servidor Nginx. `/api/health` respondió HTTP 200 con `API is healthy.`. Estas comprobaciones no prueban el envío del formulario ni la entrega de correos.
 
----
+Las rutas internas, servicios y certificados descritos a continuación proceden de los archivos del repositorio; no se inspeccionó por SSH la configuración activa del servidor. Las referencias anteriores a DigitalOcean y GitHub Pages no describen el alojamiento verificado.
 
-## ✨ Características Principales
+## Cómo funciona
 
-- 💻 **Sistema Operativo Web (macOS Desktop UI)** — Ventanas arrastrables, controles de ventana, minimización masiva y animaciones dinámicas con transform-origin desde el Dock.
-- 🎨 **Diseño Glassmorphism & Neomorphism** — Efectos de cristal esmerilado, desenfoque suave y bordes pulidos.
-- 🌌 **Cyber Grid 3D** — Fondo animado e interactivo estilo Retro Wave construido en Three.js (`js/background.js`).
-- 🕸️ **Skills Graph Interactivo** — Grafo de habilidades interactivas con física de simulación visual construido en D3.js (`js/skills-graph.js`).
-- 📜 **macOS 3D Cover Flow de Certificaciones** — Carrusel 3D de certificados opacos e interactivos con selección por clic/teclado y apertura directa (`js/coverflow.js`).
-- 📂 **Modal de Proyectos** — Grilla de aplicaciones con tarjetas interactivas de clientes y demos.
-- ✉️ **AutoMail Integrado** — Interfaz web para procesamiento de archivos `.xlsx`, generación asistida de correos y descarga de ZIP (`js/automail.js`).
-- 📬 **Formulario de Contacto & Notificaciones** — Integración con PocketBase backend y badge de mensajes en tiempo real (`js/contact.js`).
-- 🌗 **Modo Oscuro/Claro** — Alternador global con transiciones visuales cuidadas.
-- 📱 **Totalmente Responsive** — Adaptado para dispositivos móviles, tablets y escritorios.
-
----
-
-## 🛠️ Tecnologías y Stack
-
-| Categoría | Tecnologías |
-|-----------|-------------|
-| **Frontend Core** | HTML5 Semantic, CSS3 Vanilla, JavaScript ES6+ (Modular) |
-| **Librerías 3D & Data** | Three.js (Cyber Grid), D3.js (Force-directed Graph) |
-| **Backend & Base de Datos** | PocketBase (Go/SQLite) para mensajes y usuarios |
-| **Sub-Servicios Backend** | Python 3.10+, Flask, Pandas, OpenPyXL (AutoMail API) |
-| **Tipografía e Iconos** | Google Fonts (Outfit, Inter), Ionicons, Font Awesome 6 |
-| **Servidor Web & Proxy** | Nginx, SSL Let's Encrypt, Systemd (Ubuntu Linux) |
-| **Despliegue & CI/CD** | GitHub Actions, SSH, Bash Automation |
-
----
-
-## 🏗️ 1. Arquitectura del Sistema
-
-El ecosistema en producción opera sobre un servidor VPS (DigitalOcean Droplet Linux) compuesto por Nginx como Proxy Reverso y dos servicios backend independientes:
-
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                            DigitalOcean Droplet                             │
-├─────────────────────────────────────────────────────────────────────────────┤
-│  ┌───────────────────────────────────────────────────────────────────────┐  │
-│  │                            Nginx (443/80)                             │  │
-│  │  • SSL / HTTPS (Let's Encrypt)                                        │  │
-│  │  • Archivos Estáticos (Raíz portafolio)                               │  │
-│  │  • Proxy Reverso                                                      │  │
-│  └──────────┬───────────────────────────┬─────────────────────────┬──────┘  │
-│             │                           │                         │         │
-│             ▼                           ▼                         ▼         │
-│  ┌─────────────────────┐   ┌─────────────────────────┐   ┌────────────────┐ │
-│  │  PocketBase         │   │  AutoMail Backend       │   │  Backend BT    │ │
-│  │  :8090              │   │  :8092                  │   │  :8091         │ │
-│  │  • Messages CRUD    │   │  • Microservicio XLSX   │   │  • PocketBase  │ │
-│  │  • Mail Notifications│  │  • report.log + ZIP     │   │    secundario  │ │
-│  └─────────────────────┘   └─────────────────────────┘   └────────────────┘ │
-└─────────────────────────────────────────────────────────────────────────────┘
+```text
+Navegador -> HTTPS carlosperales.dev -> Nginx (VM de Azure)
+                                       |-- / -> archivos estáticos
+                                       |-- /api/ y /_/ -> PocketBase :8090
+                                       |-- /automail-api/ -> AutoMail :8092
+                                       +-- /bt/ -> backend :8091
 ```
 
----
+La configuración versionada de Nginx sirve archivos desde `/var/www/portafolio`, redirige HTTP a HTTPS y utiliza certificados de Let's Encrypt. Incluye compresión, caché de recursos y limitación de peticiones para las API.
 
-## 📁 2. Estructura del Repositorio
+- **Frontend actual:** secciones de proyectos, perfil, habilidades, certificaciones y contacto; tema claro/oscuro, carruseles y efectos visuales. No requiere compilación ni un servidor Node.js.
+- **Contacto:** `js/app.js` envía nombre, teléfono, email, asunto y mensaje a `POST /api/collections/messages/records`.
+- **PocketBase:** `pocketbase.service` lo ejecuta como usuario `pocketbase` en `127.0.0.1:8090`. Las migraciones definen la colección `messages`.
+- **Notificaciones:** `pb_hooks/messages_notify.pb.js` intenta enviar un correo después de crear un mensaje. Requiere una configuración de correo válida en PocketBase; su entrega no fue comprobada.
+- **AutoMail:** subproyecto Python/Flask que procesa archivos XLSX. Su launcher y servicio están versionados; escucha en `127.0.0.1:8092`. Su estado en producción está pendiente de validar. Consulta [su documentación](other/AutoMail/README.md).
+- **Backend BT:** Nginx contiene un proxy a `127.0.0.1:8091`; no se verificó el servicio de destino.
 
-```
-carlosperalesa.github.io/
-├── 📄 index.html              # Estructura principal y modales OS
-├── 📂 css/                    # Estilos divididos por componentes
-│   ├── style.css              # Estilos base, Neo/Glassmorphism y Dock
-│   ├── modal.css              # Sistema de ventanas y modales
-│   ├── coverflow.css          # Estilos del macOS 3D Cover Flow
-│   └── automail.css           # Estilos del modal interactivo AutoMail
-├── 📂 js/                     # Lógica modular de cliente
-│   ├── app.js                 # Detección de entorno y configuración
-│   ├── background.js          # Fondo 3D (Three.js Cyber Grid)
-│   ├── skills-graph.js        # Grafo de habilidades (D3.js)
-│   ├── modals.js              # Manejo de aperturas, z-index y animaciones
-│   ├── drag.js                # Sistema de arrastre de ventanas
-│   ├── coverflow.js           # Lógica 3D Cover Flow de Certificaciones
-│   ├── contact.js             # Integración PocketBase mensajes
-│   └── automail.js            # Lógica web de subida y polling de AutoMail
-├── 📂 img/                    # Assets del sistema
-│   ├── avatar.webp            # Foto de perfil
-│   ├── cards/                 # Logotipos e imágenes de proyectos
-│   └── cert/                  # Certificados e insignias
-├── 📂 pb_hooks/               # Hooks en JS para PocketBase (notificación email)
-├── 📂 nginx/                  # Configuraciones para el servidor web Nginx
-├── 📂 other/                  # Sub-proyectos adicionales
-│   ├── cv/                    # Currículum e interfaz interactiva
-│   ├── pokedex/               # Aplicación cliente Pokédex
-│   └── AutoMail/              # ✉️ Sub-proyecto AutoMail (Backend Python)
-│       └── 📄 README.md       # Documentación técnica completa de AutoMail
-├── 📄 start.sh                # Script maestro de despliegue en servidor
-├── 📄 check.sh                # Script de auditoría y diagnóstico del sistema
-├── 📄 pocketbase.service      # Servicio Systemd para PocketBase
-├── 📄 automail.service        # Servicio Systemd para AutoMail Backend
-└── 📄 README.md               # Manual del sistema unificado
+## Estructura
+
+```text
+Web/
+|-- index.html                  # Página principal
+|-- css/                        # Estilos del sitio y componentes
+|-- js/                         # Interacciones y formulario de contacto
+|   |-- app.js
+|   |-- theme-init.js
+|   |-- header.js
+|   |-- atmospheres.js
+|   |-- carousels.js
+|   |-- vendor/d3.js
+|-- img/, fonts/, sounds/       # Recursos locales
+|-- proyectos/                  # Casos de estudio y archivo vivo
+|-- historial/                  # Versiones anteriores del portafolio
+|-- other/                      # AutoMail, CV y otras aplicaciones
+|-- pb_hooks/                   # Notificaciones de PocketBase
+|-- pb_migrations/              # Esquema de mensajes
+|-- nginx/carlosperales.dev.conf
+|-- pocketbase.service
+|-- automail.service
+|-- start.sh                    # Script de despliegue Linux
+|-- start.md                    # Operación y limitaciones del script
 ```
 
----
+## Desarrollo local
 
-## ⚙️ 3. Configuración de Entorno (Environment)
+Abre la carpeta `Web` y sirve su raíz con un servidor estático HTTP, por ejemplo Live Server si ya está disponible en el editor. No hay `package.json` ni paso de build para la página principal.
 
-El servidor utiliza variables en `/etc/environment` para evitar almacenar secretos en el código fuente.
+`js/app.js` selecciona `http://127.0.0.1:8090` cuando el hostname es `localhost` o `127.0.0.1`; en otros hosts utiliza `https://carlosperales.dev`. Se puede definir `window.PB_BASE_URL` antes de cargar `app.js` para apuntar a otra instancia. Abrir el archivo directamente o usar una IP de LAN no activa la detección local y puede dirigir el formulario a producción.
 
-### Variables del Sistema
+Para probar el formulario localmente hace falta una instancia de PocketBase con las migraciones y las reglas de acceso apropiadas. La vista estática puede revisarse sin backend. No se inició ningún servicio local durante esta revisión.
 
-| Variable | Descripción | Ejemplo |
-|----------|-------------|---------|
-| `DEPLOY_ROOT` | Ruta raíz del portafolio en servidor | `/var/www/portafolio` |
+## Despliegue y operación
 
-Para configurar en Ubuntu:
-```bash
-sudo nano /etc/environment
-# Agregar: DEPLOY_ROOT="/var/www/portafolio"
-```
+El script existente `start.sh` sincroniza el repositorio y prepara servicios systemd en Linux. Lee `/etc/environment` y admite `DEPLOY_ROOT` (por defecto `/var/www/portafolio`). Los archivos de Nginx, systemd y el launcher de AutoMail mantienen esa ruta fija: cambiar solo `DEPLOY_ROOT` no cambia toda la instalación.
 
----
+No hay workflows de GitHub Actions en este checkout; no está confirmado un despliegue automático con cada push. Consulta [start.md](start.md) antes de ejecutar el script. El repositorio tampoco incluye actualmente un Makefile para encapsular la operación.
 
-## 🧾 4. Inventario Backend (PocketBase)
+## Pendientes de validación
 
-### 1) Backend Principal
-- **Instancia**: Ejecutada en el puerto `:8090`.
-- **Panel de Administración**: `https://carlosperales.dev/_/`
+- Comprobar por SSH los servicios y la configuración activa de Nginx.
+- Verificar AutoMail (`/automail-api/health`), el backend BT y la entrega de correos.
+- Revisar reglas de privacidad de `messages`: la migración inicial deja `listRule` y `viewRule` vacías, permitiendo lectura pública si se aplican sin cambios. No se consultaron mensajes ni se confirmó que producción conserve esas reglas.
+- Mantener secretos y datos fuera de Git; `pb_data/`, entornos virtuales y el runtime de AutoMail están excluidos en `.gitignore`.
 
-### 2) Integración con el Formulario de Contacto
-- **Creación de Mensajes**: `POST /api/collections/messages/records`
-- **Contador de Mensajes (Badge Dock)**: `GET /api/collections/messages/records?page=1&perPage=1`
-- **Hooks de Correo (`pb_hooks/messages_notify.pb.js`)**: Notifica por email automáticamente al recibir un nuevo mensaje.
-
----
-
-## ✉️ 5. Sub-Proyecto AutoMail Web
-
-AutoMail está integrado en el modal `#modal-automail` desde la grilla de proyectos.
-
-- **Frontend**: `js/automail.js` (gestiona la zona de dropzone, barra de progreso, lectura del `report.log` y descarga).
-- **Backend HTTP**: Servicio Python/Flask en `:8092` expuesto vía Nginx en `/automail-api/`.
-- **Documentación Completa del Sub-proyecto**: Consulta [other/AutoMail/README.md](other/AutoMail/README.md).
-
----
-
-## 🚀 6. Despliegue Automatizado (CI/CD)
-
-### GitHub Actions Workflow
-
-Cada push a la rama `main` dispara el flujo de integración continua:
-
-```
-GitHub Push → Actions Runner → SSH Deployment → Servidor DigitalOcean → start.sh
-```
-
-### GitHub Secrets Requeridos
-
-| Secret | Descripción |
-|--------|-------------|
-| `DEPLOY_KEY` | Llave privada SSH para acceso al droplet |
-| `DEPLOY_HOST` | Dirección IP del servidor |
-| `DEPLOY_USER` | Usuario SSH (`root` / `ubuntu`) |
-| `DEPLOY_DOMAIN` | `carlosperales.dev` |
-
----
-
-## 🛠️ 7. Operación y Scripts del Servidor
-
-En el servidor, los scripts de la raíz se ejecutan mediante alias o ejecución directa:
-
-```bash
-# 1. Despliegue y actualización total (git pull + reinicio servicios systemd + reload nginx):
-sudo bash start.sh
-
-# 2. Diagnóstico y Health Check:
-sudo bash check.sh
-```
-
-### Instalación de PocketBase en Servidor
-
-```bash
-# Crear usuario dedicado
-sudo useradd -r -s /usr/sbin/nologin pocketbase || true
-sudo mkdir -p /opt/pocketbase
-
-# Descargar e instalar binario
-PB_VERSION="0.36.5"
-cd /opt/pocketbase
-sudo curl -L -o pocketbase.zip "https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSION}/pocketbase_${PB_VERSION}_linux_amd64.zip"
-sudo apt-get install -y unzip
-sudo unzip pocketbase.zip
-sudo rm pocketbase.zip
-
-# Permisos y servicio systemd
-sudo chown -R pocketbase:pocketbase /opt/pocketbase
-sudo chmod +x /opt/pocketbase/pocketbase
-sudo cp /var/www/portafolio/pocketbase.service /etc/systemd/system/pocketbase.service
-sudo systemctl daemon-reload
-sudo systemctl enable --now pocketbase
-```
-
----
-
-## 💻 8. Desarrollo Local
-
-```bash
-# 1. Clonar el repositorio
-git clone https://github.com/carlosperalesa/carlosperalesa.github.io.git
-cd carlosperalesa.github.io
-
-# 2. Iniciar servidor local de PocketBase (opcional)
-./pocketbase serve
-
-# 3. Iniciar backend local de AutoMail (opcional)
-cd other/AutoMail
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-python server.py
-
-# 4. Abrir index.html con Live Server o navegador web
-```
-
----
-
-## 🔧 9. Troubleshooting
-
-- **Error de permisos en uploads / runtime:**
-  Ejecutar `sudo bash start.sh` para reaplicar la propiedad de archivos (`chown -R`).
-- **PocketBase no responde:**
-  Verificar logs con `sudo journalctl -u pocketbase.service -n 50 -f`.
-- **AutoMail backend caído:**
-  Verificar logs con `sudo journalctl -u automail.service -n 50 -f`.
-
----
-
-## 📌 Próximos Pasos (To-Do List)
-
-- [ ] **Apartado "Museo / Index Antiguos":** Crear una sección o modal en el portafolio para consultar y navegar por las versiones históricas anteriores del sitio (`indexV1.html`, `indexV2.html`, etc.).
-
----
-
-## 📬 Contacto
-
-<div align="center">
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/carlosperalesa)
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/carlosperalesa)
-[![Website](https://img.shields.io/badge/Website-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white)](https://carlosperales.dev/)
-
-**Hecho con 💙 por Carlos Perales**
-
-</div>
+La actualización de documentación no ejecuta despliegues ni modifica la configuración de producción.
