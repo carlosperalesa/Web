@@ -16,8 +16,8 @@ Revisión del 16 de noviembre de 2026 mediante DNS, peticiones HTTPS y consultas
 | Suscripción | Azure for Students |
 | Máquina virtual | `vm-carlosperales` |
 | Grupo de recursos | `rg-carlosperales` |
-| Región | `westus` |
-| IP pública | `20.237.211.250` |
+| Región | `chilecentral` |
+| IP pública | `68.211.144.179` |
 | Dominio | `carlosperales.dev` |
 | Estado de la VM | `VM running` al verificar |
 

@@ -1,6 +1,6 @@
 # Despliegue y operación de CarlosPerales.dev
 
-Documentación contrastada con `start.sh`, los servicios systemd y Nginx del repositorio el 16 de noviembre de 2026. La web está alojada en la VM de Azure `vm-carlosperales` (Azure for Students, `westus`, IP `20.237.211.250`). El inventario y las comprobaciones públicas están en [README.md](README.md).
+Documentación contrastada con `start.sh`, los servicios systemd y Nginx del repositorio el 21 de noviembre de 2026. La web está alojada en la VM de Azure `vm-carlosperales` (Azure for Students, `chilecentral`, IP `68.211.144.179`). El inventario y las comprobaciones públicas están en [README.md](README.md).
 
 ## Alcance de start.sh
 
