@@ -2,6 +2,17 @@
 
 Documentación contrastada con `start.sh`, los servicios systemd y Nginx del repositorio el 21 de noviembre de 2026. La web está alojada en la VM de Azure `vm-carlosperales` (Azure for Students, `chilecentral`, IP `68.211.144.179`). El inventario y las comprobaciones públicas están en [README.md](README.md).
 
+## Publicación de archivos estáticos
+
+La raíz activa `/var/www/portafolio` es un directorio de archivos estáticos. Para cambios de HTML o CSS, transfiere los archivos del commit de `main` publicado en GitHub mediante el alias SSH `vm-carlosperales`.
+
+1. Compara los SHA-256 de los archivos publicados con los del commit anterior para detectar cambios en producción.
+2. Extrae del commit nuevo los archivos a publicar y cópialos con `scp` a un directorio temporal privado en la VM. Comprueba sus SHA-256 después de la transferencia.
+3. Respalda los archivos actuales en `/var/backups`, fuera de la raíz web. Copia cada reemplazo junto a su destino con propietario `root:root` y modo `0644`, y actívalo con un renombrado. Publica primero el CSS y después el HTML que referencia su versión.
+4. Comprueba por HTTPS que las páginas referencien el nuevo parámetro `v` y que el recurso entregado coincida con el commit. Si falla la verificación, restaura los archivos respaldados y vuelve a comprobar las rutas.
+
+Para la cabecera, comprueba la portada y los proyectos Archivo vivo, Ghivs, ProdQuim y TNSP. Abre una página a un ancho de hasta 768 px y desplázate más de 8 px para comprobar el degradado y el menú móvil.
+
 ## Alcance de start.sh
 
 El script requiere Linux, permisos administrativos y un checkout Git existente. Utiliza servicios del host (systemd, Nginx y un entorno virtual Python); no despliega contenedores. No se ejecutó durante la revisión documental.
@@ -36,9 +47,9 @@ La configuración de BT apunta a `127.0.0.1:8091`, pero este script no instala n
 
 ## Ejecución y automatización
 
-El mecanismo existente es `start.sh`, ejecutado con privilegios administrativos en el servidor desde un checkout revisado. El script reinicia servicios y puede interrumpir peticiones; no ofrece garantía de despliegue sin interrupciones ni rollback automático.
+`start.sh` está previsto para aprovisionar o actualizar servicios desde un checkout revisado con privilegios administrativos. El script reinicia servicios y puede interrumpir peticiones; no ofrece garantía de despliegue sin interrupciones ni rollback automático.
 
-Las directrices del proyecto piden canalizar automatizaciones mediante Makefile, pero este checkout todavía no lo incluye. No hay workflows en `.github/workflows` ni se confirmó CI/CD externo. Esta documentación no introduce una automatización nueva ni ejecuta el script.
+Las directrices del proyecto piden canalizar automatizaciones mediante Makefile. El repositorio todavía no incluye un Makefile ni workflows en `.github/workflows`.
 
 ## Verificación posterior
 

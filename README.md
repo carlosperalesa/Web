@@ -38,6 +38,7 @@ Navegador -> HTTPS carlosperales.dev -> Nginx (VM de Azure)
 La configuración versionada de Nginx sirve archivos desde `/var/www/portafolio`, redirige HTTP a HTTPS y utiliza certificados de Let's Encrypt. Incluye compresión, caché de recursos y limitación de peticiones para las API.
 
 - **Frontend actual:** secciones de proyectos, perfil, habilidades, certificaciones y contacto; tema claro/oscuro, carruseles y efectos visuales. No requiere compilación ni un servidor Node.js.
+- **Cabecera:** el desenfoque progresivo usa tres capas hasta 768 px y doce en pantallas más anchas. El efecto aparece al superar 8 px de desplazamiento y se oculta con la preferencia de transparencia reducida. La portada y las cuatro páginas de proyectos comparten [el CSS de la cabecera](css/header.css).
 - **Contacto:** `js/app.js` envía nombre, teléfono, email, asunto y mensaje a `POST /api/collections/messages/records`.
 - **PocketBase:** `pocketbase.service` lo ejecuta como usuario `pocketbase` en `127.0.0.1:8090`. Las migraciones definen la colección `messages`.
 - **Notificaciones:** `pb_hooks/messages_notify.pb.js` intenta enviar un correo después de crear un mensaje. Requiere una configuración de correo válida en PocketBase; su entrega no fue comprobada.
@@ -80,15 +81,15 @@ Para probar el formulario localmente hace falta una instancia de PocketBase con 
 
 ## Despliegue y operación
 
+La VM de Azure sirve los archivos estáticos directamente desde `/var/www/portafolio`. Para publicar cambios de HTML y CSS desde un commit de `main`, sigue el [procedimiento de publicación estática](start.md#publicación-de-archivos-estáticos).
+
 El script existente `start.sh` sincroniza el repositorio y prepara servicios systemd en Linux. Lee `/etc/environment` y admite `DEPLOY_ROOT` (por defecto `/var/www/portafolio`). Los archivos de Nginx, systemd y el launcher de AutoMail mantienen esa ruta fija: cambiar solo `DEPLOY_ROOT` no cambia toda la instalación.
 
-No hay workflows de GitHub Actions en este checkout; no está confirmado un despliegue automático con cada push. Consulta [start.md](start.md) antes de ejecutar el script. El repositorio tampoco incluye actualmente un Makefile para encapsular la operación.
+No hay workflows de GitHub Actions en este checkout. Consulta [start.md](start.md) antes de ejecutar el script. El repositorio todavía no incluye un Makefile para la operación.
 
 ## Pendientes de validación
 
-- Comprobar por SSH los servicios y la configuración activa de Nginx.
+- Comprobar la configuración activa de Nginx. El estado de Nginx, PocketBase y AutoMail se comprobó por SSH el 21 de noviembre de 2026.
 - Verificar AutoMail (`/automail-api/health`), el backend BT y la entrega de correos.
 - Revisar reglas de privacidad de `messages`: la migración inicial deja `listRule` y `viewRule` vacías, permitiendo lectura pública si se aplican sin cambios. No se consultaron mensajes ni se confirmó que producción conserve esas reglas.
 - Mantener secretos y datos fuera de Git; `pb_data/`, entornos virtuales y el runtime de AutoMail están excluidos en `.gitignore`.
-
-La actualización de documentación no ejecuta despliegues ni modifica la configuración de producción.

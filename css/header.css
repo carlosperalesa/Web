@@ -41,3 +41,11 @@ body .site-header .mobile-nav {
 .header-backdrop > span:nth-child(10) {--blur:10px;--fade-end:55%;}
 .header-backdrop > span:nth-child(11) {--blur:12px;--fade-end:50%;}
 .header-backdrop > span:nth-child(12) {--blur:16px;--fade-end:45%;}
+
+/* Three staggered layers keep the progressive fade on narrow screens. */
+@media(max-width:768px) {
+    .header-backdrop > span:not(:is(:nth-child(1),:nth-child(7),:nth-child(12))) { display:none; }
+    .header-backdrop > span:nth-child(1) {--blur:2px;--fade-end:100%;}
+    .header-backdrop > span:nth-child(7) {--blur:6px;--fade-end:75%;}
+    .header-backdrop > span:nth-child(12) {--fade-end:50%;}
+}
