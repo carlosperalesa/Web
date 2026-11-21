@@ -1,0 +1,47 @@
+name: Deploy carlosperales.dev
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'css/**'
+      - 'fonts/**'
+      - 'historial/**'
+      - 'img/**'
+      - 'js/**'
+      - 'proyectos/**'
+      - 'sounds/**'
+      - 'robots.txt'
+      - 'sitemap.xml'
+      - 'google4b4f0b50c3f33b93.html'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: carlosperales-production
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Publish static files on Azure
+        env:
+          SSH_KEY: ${{ secrets.WEB_STATIC_DEPLOY_KEY }}
+          SSH_KNOWN_HOSTS: ${{ vars.WEB_STATIC_KNOWN_HOSTS }}
+          SSH_TARGET: ${{ vars.WEB_STATIC_SSH_TARGET }}
+        run: |
+          set -euo pipefail
+          umask 077
+          directory=$(mktemp -d)
+          trap 'rm -rf -- "$directory"' EXIT
+          printf '%s\n' "$SSH_KEY" > "$directory/key"
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > "$directory/known_hosts"
+          ssh -T -i "$directory/key" -o IdentitiesOnly=yes -o BatchMode=yes \
+            -o ConnectTimeout=15 -o StrictHostKeyChecking=yes \
+            -o "UserKnownHostsFile=$directory/known_hosts" -- "$SSH_TARGET" publish

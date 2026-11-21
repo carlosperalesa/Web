@@ -85,7 +85,7 @@ La VM de Azure sirve los archivos estáticos directamente desde `/var/www/portaf
 
 El script existente `start.sh` sincroniza el repositorio y prepara servicios systemd en Linux. Lee `/etc/environment` y admite `DEPLOY_ROOT` (por defecto `/var/www/portafolio`). Los archivos de Nginx, systemd y el launcher de AutoMail mantienen esa ruta fija: cambiar solo `DEPLOY_ROOT` no cambia toda la instalación.
 
-No hay workflows de GitHub Actions en este checkout. Consulta [start.md](start.md) antes de ejecutar el script. El repositorio todavía no incluye un Makefile para la operación.
+GitHub Actions publica el portafolio estático al hacer push a `main`. Consulta [start.md](start.md) antes de ejecutar el script de aprovisionamiento.
 
 ## Pendientes de validación
 

@@ -4,6 +4,10 @@ Documentación contrastada con `start.sh`, los servicios systemd y Nginx del rep
 
 ## Publicación de archivos estáticos
 
+GitHub Actions ejecuta **Deploy carlosperales.dev** al publicar cambios del portafolio estático en `main`. También se puede ejecutar manualmente desde Actions. La VM usa una clave SSH exclusiva que ejecuta el publicador instalado en `/usr/local/sbin/portafolio-publish-static`. Ese publicador lee `main`, respalda los archivos reemplazados y comprueba la portada y PocketBase por HTTPS.
+
+El publicador de la VM se instala desde `deploy/publish-static.sh`. Los cambios de Nginx, servicios y aplicaciones bajo `other/` requieren su procedimiento correspondiente.
+
 La raíz activa `/var/www/portafolio` es un directorio de archivos estáticos. Para cambios de HTML o CSS, transfiere los archivos del commit de `main` publicado en GitHub mediante el alias SSH `vm-carlosperales`.
 
 1. Compara los SHA-256 de los archivos publicados con los del commit anterior para detectar cambios en producción.
@@ -49,7 +53,6 @@ La configuración de BT apunta a `127.0.0.1:8091`, pero este script no instala n
 
 `start.sh` está previsto para aprovisionar o actualizar servicios desde un checkout revisado con privilegios administrativos. El script reinicia servicios y puede interrumpir peticiones; no ofrece garantía de despliegue sin interrupciones ni rollback automático.
 
-Las directrices del proyecto piden canalizar automatizaciones mediante Makefile. El repositorio todavía no incluye un Makefile ni workflows en `.github/workflows`.
 
 ## Verificación posterior
 
